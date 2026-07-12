@@ -78,15 +78,26 @@
         return all[daySeed % all.length];
     }
 
+    function countMeds() {
+        let cats = 0, meds = 0;
+        for (const category of Object.values(medicationDatabase)) {
+            cats++;
+            for (const cls of Object.values(category.classes)) meds += cls.medications.length;
+        }
+        return { cats, meds };
+    }
+
+    // ===== HOME DASHBOARD (HUB) =====
     function renderHome() {
         currentView = 'home';
         currentCategory = null;
         currentClass = null;
-        // Reset feature nav active state
-        document.querySelectorAll('.feature-nav-btn').forEach(b => b.classList.remove('active'));
-        const homeBtn = document.querySelector('[data-feature="home"]');
-        if (homeBtn) homeBtn.classList.add('active');
         updateBreadcrumb([{ label: 'Home', level: 'home' }]);
+
+        const stats = countMeds();
+        let favCount = 0, sessionCount = 0;
+        try { favCount = JSON.parse(localStorage.getItem('medlearn_favorites') || '[]').length; } catch(e) {}
+        try { sessionCount = JSON.parse(localStorage.getItem('medlearn_progress') || '[]').length; } catch(e) {}
 
         let html = '';
 
@@ -101,7 +112,42 @@
             </div>`;
         }
 
-        html += '<div class="section-header"><div><h2>Medication Categories</h2>';
+        // Dashboard tiles
+        const tiles = [
+            { icon: '\uD83D\uDC8A', title: 'Medications', desc: 'Browse drugs by category, class and detail', stat: `${stats.meds} medications &bull; ${stats.cats} categories`, action: "app.renderMedications()", accent: 'var(--primary)' },
+            { icon: '\uD83C\uDF93', title: 'Study & Practice', desc: 'Flashcards, practice questions, timed quiz & cases', stat: '4 study tools', action: "features.openGroup('study')", accent: 'var(--secondary)' },
+            { icon: '\uD83E\uDDEE', title: 'Drug Calculations', desc: 'Dosage, IV rates, drops/min & paediatric maths', stat: '5 problem types', action: "features.openCalculations()", accent: 'var(--success)' },
+            { icon: '\uD83D\uDEE1\uFE0F', title: 'Safety', desc: 'High-risk meds, interactions, look-alikes & rights', stat: '4 safety tools', action: "features.openGroup('safety')", accent: 'var(--danger)' },
+            { icon: '\uD83D\uDCDA', title: 'Reference', desc: 'Lab values, therapeutic ranges & mnemonics', stat: '2 reference tools', action: "features.openGroup('reference')", accent: 'var(--warning)' },
+            { icon: '\u2B50', title: 'Favourites', desc: 'Your saved medications for quick review', stat: `${favCount} saved`, action: "features.openFavorites()", accent: '#f59e0b' },
+            { icon: '\uD83D\uDCCA', title: 'Progress', desc: 'Track your quiz scores and study sessions', stat: `${sessionCount} sessions`, action: "features.openProgress()", accent: '#0891b2' },
+            { icon: '\uD83D\uDEE0\uFE0F', title: 'Edit Medications', desc: 'Add, edit or delete medications yourself', stat: 'Admin panel', action: "window.location.href='admin.html'", accent: '#64748b' }
+        ];
+
+        html += '<div class="hub-grid">';
+        tiles.forEach(t => {
+            html += `<div class="hub-tile" style="border-top-color:${t.accent}" onclick="${t.action}">
+                <div class="hub-icon">${t.icon}</div>
+                <div class="hub-title">${t.title}</div>
+                <div class="hub-desc">${t.desc}</div>
+                <div class="hub-stat">${t.stat}</div>
+            </div>`;
+        });
+        html += '</div>';
+        mainContent.innerHTML = html;
+    }
+
+    // ===== MEDICATION BROWSER =====
+    function renderMedications() {
+        currentView = 'medications';
+        currentCategory = null;
+        currentClass = null;
+        updateBreadcrumb([
+            { label: 'Home', level: 'home' },
+            { label: 'Medications', level: 'medications' }
+        ]);
+
+        let html = '<div class="section-header"><div><h2>Medication Categories</h2>';
         html += '<p class="section-description">Select a category to explore drug classes and medications</p></div></div>';
         html += '<div class="categories-grid">';
 
@@ -133,6 +179,7 @@
 
         updateBreadcrumb([
             { label: 'Home', level: 'home' },
+            { label: 'Medications', level: 'medications' },
             { label: category.name, level: 'category' }
         ]);
 
@@ -167,6 +214,7 @@
 
         updateBreadcrumb([
             { label: 'Home', level: 'home' },
+            { label: 'Medications', level: 'medications' },
             { label: category.name, level: 'category' },
             { label: drugClass.name, level: 'class' }
         ]);
@@ -220,6 +268,9 @@
         switch(level) {
             case 'home':
                 renderHome();
+                break;
+            case 'medications':
+                renderMedications();
                 break;
             case 'category':
                 navigateToCategory(currentCategory);
@@ -628,6 +679,7 @@
         startQuiz,
         answerQuiz,
         renderHome,
+        renderMedications,
         printClass,
         saveMedNote
     };

@@ -1008,6 +1008,57 @@ function checkCalc() {
     saveProgress('calc', {score: calcScore, total: calcAttempts, date: new Date().toISOString()});
 }
 
+// ===== GROUP SUB-VIEWS =====
+const featureGroups = {
+    study: {
+        title: 'Study & Practice',
+        icon: '\uD83C\uDF93',
+        tools: [
+            { icon: '\uD83C\uDCCF', title: 'Flashcards', desc: 'Flip cards with optional spaced repetition', action: 'features.openFlashcards()' },
+            { icon: '\uD83D\uDCDD', title: "Practice Questions", desc: 'NMBA-style questions by category', action: 'features.openNCLEX()' },
+            { icon: '\u23F1\uFE0F', title: 'Timed Quiz', desc: 'Beat the clock - 10 rapid questions', action: 'features.openTimedQuiz()' },
+            { icon: '\uD83D\uDCCB', title: 'Case Studies', desc: 'Clinical scenarios with reasoning', action: 'features.openCaseStudies()' },
+            { icon: '\u2696\uFE0F', title: 'Compare Drugs', desc: 'Side-by-side comparison of two meds', action: 'features.openCompare()' }
+        ]
+    },
+    safety: {
+        title: 'Safety',
+        icon: '\uD83D\uDEE1\uFE0F',
+        tools: [
+            { icon: '\uD83D\uDEA8', title: 'High-Risk Medicines', desc: 'A PINCH high-risk drugs & why', action: 'features.openHighAlert()' },
+            { icon: '\u26A0\uFE0F', title: 'Drug Interactions', desc: 'Check common interaction pairs', action: 'features.openInteractions()' },
+            { icon: '\uD83D\uDC40', title: 'Look-Alike / Sound-Alike', desc: 'Commonly confused drug names', action: 'features.openLookAlike()' },
+            { icon: '\u2705', title: 'Rights of Administration', desc: 'The rights & checks for safe practice', action: 'features.openRights()' }
+        ]
+    },
+    reference: {
+        title: 'Reference',
+        icon: '\uD83D\uDCDA',
+        tools: [
+            { icon: '\uD83D\uDD2C', title: 'Lab Values & Antidotes', desc: 'Therapeutic ranges, toxic levels, antidotes', action: 'features.openLabValues()' },
+            { icon: '\uD83E\uDDE0', title: 'Mnemonics', desc: 'Suffix patterns & memory aids', action: 'features.openMnemonics()' }
+        ]
+    }
+};
+
+function openGroup(key) {
+    const group = featureGroups[key];
+    if (!group) return;
+    breadcrumb.innerHTML = '<span class="breadcrumb-item" onclick="app.renderHome()">Home</span><span class="breadcrumb-separator">&#x25B6;</span><span class="breadcrumb-item active">' + group.title + '</span>';
+    let html = `<div class="section-header"><div><h2>${group.icon} ${group.title}</h2>`;
+    html += `<p class="section-description">Choose a tool</p></div></div>`;
+    html += '<div class="group-grid">';
+    group.tools.forEach(t => {
+        html += `<div class="group-tile" onclick="${t.action}">
+            <div class="gt-icon">${t.icon}</div>
+            <div class="gt-title">${t.title}</div>
+            <div class="gt-desc">${t.desc}</div>
+        </div>`;
+    });
+    html += '</div>';
+    mainContent.innerHTML = html;
+}
+
 // ===== PUBLIC API =====
 window.features = {
     openFlashcards, startFlashcardDeck, fcAnswer,
@@ -1025,7 +1076,8 @@ window.features = {
     dismissDisclaimer,
     openCalculations, newCalc, checkCalc,
     openRights,
-    openCaseStudies, startCase, answerCase, nextCase
+    openCaseStudies, startCase, answerCase, nextCase,
+    openGroup
 };
 
 })();

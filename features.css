@@ -732,3 +732,58 @@ body.dark .case-scenario { background: #422006; color: #fde68a; }
 .med-notes-area { width: 100%; min-height: 70px; padding: 0.6rem; border: 1px solid var(--border); border-radius: var(--radius-sm); font-family: inherit; font-size: 0.9rem; resize: vertical; }
 .med-notes-save { background: var(--success); color: white; border: none; padding: 0.4rem 1rem; border-radius: var(--radius-sm); font-weight: 600; cursor: pointer; margin-top: 0.5rem; font-size: 0.85rem; }
 .med-notes-saved { color: var(--success); font-size: 0.8rem; margin-left: 0.5rem; }
+
+
+/* ===== Home Dashboard Hub ===== */
+.hub-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+    gap: 1.25rem;
+}
+.hub-tile {
+    background: var(--card-bg);
+    border-radius: var(--radius);
+    padding: 1.5rem;
+    box-shadow: var(--shadow);
+    cursor: pointer;
+    transition: transform 0.2s, box-shadow 0.2s;
+    border-top: 4px solid var(--primary);
+    display: flex;
+    flex-direction: column;
+}
+.hub-tile:hover { transform: translateY(-4px); box-shadow: var(--shadow-lg); }
+.hub-icon { font-size: 2.5rem; margin-bottom: 0.6rem; }
+.hub-title { font-size: 1.2rem; font-weight: 700; color: var(--text); margin-bottom: 0.35rem; }
+.hub-desc { font-size: 0.88rem; color: var(--text-light); flex: 1; line-height: 1.5; }
+.hub-stat {
+    margin-top: 0.85rem;
+    font-size: 0.78rem;
+    font-weight: 600;
+    color: var(--primary);
+    background: var(--primary-light);
+    display: inline-block;
+    padding: 0.25rem 0.7rem;
+    border-radius: 50px;
+    align-self: flex-start;
+}
+body.dark .hub-stat { background: #1e3a5f; color: #dbeafe; }
+
+/* ===== Group sub-view (tools within a group) ===== */
+.group-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: 1rem;
+}
+.group-tile {
+    background: var(--card-bg);
+    border-radius: var(--radius);
+    padding: 1.25rem;
+    box-shadow: var(--shadow);
+    cursor: pointer;
+    transition: transform 0.2s, box-shadow 0.2s;
+    border-left: 4px solid var(--secondary);
+}
+.group-tile:hover { transform: translateY(-2px); box-shadow: var(--shadow-md); }
+.group-tile .gt-icon { font-size: 1.8rem; }
+.group-tile .gt-title { font-size: 1.05rem; font-weight: 700; color: var(--text); margin: 0.3rem 0; }
+.group-tile .gt-desc { font-size: 0.82rem; color: var(--text-light); line-height: 1.45; }

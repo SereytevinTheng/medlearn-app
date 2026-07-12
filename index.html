@@ -18,7 +18,7 @@
         <header class="app-header">
             <button id="darkModeToggle" class="dark-toggle" onclick="features.toggleDarkMode()" title="Toggle dark mode">&#x1F319;</button>
             <div class="header-content">
-                <h1 class="logo">&#x1F48A; MedLearn</h1>
+                <h1 class="logo" onclick="app.renderHome()" title="Go to home" style="cursor:pointer;">&#x1F48A; MedLearn</h1>
                 <p class="tagline">Your Nursing Pharmacology Companion</p>
             </div>
             <div class="search-container">
@@ -26,26 +26,6 @@
                 <div id="searchResults" class="search-results hidden"></div>
             </div>
         </header>
-
-        <!-- Feature Navigation Bar -->
-        <nav class="feature-nav">
-            <button class="feature-nav-btn active" onclick="app.renderHome()" data-feature="home">&#x1F3E0; Meds</button>
-            <button class="feature-nav-btn" onclick="features.openFlashcards()" data-feature="flashcards">&#x1F0CF; Flashcards</button>
-            <button class="feature-nav-btn" onclick="features.openFavorites()" data-feature="favorites">&#x2B50; Favorites</button>
-            <button class="feature-nav-btn" onclick="features.openCompare()" data-feature="compare">&#x2696;&#xFE0F; Compare</button>
-            <button class="feature-nav-btn" onclick="features.openHighAlert()" data-feature="highalert">&#x1F6A8; High Alert</button>
-            <button class="feature-nav-btn" onclick="features.openLabValues()" data-feature="labs">&#x1F52C; Labs</button>
-            <button class="feature-nav-btn" onclick="features.openProgress()" data-feature="progress">&#x1F4CA; Progress</button>
-            <button class="feature-nav-btn" onclick="features.openNCLEX()" data-feature="nclex">&#x1F4DD; Practice Q's</button>
-            <button class="feature-nav-btn" onclick="features.openTimedQuiz()" data-feature="timedquiz">&#x23F1;&#xFE0F; Timed</button>
-            <button class="feature-nav-btn" onclick="features.openCalculations()" data-feature="calc">&#x1F9EE; Calculations</button>
-            <button class="feature-nav-btn" onclick="features.openRights()" data-feature="rights">&#x2705; Rights</button>
-            <button class="feature-nav-btn" onclick="features.openCaseStudies()" data-feature="cases">&#x1F4CB; Cases</button>
-            <button class="feature-nav-btn" onclick="features.openInteractions()" data-feature="interactions">&#x26A0;&#xFE0F; Interactions</button>
-            <button class="feature-nav-btn" onclick="features.openMnemonics()" data-feature="mnemonics">&#x1F9E0; Mnemonics</button>
-            <button class="feature-nav-btn" onclick="features.openLookAlike()" data-feature="lookalike">&#x1F440; Look-Alike</button>
-            <a href="admin.html" class="feature-nav-btn" style="text-decoration:none;">&#x1F6E0;&#xFE0F; Edit</a>
-        </nav>
 
         <!-- Disclaimer Banner -->
         <div id="disclaimerBanner" class="disclaimer-banner">
