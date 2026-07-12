@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>MedLearn - Nursing Medication Study App</title>
     <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="features.css">
 </head>
 <body>
     <div id="app">
@@ -20,10 +21,23 @@
             </div>
         </header>
 
+        <!-- Feature Navigation Bar -->
+        <nav class="feature-nav">
+            <button class="feature-nav-btn active" onclick="app.renderHome()" data-feature="home">&#x1F3E0; Meds</button>
+            <button class="feature-nav-btn" onclick="features.openFlashcards()" data-feature="flashcards">&#x1F0CF; Flashcards</button>
+            <button class="feature-nav-btn" onclick="features.openFavorites()" data-feature="favorites">&#x2B50; Favorites</button>
+            <button class="feature-nav-btn" onclick="features.openCompare()" data-feature="compare">&#x2696;&#xFE0F; Compare</button>
+            <button class="feature-nav-btn" onclick="features.openHighAlert()" data-feature="highalert">&#x1F6A8; High Alert</button>
+            <button class="feature-nav-btn" onclick="features.openLabValues()" data-feature="labs">&#x1F52C; Labs</button>
+            <button class="feature-nav-btn" onclick="features.openProgress()" data-feature="progress">&#x1F4CA; Progress</button>
+            <button class="feature-nav-btn" onclick="features.openNCLEX()" data-feature="nclex">&#x1F4DD; NCLEX</button>
+            <button class="feature-nav-btn" onclick="features.openInteractions()" data-feature="interactions">&#x26A0;&#xFE0F; Interactions</button>
+            <a href="admin.html" class="feature-nav-btn" style="text-decoration:none;">&#x1F6E0;&#xFE0F; Edit</a>
+        </nav>
+
         <!-- Navigation Breadcrumb -->
         <nav id="breadcrumb" class="breadcrumb">
             <span class="breadcrumb-item active" data-level="home">Home</span>
-            <a href="admin.html" style="margin-left:auto; font-size:0.85rem; color:var(--primary); text-decoration:none; font-weight:600; background:#dbeafe; padding:0.3rem 0.8rem; border-radius:50px;">&#x1F6E0;&#xFE0F; Edit Meds</a>
         </nav>
 
         <!-- Main Content Area -->
@@ -50,5 +64,6 @@
 
     <script src="medications.js"></script>
     <script src="app.js"></script>
+    <script src="features.js"></script>
 </body>
 </html>

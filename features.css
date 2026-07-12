@@ -1,0 +1,468 @@
+/* ===== Feature Navigation Bar ===== */
+.feature-nav {
+    display: flex;
+    gap: 0.25rem;
+    padding: 0.6rem 1rem;
+    background: #ffffff;
+    border-bottom: 1px solid var(--border);
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+}
+.feature-nav::-webkit-scrollbar { display: none; }
+
+.feature-nav-btn {
+    flex-shrink: 0;
+    padding: 0.4rem 0.8rem;
+    border: 1px solid var(--border);
+    border-radius: 50px;
+    background: var(--bg);
+    color: var(--text);
+    font-size: 0.78rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s;
+    white-space: nowrap;
+}
+.feature-nav-btn:hover { background: var(--primary-light); border-color: var(--primary); }
+.feature-nav-btn.active { background: var(--primary); color: white; border-color: var(--primary); }
+
+/* ===== Flashcard Mode ===== */
+.flashcard-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 2rem 1rem;
+    max-width: 500px;
+    margin: 0 auto;
+}
+
+.flashcard {
+    width: 100%;
+    height: 320px;
+    perspective: 1000px;
+    cursor: pointer;
+    margin-bottom: 1.5rem;
+}
+
+.flashcard-inner {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    transition: transform 0.6s;
+    transform-style: preserve-3d;
+}
+
+.flashcard.flipped .flashcard-inner {
+    transform: rotateY(180deg);
+}
+
+.flashcard-front, .flashcard-back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden;
+    border-radius: var(--radius);
+    box-shadow: var(--shadow-lg);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem;
+    text-align: center;
+}
+
+.flashcard-front {
+    background: linear-gradient(135deg, var(--primary), var(--secondary));
+    color: white;
+}
+
+.flashcard-front .fc-generic {
+    font-size: 1.8rem;
+    font-weight: 700;
+    text-transform: capitalize;
+}
+
+.flashcard-front .fc-hint {
+    font-size: 0.9rem;
+    opacity: 0.8;
+    margin-top: 1rem;
+}
+
+.flashcard-back {
+    background: white;
+    transform: rotateY(180deg);
+    overflow-y: auto;
+    align-items: flex-start;
+    justify-content: flex-start;
+    text-align: left;
+}
+
+.flashcard-back h3 { font-size: 1.2rem; margin-bottom: 0.5rem; color: var(--primary); text-transform: capitalize; }
+.flashcard-back .fc-brand { color: var(--text-light); font-style: italic; margin-bottom: 0.75rem; }
+.flashcard-back .fc-detail { font-size: 0.85rem; margin-bottom: 0.5rem; color: var(--text); }
+.flashcard-back .fc-label { font-weight: 700; color: var(--primary); font-size: 0.75rem; text-transform: uppercase; }
+
+.flashcard-controls {
+    display: flex;
+    gap: 1rem;
+    width: 100%;
+    max-width: 400px;
+}
+
+.fc-btn {
+    flex: 1;
+    padding: 0.8rem;
+    border: none;
+    border-radius: var(--radius-sm);
+    font-size: 0.95rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: transform 0.1s;
+}
+.fc-btn:active { transform: scale(0.95); }
+.fc-btn-wrong { background: #fee2e2; color: var(--danger); }
+.fc-btn-right { background: #d1fae5; color: var(--success); }
+.fc-btn-skip { background: var(--bg); color: var(--text-light); border: 1px solid var(--border); }
+
+.flashcard-progress {
+    font-size: 0.85rem;
+    color: var(--text-light);
+    margin-bottom: 1rem;
+}
+
+/* ===== Favorites ===== */
+.favorites-empty {
+    text-align: center;
+    padding: 3rem 1rem;
+    color: var(--text-light);
+}
+.favorites-empty .empty-icon { font-size: 3rem; margin-bottom: 1rem; }
+
+.fav-star {
+    cursor: pointer;
+    font-size: 1.3rem;
+    transition: transform 0.2s;
+    position: absolute;
+    top: 0.75rem;
+    right: 0.75rem;
+}
+.fav-star:hover { transform: scale(1.2); }
+
+.med-card-fav {
+    position: relative;
+}
+
+/* ===== Drug Comparison ===== */
+.compare-selectors {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+}
+
+.compare-select-group select {
+    width: 100%;
+    padding: 0.5rem;
+    border: 1px solid var(--border);
+    border-radius: var(--radius-sm);
+    font-size: 0.9rem;
+    margin-bottom: 0.5rem;
+}
+
+.compare-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.85rem;
+}
+
+.compare-table th {
+    background: var(--primary);
+    color: white;
+    padding: 0.6rem 0.8rem;
+    text-align: left;
+    font-size: 0.8rem;
+}
+
+.compare-table td {
+    padding: 0.6rem 0.8rem;
+    border-bottom: 1px solid var(--border);
+    vertical-align: top;
+}
+
+.compare-table tr:nth-child(even) { background: var(--bg); }
+.compare-table .row-label { font-weight: 700; color: var(--primary); width: 120px; }
+
+/* ===== High Alert ===== */
+.high-alert-card {
+    background: white;
+    border-radius: var(--radius);
+    padding: 1.25rem;
+    box-shadow: var(--shadow);
+    border-left: 4px solid var(--danger);
+    margin-bottom: 1rem;
+}
+
+.high-alert-card .ha-name {
+    font-size: 1.05rem;
+    font-weight: 700;
+    text-transform: capitalize;
+    color: var(--danger);
+}
+
+.high-alert-card .ha-brand {
+    font-size: 0.8rem;
+    color: var(--text-light);
+    font-style: italic;
+}
+
+.high-alert-card .ha-reason {
+    font-size: 0.85rem;
+    color: var(--text);
+    margin-top: 0.5rem;
+    background: #fee2e2;
+    padding: 0.5rem 0.75rem;
+    border-radius: var(--radius-sm);
+}
+
+/* ===== Lab Values ===== */
+.lab-card {
+    background: white;
+    border-radius: var(--radius);
+    padding: 1.25rem;
+    box-shadow: var(--shadow);
+    border-left: 4px solid var(--secondary);
+    margin-bottom: 1rem;
+}
+
+.lab-card .lab-drug { font-weight: 700; font-size: 1rem; text-transform: capitalize; }
+.lab-card .lab-range { color: var(--success); font-weight: 600; font-size: 0.95rem; margin: 0.3rem 0; }
+.lab-card .lab-toxic { color: var(--danger); font-size: 0.85rem; }
+.lab-card .lab-antidote { background: #dbeafe; padding: 0.4rem 0.75rem; border-radius: var(--radius-sm); font-size: 0.85rem; margin-top: 0.5rem; display: inline-block; }
+.lab-card .lab-monitoring { font-size: 0.8rem; color: var(--text-light); margin-top: 0.4rem; }
+
+/* ===== Progress Tracker ===== */
+.progress-overview {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 1rem;
+    margin-bottom: 2rem;
+}
+
+.progress-stat-card {
+    background: white;
+    border-radius: var(--radius);
+    padding: 1.25rem;
+    box-shadow: var(--shadow);
+    text-align: center;
+}
+
+.progress-stat-card .stat-number {
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--primary);
+}
+
+.progress-stat-card .stat-label {
+    font-size: 0.8rem;
+    color: var(--text-light);
+    margin-top: 0.25rem;
+}
+
+.progress-bar-container {
+    background: var(--border);
+    border-radius: 50px;
+    height: 12px;
+    overflow: hidden;
+    margin: 0.5rem 0;
+}
+
+.progress-bar-fill {
+    height: 100%;
+    border-radius: 50px;
+    background: linear-gradient(90deg, var(--primary), var(--success));
+    transition: width 0.5s ease;
+}
+
+.quiz-history-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.6rem 1rem;
+    border-bottom: 1px solid var(--border);
+    font-size: 0.85rem;
+}
+
+.quiz-history-item .qh-score {
+    font-weight: 700;
+    color: var(--success);
+}
+
+/* ===== NCLEX Questions ===== */
+.nclex-question-card {
+    background: white;
+    border-radius: var(--radius);
+    padding: 1.5rem;
+    box-shadow: var(--shadow);
+    margin-bottom: 1.5rem;
+}
+
+.nclex-question-card .nclex-type {
+    font-size: 0.75rem;
+    font-weight: 700;
+    color: white;
+    background: var(--secondary);
+    padding: 0.2rem 0.6rem;
+    border-radius: 4px;
+    display: inline-block;
+    margin-bottom: 0.75rem;
+}
+
+.nclex-question-card .nclex-stem {
+    font-size: 1rem;
+    font-weight: 600;
+    margin-bottom: 1rem;
+    line-height: 1.5;
+}
+
+.nclex-option {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.5rem;
+    padding: 0.7rem 1rem;
+    border: 2px solid var(--border);
+    border-radius: var(--radius-sm);
+    margin-bottom: 0.5rem;
+    cursor: pointer;
+    transition: all 0.2s;
+    font-size: 0.9rem;
+}
+
+.nclex-option:hover { border-color: var(--primary); background: var(--primary-light); }
+.nclex-option.selected { border-color: var(--primary); background: var(--primary-light); }
+.nclex-option.correct-answer { border-color: var(--success); background: #d1fae5; }
+.nclex-option.wrong-answer { border-color: var(--danger); background: #fee2e2; }
+.nclex-option.disabled { pointer-events: none; }
+
+.nclex-option input[type="checkbox"] {
+    margin-top: 0.15rem;
+    flex-shrink: 0;
+}
+
+.nclex-rationale {
+    margin-top: 1rem;
+    padding: 1rem;
+    background: #f0fdf4;
+    border-left: 4px solid var(--success);
+    border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+    font-size: 0.85rem;
+    display: none;
+}
+
+.nclex-rationale.visible { display: block; }
+
+/* ===== Drug Interactions ===== */
+.interaction-search {
+    display: flex;
+    gap: 0.5rem;
+    margin-bottom: 1rem;
+    flex-wrap: wrap;
+}
+
+.interaction-search input {
+    flex: 1;
+    min-width: 200px;
+    padding: 0.6rem 1rem;
+    border: 1px solid var(--border);
+    border-radius: var(--radius-sm);
+    font-size: 0.9rem;
+}
+
+.interaction-search button {
+    padding: 0.6rem 1rem;
+    background: var(--primary);
+    color: white;
+    border: none;
+    border-radius: var(--radius-sm);
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.interaction-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-bottom: 1.5rem;
+}
+
+.interaction-tag {
+    background: var(--primary-light);
+    color: var(--primary);
+    padding: 0.3rem 0.75rem;
+    border-radius: 50px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap: 0.3rem;
+}
+
+.interaction-tag .remove-tag {
+    cursor: pointer;
+    font-size: 1rem;
+    line-height: 1;
+}
+
+.interaction-result {
+    background: white;
+    border-radius: var(--radius);
+    padding: 1.25rem;
+    box-shadow: var(--shadow);
+    margin-bottom: 1rem;
+    border-left: 4px solid var(--warning);
+}
+
+.interaction-result .ir-drugs {
+    font-weight: 700;
+    font-size: 1rem;
+    color: var(--text);
+}
+
+.interaction-result .ir-severity {
+    display: inline-block;
+    font-size: 0.7rem;
+    font-weight: 700;
+    padding: 0.15rem 0.5rem;
+    border-radius: 4px;
+    margin-left: 0.5rem;
+}
+
+.ir-severity.severe { background: #fee2e2; color: var(--danger); }
+.ir-severity.moderate { background: #fef3c7; color: var(--warning); }
+.ir-severity.mild { background: #d1fae5; color: var(--success); }
+
+.interaction-result .ir-effect {
+    font-size: 0.85rem;
+    color: var(--text);
+    margin-top: 0.5rem;
+}
+
+.interaction-result .ir-nursing {
+    font-size: 0.8rem;
+    color: var(--text-light);
+    margin-top: 0.4rem;
+    font-style: italic;
+}
+
+/* ===== Responsive adjustments ===== */
+@media (max-width: 768px) {
+    .compare-selectors { grid-template-columns: 1fr; }
+    .progress-overview { grid-template-columns: 1fr 1fr; }
+    .flashcard { height: 280px; }
+}
+
+@media (max-width: 480px) {
+    .progress-overview { grid-template-columns: 1fr; }
+    .feature-nav { padding: 0.5rem; }
+    .feature-nav-btn { font-size: 0.7rem; padding: 0.35rem 0.6rem; }
+}

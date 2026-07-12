@@ -65,6 +65,10 @@
         currentView = 'home';
         currentCategory = null;
         currentClass = null;
+        // Reset feature nav active state
+        document.querySelectorAll('.feature-nav-btn').forEach(b => b.classList.remove('active'));
+        const homeBtn = document.querySelector('[data-feature="home"]');
+        if (homeBtn) homeBtn.classList.add('active');
         updateBreadcrumb([{ label: 'Home', level: 'home' }]);
 
         let html = '<div class="section-header"><div><h2>Medication Categories</h2>';
