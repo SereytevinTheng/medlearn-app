@@ -4,6 +4,17 @@
 (function() {
     'use strict';
 
+    // Load data from localStorage if available (admin panel edits), otherwise use default
+    const savedData = localStorage.getItem('medlearn_data');
+    if (savedData) {
+        try {
+            const parsed = JSON.parse(savedData);
+            Object.keys(parsed).forEach(key => {
+                medicationDatabase[key] = parsed[key];
+            });
+        } catch(e) { /* use default data */ }
+    }
+
     // State management
     let currentView = 'home';
     let currentCategory = null;
