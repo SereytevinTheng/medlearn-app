@@ -1933,3 +1933,591 @@ medicationDatabase.musculoskeletal.classes.muscleRelaxants = {
         }
     ]
 };
+
+
+// ===== ANTI-INFECTIVE - Antivirals =====
+medicationDatabase.antiinfective.classes.antivirals = {
+    name: "Antivirals",
+    description: "Medications that treat viral infections including herpes, influenza, HIV, and hepatitis",
+    medications: [
+        {
+            generic: "acyclovir",
+            brand: "Zovirax",
+            mechanism: "Inhibits viral DNA polymerase after conversion by viral thymidine kinase",
+            indications: ["Herpes simplex (HSV)", "Varicella zoster (shingles)", "Genital herpes", "Encephalitis"],
+            sideEffects: ["Nephrotoxicity", "Nausea", "Headache", "Injection site reactions", "Neurotoxicity (high doses)"],
+            nursingConsiderations: "Ensure adequate hydration to prevent crystalluria/nephrotoxicity (especially IV). Start within 72 hrs of rash for shingles. Not a cure - suppresses replication.",
+            dosageRange: "200-800 mg PO 5x/day; 5-10 mg/kg IV q8h"
+        },
+        {
+            generic: "oseltamivir",
+            brand: "Tamiflu",
+            mechanism: "Neuraminidase inhibitor; blocks release of influenza virus from infected cells",
+            indications: ["Influenza A and B (treatment)", "Influenza prophylaxis"],
+            sideEffects: ["Nausea", "Vomiting", "Headache", "Neuropsychiatric events (rare)", "Insomnia"],
+            nursingConsiderations: "Most effective within 48 hrs of symptom onset. Take with food to reduce GI upset. Monitor for unusual behavior (especially children). Not a substitute for flu vaccine.",
+            dosageRange: "75 mg PO BID x5 days (treatment)"
+        },
+        {
+            generic: "valacyclovir",
+            brand: "Valtrex",
+            mechanism: "Prodrug of acyclovir with better oral bioavailability",
+            indications: ["Herpes zoster", "Genital herpes", "Cold sores", "HSV suppression"],
+            sideEffects: ["Headache", "Nausea", "Nephrotoxicity", "Abdominal pain", "TTP/HUS (immunocompromised)"],
+            nursingConsiderations: "Better absorption than acyclovir - less frequent dosing. Maintain hydration. Start at first sign of outbreak. Can be used for chronic suppression.",
+            dosageRange: "500 mg-1 g PO daily to TID"
+        },
+        {
+            generic: "tenofovir",
+            brand: "Viread",
+            mechanism: "Nucleotide reverse transcriptase inhibitor (NRTI); blocks viral replication",
+            indications: ["HIV (with other antiretrovirals)", "Chronic hepatitis B", "HIV PrEP"],
+            sideEffects: ["Nephrotoxicity", "Decreased bone density", "Nausea", "Fanconi syndrome", "Lactic acidosis"],
+            nursingConsiderations: "Monitor renal function and bone density. Part of PrEP (pre-exposure prophylaxis). Never use as HIV monotherapy (resistance). Monitor for hepatitis B flare if stopped.",
+            dosageRange: "300 mg PO daily"
+        },
+        {
+            generic: "ganciclovir",
+            brand: "Cytovene",
+            mechanism: "Inhibits viral DNA polymerase; active against cytomegalovirus (CMV)",
+            indications: ["CMV retinitis", "CMV prevention in transplant", "CMV in immunocompromised"],
+            sideEffects: ["Bone marrow suppression", "Neutropenia", "Thrombocytopenia", "Nephrotoxicity", "Seizures"],
+            nursingConsiderations: "Monitor CBC closely (severe myelosuppression). Handle as hazardous drug (teratogenic/carcinogenic). Ensure hydration. Used mainly in immunocompromised patients.",
+            dosageRange: "5 mg/kg IV q12h (induction)"
+        },
+        {
+            generic: "remdesivir",
+            brand: "Veklury",
+            mechanism: "Nucleotide analog; inhibits viral RNA-dependent RNA polymerase",
+            indications: ["COVID-19 (hospitalized patients)"],
+            sideEffects: ["Elevated liver enzymes", "Nausea", "Hypersensitivity reactions", "Infusion reactions", "Bradycardia"],
+            nursingConsiderations: "IV infusion only. Monitor LFTs and renal function before and during. Infuse over 30-120 min. Monitor for infusion-related reactions. Give in healthcare setting.",
+            dosageRange: "200 mg IV day 1, then 100 mg IV daily"
+        }
+    ]
+};
+
+
+// ===== ANTI-INFECTIVE - Antifungals =====
+medicationDatabase.antiinfective.classes.antifungals = {
+    name: "Antifungals",
+    description: "Medications that treat fungal infections",
+    medications: [
+        {
+            generic: "fluconazole",
+            brand: "Diflucan",
+            mechanism: "Azole antifungal; inhibits fungal cytochrome P450, blocking ergosterol synthesis",
+            indications: ["Candidiasis (oral, vaginal, systemic)", "Cryptococcal meningitis", "Fungal prophylaxis"],
+            sideEffects: ["Hepatotoxicity", "Nausea", "Headache", "QT prolongation", "Rash"],
+            nursingConsiderations: "Single dose treats vaginal candidiasis. Monitor LFTs with prolonged use. Many drug interactions (CYP inhibitor - warfarin, phenytoin). Good CNS penetration.",
+            dosageRange: "150 mg PO once (vaginal); 100-400 mg daily (systemic)"
+        },
+        {
+            generic: "nystatin",
+            brand: "Mycostatin",
+            mechanism: "Polyene antifungal; binds ergosterol, disrupting fungal cell membrane",
+            indications: ["Oral candidiasis (thrush)", "Cutaneous candidiasis", "Intestinal candidiasis"],
+            sideEffects: ["Nausea", "Vomiting", "Diarrhea", "Mouth irritation", "Rash (rare)"],
+            nursingConsiderations: "Swish and swish for 'swish and swallow' oral suspension - hold in mouth as long as possible. Not absorbed systemically (topical/local action). Continue 48hrs after symptoms resolve.",
+            dosageRange: "400,000-600,000 units PO QID (swish and swallow)"
+        },
+        {
+            generic: "amphotericin B",
+            brand: "Fungizone/Ambisome",
+            mechanism: "Polyene antifungal; binds ergosterol, creating pores in fungal membrane",
+            indications: ["Severe systemic fungal infections", "Cryptococcal meningitis", "Invasive aspergillosis"],
+            sideEffects: ["Nephrotoxicity (severe)", "Infusion reactions (fever, chills)", "Hypokalemia", "Anemia", "Hypomagnesemia"],
+            nursingConsiderations: "Nicknamed 'amphoterrible' due to toxicity. Premedicate for infusion reactions (acetaminophen, diphenhydramine). Monitor renal function and electrolytes closely. Liposomal form less toxic.",
+            dosageRange: "0.5-1 mg/kg/day IV (conventional)"
+        },
+        {
+            generic: "ketoconazole",
+            brand: "Nizoral",
+            mechanism: "Azole antifungal; inhibits ergosterol synthesis",
+            indications: ["Cutaneous fungal infections", "Seborrheic dermatitis (shampoo)", "Dandruff"],
+            sideEffects: ["Hepatotoxicity", "Nausea", "Gynecomastia", "Adrenal suppression", "Drug interactions"],
+            nursingConsiderations: "Oral form largely discontinued due to hepatotoxicity - mostly topical/shampoo now. Monitor LFTs if oral. Requires acidic environment for absorption. Many drug interactions.",
+            dosageRange: "Topical/shampoo 2x/week; 200 mg PO daily (rare)"
+        },
+        {
+            generic: "terbinafine",
+            brand: "Lamisil",
+            mechanism: "Allylamine antifungal; inhibits squalene epoxidase in fungal cell membrane",
+            indications: ["Onychomycosis (nail fungus)", "Tinea (ringworm)", "Athlete's foot", "Jock itch"],
+            sideEffects: ["Hepatotoxicity", "Taste disturbance", "GI upset", "Headache", "Rash"],
+            nursingConsiderations: "First-line for nail fungus (long treatment - 6-12 weeks). Monitor LFTs at baseline and periodically. May cause loss of taste. Takes months for nail to grow out clear.",
+            dosageRange: "250 mg PO daily"
+        },
+        {
+            generic: "micafungin",
+            brand: "Mycamine",
+            mechanism: "Echinocandin; inhibits fungal cell wall synthesis (beta-1,3-glucan)",
+            indications: ["Invasive candidiasis", "Esophageal candidiasis", "Candidemia prophylaxis"],
+            sideEffects: ["Elevated liver enzymes", "Nausea", "Histamine reactions", "Phlebitis", "Headache"],
+            nursingConsiderations: "IV only. Good safety profile compared to amphotericin. Effective against azole-resistant Candida. Protect from light during infusion. Monitor LFTs.",
+            dosageRange: "50-150 mg IV daily"
+        }
+    ]
+};
+
+
+// ===== ANTI-INFECTIVE - Antitubercular (TB) Drugs =====
+medicationDatabase.antiinfective.classes.antitubercular = {
+    name: "Antitubercular (TB) Drugs",
+    description: "Medications used to treat tuberculosis, typically in combination (RIPE therapy)",
+    medications: [
+        {
+            generic: "isoniazid (INH)",
+            brand: "Nydrazid",
+            mechanism: "Inhibits mycolic acid synthesis in mycobacterial cell wall",
+            indications: ["Active tuberculosis", "Latent TB (prophylaxis)"],
+            sideEffects: ["Hepatotoxicity", "Peripheral neuropathy", "Optic neuritis", "Lupus-like syndrome"],
+            nursingConsiderations: "Give vitamin B6 (pyridoxine) to prevent peripheral neuropathy. Monitor LFTs. Take on empty stomach. Avoid tyramine foods and alcohol. The 'I' in RIPE.",
+            dosageRange: "300 mg PO daily"
+        },
+        {
+            generic: "rifampin",
+            brand: "Rifadin",
+            mechanism: "Inhibits bacterial DNA-dependent RNA polymerase",
+            indications: ["Active tuberculosis", "Latent TB", "Meningococcal prophylaxis", "Leprosy"],
+            sideEffects: ["Orange-red body fluids", "Hepatotoxicity", "GI upset", "Drug interactions", "Thrombocytopenia"],
+            nursingConsiderations: "Turns urine, sweat, tears ORANGE-RED (harmless - warn patient, stains contacts). Potent CYP inducer - reduces effectiveness of oral contraceptives/warfarin. The 'R' in RIPE.",
+            dosageRange: "600 mg PO daily"
+        },
+        {
+            generic: "pyrazinamide",
+            brand: "PZA",
+            mechanism: "Disrupts mycobacterial membrane metabolism and transport (bactericidal in acidic environment)",
+            indications: ["Active tuberculosis (first 2 months)"],
+            sideEffects: ["Hepatotoxicity", "Hyperuricemia (gout)", "Arthralgia", "Photosensitivity", "GI upset"],
+            nursingConsiderations: "Monitor uric acid (can trigger gout). Monitor LFTs. Used in initial 2-month intensive phase. The 'P' in RIPE. Encourage fluids.",
+            dosageRange: "15-30 mg/kg PO daily (max 2 g)"
+        },
+        {
+            generic: "ethambutol",
+            brand: "Myambutol",
+            mechanism: "Inhibits arabinosyl transferase, disrupting cell wall synthesis",
+            indications: ["Active tuberculosis"],
+            sideEffects: ["Optic neuritis (dose-related)", "Red-green color blindness", "Decreased visual acuity", "Peripheral neuropathy"],
+            nursingConsiderations: "Baseline and monthly VISION tests (optic neuritis - color vision changes). Report any vision changes immediately. The 'E' in RIPE. Usually reversible if caught early.",
+            dosageRange: "15-25 mg/kg PO daily"
+        },
+        {
+            generic: "rifabutin",
+            brand: "Mycobutin",
+            mechanism: "Inhibits DNA-dependent RNA polymerase (similar to rifampin)",
+            indications: ["MAC prophylaxis in HIV", "TB in HIV patients (fewer interactions than rifampin)"],
+            sideEffects: ["Orange discoloration", "Uveitis", "Neutropenia", "GI upset", "Rash"],
+            nursingConsiderations: "Preferred over rifampin in HIV patients on antiretrovirals (fewer drug interactions). Also discolors body fluids. Monitor CBC. Watch for eye pain (uveitis).",
+            dosageRange: "300 mg PO daily"
+        },
+        {
+            generic: "bedaquiline",
+            brand: "Sirturo",
+            mechanism: "Inhibits mycobacterial ATP synthase (novel mechanism)",
+            indications: ["Multidrug-resistant TB (MDR-TB)"],
+            sideEffects: ["QT prolongation", "Hepatotoxicity", "Nausea", "Arthralgia", "Headache"],
+            nursingConsiderations: "Reserved for MDR-TB. BLACK BOX: QT prolongation and increased mortality. Monitor ECG and LFTs. Directly observed therapy (DOT) recommended. Take with food.",
+            dosageRange: "400 mg PO daily x2 weeks, then 200 mg 3x/week"
+        }
+    ]
+};
+
+
+// ===== NEW CATEGORIES =====
+medicationDatabase.immuneOncology = {
+    name: "Immune & Oncology",
+    icon: "\uD83E\uDDEB",
+    description: "Immunosuppressants and chemotherapy agents",
+    classes: {}
+};
+medicationDatabase.ophthalmicOtic = {
+    name: "Eye & Ear (Ophthalmic/Otic)",
+    icon: "\uD83D\uDC41\uFE0F",
+    description: "Medications for eye and ear conditions",
+    classes: {}
+};
+medicationDatabase.fluidsElectrolytes = {
+    name: "IV Fluids & Electrolytes",
+    icon: "\uD83D\uDCA7",
+    description: "Intravenous fluids and electrolyte replacements",
+    classes: {}
+};
+
+
+// ===== IMMUNE & ONCOLOGY - Immunosuppressants =====
+medicationDatabase.immuneOncology.classes.immunosuppressants = {
+    name: "Immunosuppressants",
+    description: "Suppress immune response for transplant and autoimmune conditions",
+    medications: [
+        {
+            generic: "cyclosporine",
+            brand: "Sandimmune/Neoral",
+            mechanism: "Calcineurin inhibitor; blocks T-cell activation and IL-2 production",
+            indications: ["Organ transplant rejection prevention", "Rheumatoid arthritis", "Psoriasis"],
+            sideEffects: ["Nephrotoxicity", "Hypertension", "Gingival hyperplasia", "Hirsutism", "Tremor"],
+            nursingConsiderations: "Monitor drug levels (narrow therapeutic index) and renal function. Avoid grapefruit. Sandimmune and Neoral NOT interchangeable. Lifelong for transplant patients.",
+            dosageRange: "Individualized by weight and levels"
+        },
+        {
+            generic: "tacrolimus",
+            brand: "Prograf",
+            mechanism: "Calcineurin inhibitor; more potent than cyclosporine",
+            indications: ["Organ transplant rejection prevention", "Atopic dermatitis (topical)"],
+            sideEffects: ["Nephrotoxicity", "Neurotoxicity", "Hyperglycemia (new-onset diabetes)", "Hyperkalemia", "Tremor"],
+            nursingConsiderations: "Monitor trough levels, renal function, and glucose. Avoid grapefruit. Many drug interactions (CYP3A4). Give at consistent times relative to meals.",
+            dosageRange: "Individualized by trough levels"
+        },
+        {
+            generic: "mycophenolate",
+            brand: "CellCept",
+            mechanism: "Inhibits inosine monophosphate dehydrogenase, blocking lymphocyte proliferation",
+            indications: ["Organ transplant rejection prevention", "Lupus nephritis", "Autoimmune diseases"],
+            sideEffects: ["GI upset (diarrhea)", "Bone marrow suppression", "Increased infection risk", "Teratogenic"],
+            nursingConsiderations: "REMS program - highly teratogenic (pregnancy test required, 2 forms contraception). Monitor CBC. Take on empty stomach. Do not crush (or open capsules).",
+            dosageRange: "1-1.5 g PO BID"
+        },
+        {
+            generic: "azathioprine",
+            brand: "Imuran",
+            mechanism: "Purine analog; inhibits DNA/RNA synthesis in immune cells",
+            indications: ["Transplant rejection", "Rheumatoid arthritis", "IBD (Crohn's, UC)", "Lupus"],
+            sideEffects: ["Bone marrow suppression", "Hepatotoxicity", "Increased malignancy risk", "Pancreatitis"],
+            nursingConsiderations: "Check TPMT enzyme levels before starting (deficiency = toxicity). Monitor CBC and LFTs. Avoid with allopurinol (dangerous interaction). Takes weeks for effect.",
+            dosageRange: "1-3 mg/kg PO daily"
+        },
+        {
+            generic: "methotrexate",
+            brand: "Trexall/Rheumatrex",
+            mechanism: "Folate antagonist; inhibits dihydrofolate reductase, blocking DNA synthesis",
+            indications: ["Rheumatoid arthritis", "Psoriasis", "Cancer (chemo)", "Ectopic pregnancy"],
+            sideEffects: ["Bone marrow suppression", "Hepatotoxicity", "Mucositis", "Pulmonary toxicity", "Teratogenic"],
+            nursingConsiderations: "WEEKLY dosing for RA/psoriasis (FATAL if taken daily). Give folic acid to reduce side effects. Leucovorin rescue for high doses. Monitor CBC, LFTs. Highly teratogenic.",
+            dosageRange: "7.5-25 mg PO/SubQ WEEKLY (RA)"
+        },
+        {
+            generic: "prednisone (immunosuppressant)",
+            brand: "Deltasone",
+            mechanism: "Corticosteroid; broad immunosuppression and anti-inflammatory effects",
+            indications: ["Transplant rejection", "Autoimmune diseases", "Severe allergic reactions"],
+            sideEffects: ["Immunosuppression", "Hyperglycemia", "Osteoporosis", "Cushingoid features", "Adrenal suppression"],
+            nursingConsiderations: "Taper slowly - never stop abruptly (adrenal crisis). Monitor glucose and signs of infection. Take with food in morning. Long-term needs bone protection.",
+            dosageRange: "Variable by indication"
+        }
+    ]
+};
+
+
+// ===== IMMUNE & ONCOLOGY - Chemotherapy Agents =====
+medicationDatabase.immuneOncology.classes.chemotherapy = {
+    name: "Chemotherapy Agents",
+    description: "Cytotoxic drugs used to treat cancer (handle as hazardous drugs)",
+    medications: [
+        {
+            generic: "cyclophosphamide",
+            brand: "Cytoxan",
+            mechanism: "Alkylating agent; cross-links DNA to prevent cell division",
+            indications: ["Lymphoma", "Leukemia", "Breast cancer", "Lupus nephritis"],
+            sideEffects: ["Hemorrhagic cystitis", "Bone marrow suppression", "Alopecia", "Nausea/vomiting", "Infertility"],
+            nursingConsiderations: "Give mesna and lots of fluids to prevent hemorrhagic cystitis. Monitor CBC (nadir 7-14 days). Handle as hazardous drug. Encourage frequent voiding.",
+            dosageRange: "Individualized by protocol/BSA"
+        },
+        {
+            generic: "doxorubicin",
+            brand: "Adriamycin",
+            mechanism: "Anthracycline; intercalates DNA and inhibits topoisomerase II",
+            indications: ["Breast cancer", "Lymphoma", "Leukemia", "Sarcoma"],
+            sideEffects: ["Cardiotoxicity (irreversible)", "Bone marrow suppression", "Red urine", "Alopecia", "Severe vesicant"],
+            nursingConsiderations: "Nicknamed 'red devil'. Monitor cardiac function (ECHO/MUGA - lifetime dose limit). Vesicant - extravasation causes tissue necrosis. Red-orange urine is harmless.",
+            dosageRange: "Individualized (lifetime max 450-550 mg/m2)"
+        },
+        {
+            generic: "vincristine",
+            brand: "Oncovin",
+            mechanism: "Vinca alkaloid; inhibits microtubule formation, arresting mitosis",
+            indications: ["Leukemia (ALL)", "Lymphoma", "Wilms tumor", "Neuroblastoma"],
+            sideEffects: ["Peripheral neuropathy", "Constipation/ileus", "SIADH", "Alopecia", "Jaw pain"],
+            nursingConsiderations: "FATAL if given intrathecally (IV ONLY - never into spinal fluid). Monitor for neuropathy (foot drop, numbness). Prevent constipation. Vesicant.",
+            dosageRange: "Individualized (max 2 mg/dose)"
+        },
+        {
+            generic: "cisplatin",
+            brand: "Platinol",
+            mechanism: "Platinum compound; cross-links DNA to inhibit replication",
+            indications: ["Testicular cancer", "Ovarian cancer", "Bladder cancer", "Lung cancer"],
+            sideEffects: ["Nephrotoxicity", "Ototoxicity", "Severe nausea/vomiting", "Peripheral neuropathy", "Electrolyte wasting"],
+            nursingConsiderations: "Aggressive hydration and mannitol to protect kidneys. Highly emetogenic - premedicate with antiemetics. Monitor renal function, hearing, and Mg/K levels.",
+            dosageRange: "Individualized by protocol/BSA"
+        },
+        {
+            generic: "paclitaxel",
+            brand: "Taxol",
+            mechanism: "Taxane; stabilizes microtubules, preventing cell division",
+            indications: ["Breast cancer", "Ovarian cancer", "Lung cancer", "Kaposi sarcoma"],
+            sideEffects: ["Hypersensitivity reactions", "Bone marrow suppression", "Peripheral neuropathy", "Alopecia", "Myalgia"],
+            nursingConsiderations: "Premedicate with steroids, H1 and H2 blockers (hypersensitivity risk). Use non-PVC tubing with filter. Monitor for infusion reactions especially first 10 min.",
+            dosageRange: "Individualized by protocol/BSA"
+        },
+        {
+            generic: "tamoxifen",
+            brand: "Nolvadex",
+            mechanism: "Selective estrogen receptor modulator (SERM); blocks estrogen in breast tissue",
+            indications: ["Estrogen receptor-positive breast cancer", "Breast cancer prevention (high risk)"],
+            sideEffects: ["Hot flashes", "Increased VTE/clot risk", "Endometrial cancer risk", "Vaginal discharge", "Mood changes"],
+            nursingConsiderations: "Oral - taken for 5-10 years. Report leg pain/swelling (DVT) or abnormal vaginal bleeding (endometrial cancer). Regular gynecologic exams. Not traditional chemo.",
+            dosageRange: "20 mg PO daily"
+        }
+    ]
+};
+
+
+// ===== EYE & EAR - Ophthalmic Medications =====
+medicationDatabase.ophthalmicOtic.classes.ophthalmic = {
+    name: "Ophthalmic (Eye) Medications",
+    description: "Medications for glaucoma, infections, and eye conditions",
+    medications: [
+        {
+            generic: "latanoprost",
+            brand: "Xalatan",
+            mechanism: "Prostaglandin analog; increases aqueous humor outflow to reduce intraocular pressure",
+            indications: ["Open-angle glaucoma", "Ocular hypertension"],
+            sideEffects: ["Iris darkening (permanent)", "Eyelash growth", "Eye irritation", "Blurred vision", "Periorbital darkening"],
+            nursingConsiderations: "Once daily at BEDTIME. Warn about permanent brown iris pigmentation and lash growth. Remove contacts before use, wait 15 min. Refrigerate unopened.",
+            dosageRange: "1 drop in affected eye(s) at bedtime"
+        },
+        {
+            generic: "timolol (ophthalmic)",
+            brand: "Timoptic",
+            mechanism: "Beta-blocker; decreases aqueous humor production",
+            indications: ["Open-angle glaucoma", "Ocular hypertension"],
+            sideEffects: ["Bradycardia", "Bronchospasm", "Hypotension", "Eye stinging", "Systemic beta-blockade"],
+            nursingConsiderations: "Can be absorbed systemically - caution in asthma, COPD, bradycardia. Apply punctal occlusion (press inner corner) to reduce systemic absorption. Monitor HR.",
+            dosageRange: "1 drop BID"
+        },
+        {
+            generic: "tobramycin (ophthalmic)",
+            brand: "Tobrex",
+            mechanism: "Aminoglycoside antibiotic; inhibits bacterial protein synthesis",
+            indications: ["Bacterial conjunctivitis", "Bacterial eye infections"],
+            sideEffects: ["Eye irritation", "Burning", "Redness", "Lid itching", "Superinfection"],
+            nursingConsiderations: "Don't touch dropper to eye (contamination). Apply pressure to inner canthus. Complete full course. May be combined with steroid (TobraDex).",
+            dosageRange: "1-2 drops q4h"
+        },
+        {
+            generic: "prednisolone (ophthalmic)",
+            brand: "Pred Forte",
+            mechanism: "Corticosteroid; reduces ocular inflammation",
+            indications: ["Ocular inflammation", "Post-surgery", "Allergic conjunctivitis", "Uveitis"],
+            sideEffects: ["Increased intraocular pressure", "Cataracts (long-term)", "Delayed healing", "Secondary infection"],
+            nursingConsiderations: "Shake suspension well. Not for undiagnosed red eye (can worsen infections/herpes). Monitor IOP with prolonged use. Taper if used long-term.",
+            dosageRange: "1-2 drops 2-4x/day"
+        },
+        {
+            generic: "brimonidine",
+            brand: "Alphagan",
+            mechanism: "Alpha-2 adrenergic agonist; reduces aqueous production and increases outflow",
+            indications: ["Open-angle glaucoma", "Ocular hypertension"],
+            sideEffects: ["Eye redness", "Dry mouth", "Drowsiness", "Allergic conjunctivitis", "Fatigue"],
+            nursingConsiderations: "Can cause drowsiness/fatigue. Remove contacts, wait 15 min to reinsert. Apply punctal occlusion. Caution driving until effects known.",
+            dosageRange: "1 drop TID"
+        },
+        {
+            generic: "artificial tears",
+            brand: "Refresh/Systane",
+            mechanism: "Lubricant; supplements natural tears",
+            indications: ["Dry eye syndrome", "Eye irritation", "Contact lens discomfort"],
+            sideEffects: ["Temporary blurring", "Mild irritation", "Rare allergic reaction"],
+            nursingConsiderations: "OTC and very safe. Preservative-free preferred for frequent use (>4-6x/day). Wait 5 min between different eye drops. Can use with contacts (preservative-free).",
+            dosageRange: "1-2 drops PRN"
+        }
+    ]
+};
+
+
+// ===== EYE & EAR - Otic (Ear) Medications =====
+medicationDatabase.ophthalmicOtic.classes.otic = {
+    name: "Otic (Ear) Medications",
+    description: "Medications for ear infections and cerumen (earwax) management",
+    medications: [
+        {
+            generic: "ciprofloxacin/dexamethasone (otic)",
+            brand: "Ciprodex",
+            mechanism: "Fluoroquinolone antibiotic + corticosteroid; treats infection and inflammation",
+            indications: ["Acute otitis externa (swimmer's ear)", "Acute otitis media with tubes"],
+            sideEffects: ["Ear discomfort", "Ear pruritus", "Superimposed fungal infection", "Taste changes"],
+            nursingConsiderations: "Warm drops to body temperature (dizziness if cold). Lie with affected ear up for 60 sec after instilling. Pull pinna up/back (adults), down/back (children <3).",
+            dosageRange: "4 drops in affected ear BID x7 days"
+        },
+        {
+            generic: "ofloxacin (otic)",
+            brand: "Floxin Otic",
+            mechanism: "Fluoroquinolone antibiotic; inhibits bacterial DNA gyrase",
+            indications: ["Otitis externa", "Chronic otitis media", "Otitis media with perforation"],
+            sideEffects: ["Ear itching", "Application site reaction", "Dizziness", "Taste disturbance"],
+            nursingConsiderations: "Safe with perforated eardrum (unlike some otics). Warm to body temp. Keep ear tilted for 5 min after. Complete full course.",
+            dosageRange: "5-10 drops in affected ear BID"
+        },
+        {
+            generic: "carbamide peroxide",
+            brand: "Debrox",
+            mechanism: "Releases oxygen to soften and break up cerumen (earwax)",
+            indications: ["Cerumen (earwax) removal", "Impacted earwax"],
+            sideEffects: ["Ear fullness", "Temporary hearing decrease", "Mild irritation", "Foaming sensation"],
+            nursingConsiderations: "OTC. Tilt head, instill drops, keep tilted 5 min. May irrigate with warm water after. Do not use with ear tubes or perforation. Foaming is normal.",
+            dosageRange: "5-10 drops BID x4 days"
+        },
+        {
+            generic: "acetic acid/hydrocortisone (otic)",
+            brand: "VoSol HC",
+            mechanism: "Acidifying agent + corticosteroid; antibacterial/antifungal and anti-inflammatory",
+            indications: ["Otitis externa", "Inflamed ear canal"],
+            sideEffects: ["Ear stinging", "Burning", "Irritation", "Dryness"],
+            nursingConsiderations: "Acidic environment inhibits bacterial/fungal growth. Warm to body temp. Insert cotton wick if canal very swollen. Do not use with perforated eardrum.",
+            dosageRange: "3-5 drops q4-6h"
+        },
+        {
+            generic: "benzocaine (otic)",
+            brand: "Auralgan",
+            mechanism: "Local anesthetic; numbs ear pain",
+            indications: ["Ear pain (otitis media)", "Cerumen removal discomfort"],
+            sideEffects: ["Local irritation", "Allergic reaction", "Masking of symptoms"],
+            nursingConsiderations: "For pain relief only - does not treat infection. Do not use with perforated eardrum. Warm to body temp. Only for symptomatic relief while treating underlying cause.",
+            dosageRange: "Fill ear canal, repeat q1-2h PRN"
+        },
+        {
+            generic: "neomycin/polymyxin/hydrocortisone (otic)",
+            brand: "Cortisporin Otic",
+            mechanism: "Combination antibiotics + corticosteroid",
+            indications: ["Otitis externa", "Infected ear inflammation"],
+            sideEffects: ["Ototoxicity (if perforation)", "Contact dermatitis", "Ear irritation", "Superinfection"],
+            nursingConsiderations: "Do NOT use with perforated eardrum (neomycin is ototoxic). Warm to body temp. Watch for allergic reaction to neomycin. Keep ear tilted after instilling.",
+            dosageRange: "3-4 drops TID-QID"
+        }
+    ]
+};
+
+
+// ===== IV FLUIDS & ELECTROLYTES - IV Fluids =====
+medicationDatabase.fluidsElectrolytes.classes.ivFluids = {
+    name: "IV Fluids",
+    description: "Intravenous solutions for hydration, resuscitation, and maintenance",
+    medications: [
+        {
+            generic: "0.9% sodium chloride (normal saline)",
+            brand: "NS",
+            mechanism: "Isotonic crystalloid; expands intravascular volume",
+            indications: ["Fluid resuscitation", "Dehydration", "Blood transfusion compatible", "Med dilution"],
+            sideEffects: ["Fluid overload", "Hyperchloremic acidosis (large volumes)", "Edema", "Hypernatremia"],
+            nursingConsiderations: "Only fluid compatible with blood products. Isotonic - stays in vascular space. Monitor for fluid overload (crackles, edema, JVD). Caution in heart/renal failure.",
+            dosageRange: "Rate varies by indication"
+        },
+        {
+            generic: "lactated ringer's",
+            brand: "LR",
+            mechanism: "Isotonic crystalloid with electrolytes (Na, K, Ca, Cl, lactate)",
+            indications: ["Fluid resuscitation", "Burns", "Surgery", "Dehydration"],
+            sideEffects: ["Fluid overload", "Hyperkalemia (renal failure)", "Metabolic alkalosis", "Edema"],
+            nursingConsiderations: "Contains potassium - caution in renal failure/hyperkalemia. NOT compatible with blood (contains calcium). Lactate converts to bicarbonate. Avoid in liver failure.",
+            dosageRange: "Rate varies by indication"
+        },
+        {
+            generic: "5% dextrose in water",
+            brand: "D5W",
+            mechanism: "Isotonic in bag, becomes hypotonic after dextrose metabolized; provides free water and calories",
+            indications: ["Hydration", "Hypernatremia", "Medication dilution", "Hypoglycemia (as source)"],
+            sideEffects: ["Hyperglycemia", "Fluid shifts", "Water intoxication/hyponatremia", "Cerebral edema risk"],
+            nursingConsiderations: "Provides free water once dextrose is used. Do NOT use for resuscitation. Monitor glucose. Not for blood products. Caution in patients at risk for cerebral edema.",
+            dosageRange: "Rate varies by indication"
+        },
+        {
+            generic: "0.45% sodium chloride (half normal saline)",
+            brand: "1/2 NS",
+            mechanism: "Hypotonic crystalloid; provides free water and some sodium",
+            indications: ["Maintenance fluids", "Hypernatremia", "Cellular dehydration", "DKA (after initial NS)"],
+            sideEffects: ["Cellular swelling", "Hypotension", "Cerebral edema", "Fluid shifts into cells"],
+            nursingConsiderations: "Hypotonic - shifts fluid INTO cells. Never give to patients with increased ICP or cerebral edema. Monitor neuro status. Used after initial resuscitation in DKA.",
+            dosageRange: "Rate varies by indication"
+        },
+        {
+            generic: "3% sodium chloride (hypertonic saline)",
+            brand: "3% NS",
+            mechanism: "Hypertonic crystalloid; pulls fluid from cells into vascular space",
+            indications: ["Severe symptomatic hyponatremia", "Cerebral edema", "Increased ICP"],
+            sideEffects: ["Fluid overload", "Osmotic demyelination (if corrected too fast)", "Hypernatremia", "Phlebitis"],
+            nursingConsiderations: "Correct sodium SLOWLY (max 8-10 mEq/L per 24hr) to prevent osmotic demyelination. Monitor sodium frequently. Give via central line if possible. ICU monitoring.",
+            dosageRange: "Slow infusion, closely monitored"
+        },
+        {
+            generic: "albumin",
+            brand: "Albuminar",
+            mechanism: "Colloid; increases oncotic pressure to pull fluid into vascular space",
+            indications: ["Hypovolemia", "Burns", "Hypoalbuminemia", "Ascites (with paracentesis)"],
+            sideEffects: ["Fluid overload", "Allergic reactions", "Heart failure", "Pulmonary edema"],
+            nursingConsiderations: "Blood product derivative (no cross-match needed). Monitor for fluid overload (especially cardiac patients). 5% for hypovolemia, 25% for oncotic support. Watch for allergic reactions.",
+            dosageRange: "Varies (5% or 25% solutions)"
+        }
+    ]
+};
+
+
+// ===== IV FLUIDS & ELECTROLYTES - Electrolyte Replacements =====
+medicationDatabase.fluidsElectrolytes.classes.electrolytes = {
+    name: "Electrolyte Replacements",
+    description: "Supplements to correct electrolyte imbalances",
+    medications: [
+        {
+            generic: "potassium chloride",
+            brand: "K-Dur/Klor-Con",
+            mechanism: "Replaces potassium; essential for cardiac/muscle/nerve function",
+            indications: ["Hypokalemia", "Diuretic-induced potassium loss", "Digoxin therapy"],
+            sideEffects: ["GI irritation", "Hyperkalemia", "Cardiac arrhythmias", "IV site pain/phlebitis"],
+            nursingConsiderations: "NEVER give IV push (fatal cardiac arrest). Always dilute, max 10 mEq/hr peripherally. Take oral with food/full glass water. Monitor K+ and ECG. Do not crush ER.",
+            dosageRange: "20-100 mEq/day PO; IV diluted per protocol"
+        },
+        {
+            generic: "magnesium sulfate",
+            brand: "Mag Sulfate",
+            mechanism: "Replaces magnesium; cofactor for enzymes, cardiac/neuromuscular function",
+            indications: ["Hypomagnesemia", "Preeclampsia/eclampsia (seizure prevention)", "Torsades de pointes", "Preterm labor"],
+            sideEffects: ["Flushing", "Hypotension", "Respiratory depression", "Loss of deep tendon reflexes", "Cardiac arrest"],
+            nursingConsiderations: "Monitor deep tendon reflexes (loss = toxicity), respirations, and urine output. Antidote: calcium gluconate. Continuous monitoring for OB use. Check Mg levels.",
+            dosageRange: "1-2 g IV; OB protocols vary"
+        },
+        {
+            generic: "calcium gluconate",
+            brand: "Cal-Glu",
+            mechanism: "Replaces calcium; essential for cardiac/muscle/bone/clotting",
+            indications: ["Hypocalcemia", "Hyperkalemia (cardioprotection)", "Magnesium toxicity", "Calcium channel blocker overdose"],
+            sideEffects: ["Bradycardia", "Hypotension", "Tissue necrosis (extravasation)", "Constipation", "Arrhythmias"],
+            nursingConsiderations: "Give IV slowly (rapid = cardiac arrest). Monitor ECG. Vesicant - watch IV site. Antidote for magnesium toxicity. Preferred over calcium chloride peripherally.",
+            dosageRange: "1-2 g IV slowly"
+        },
+        {
+            generic: "sodium bicarbonate",
+            brand: "Neut",
+            mechanism: "Alkalinizing agent; neutralizes acid and raises blood pH",
+            indications: ["Metabolic acidosis", "Hyperkalemia", "Cardiac arrest (specific cases)", "TCA overdose"],
+            sideEffects: ["Metabolic alkalosis", "Hypokalemia", "Fluid overload", "Hypernatremia", "Hypocalcemia"],
+            nursingConsiderations: "Monitor ABGs and electrolytes. Do not mix with calcium (precipitates). Can cause fluid overload (high sodium). Flush line before/after (incompatible with many drugs).",
+            dosageRange: "Varies by ABG/indication"
+        },
+        {
+            generic: "phosphorus (sodium/potassium phosphate)",
+            brand: "K-Phos/Phospha",
+            mechanism: "Replaces phosphate; essential for ATP, bone, cell membranes",
+            indications: ["Hypophosphatemia", "Refeeding syndrome", "DKA recovery"],
+            sideEffects: ["Diarrhea", "Hyperphosphatemia", "Hypocalcemia", "Hyperkalemia (K-phos)", "Hypotension"],
+            nursingConsiderations: "Give IV slowly. Monitor phosphate, calcium, and potassium. Watch for hypocalcemia (phosphate binds calcium). Common in refeeding syndrome - monitor closely.",
+            dosageRange: "Varies by level/protocol"
+        },
+        {
+            generic: "oral rehydration salts",
+            brand: "Pedialyte",
+            mechanism: "Balanced glucose-electrolyte solution using sodium-glucose cotransport",
+            indications: ["Mild-moderate dehydration", "Diarrhea", "Vomiting", "Electrolyte maintenance"],
+            sideEffects: ["Nausea (if too fast)", "Vomiting", "Hypernatremia (if concentrated)"],
+            nursingConsiderations: "Give small frequent sips. Glucose enhances sodium/water absorption. First-line for pediatric dehydration. Better than water or sports drinks for rehydration.",
+            dosageRange: "Sip frequently, titrate to hydration"
+        }
+    ]
+};

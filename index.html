@@ -6,11 +6,17 @@
     <title>MedLearn - Nursing Medication Study App</title>
     <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="features.css">
+    <link rel="manifest" href="manifest.json">
+    <meta name="theme-color" content="#2563eb">
+    <link rel="apple-touch-icon" href="icon.svg">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="mobile-web-app-capable" content="yes">
 </head>
 <body>
     <div id="app">
         <!-- Header -->
         <header class="app-header">
+            <button id="darkModeToggle" class="dark-toggle" onclick="features.toggleDarkMode()" title="Toggle dark mode">&#x1F319;</button>
             <div class="header-content">
                 <h1 class="logo">&#x1F48A; MedLearn</h1>
                 <p class="tagline">Your Nursing Pharmacology Companion</p>
@@ -31,7 +37,10 @@
             <button class="feature-nav-btn" onclick="features.openLabValues()" data-feature="labs">&#x1F52C; Labs</button>
             <button class="feature-nav-btn" onclick="features.openProgress()" data-feature="progress">&#x1F4CA; Progress</button>
             <button class="feature-nav-btn" onclick="features.openNCLEX()" data-feature="nclex">&#x1F4DD; NCLEX</button>
+            <button class="feature-nav-btn" onclick="features.openTimedQuiz()" data-feature="timedquiz">&#x23F1;&#xFE0F; Timed</button>
             <button class="feature-nav-btn" onclick="features.openInteractions()" data-feature="interactions">&#x26A0;&#xFE0F; Interactions</button>
+            <button class="feature-nav-btn" onclick="features.openMnemonics()" data-feature="mnemonics">&#x1F9E0; Mnemonics</button>
+            <button class="feature-nav-btn" onclick="features.openLookAlike()" data-feature="lookalike">&#x1F440; Look-Alike</button>
             <a href="admin.html" class="feature-nav-btn" style="text-decoration:none;">&#x1F6E0;&#xFE0F; Edit</a>
         </nav>
 
@@ -65,5 +74,15 @@
     <script src="medications.js"></script>
     <script src="app.js"></script>
     <script src="features.js"></script>
+    <script>
+        // Register service worker for offline support
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', function() {
+                navigator.serviceWorker.register('sw.js').catch(function(err) {
+                    console.log('Service worker registration failed:', err);
+                });
+            });
+        }
+    </script>
 </body>
 </html>

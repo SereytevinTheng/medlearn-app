@@ -26,6 +26,24 @@ function setActiveNav(feature) {
     if (btn) btn.classList.add('active');
 }
 
+// ===== DARK MODE =====
+function toggleDarkMode() {
+    document.body.classList.toggle('dark');
+    const isDark = document.body.classList.contains('dark');
+    localStorage.setItem('medlearn_darkmode', isDark ? '1' : '0');
+    const btn = document.getElementById('darkModeToggle');
+    if (btn) btn.innerHTML = isDark ? '\u2600\uFE0F' : '\uD83C\uDF19';
+}
+
+function applyDarkModeOnLoad() {
+    if (localStorage.getItem('medlearn_darkmode') === '1') {
+        document.body.classList.add('dark');
+        const btn = document.getElementById('darkModeToggle');
+        if (btn) btn.innerHTML = '\u2600\uFE0F';
+    }
+}
+applyDarkModeOnLoad();
+
 
 // ===== 1. FLASHCARD MODE =====
 let fcDeck = [];
@@ -43,17 +61,61 @@ function openFlashcards() {
     for (const [key, cat] of Object.entries(medicationDatabase)) {
         html += `<option value="${key}">${cat.icon} ${cat.name}</option>`;
     }
-    html += '</select></div><div id="flashcardArea"></div>';
+    html += '</select>';
+    html += '<label style="margin-left:1rem;font-size:0.9rem;cursor:pointer;"><input type="checkbox" id="fcSrsMode" onchange="features.startFlashcardDeck()"> &#x1F9E0; Smart Review (spaced repetition)</label>';
+    html += '</div><div id="flashcardArea"></div>';
     mainContent.innerHTML = html;
     startFlashcardDeck();
+}
+
+// Spaced Repetition (Leitner system) storage
+function getSRS() { return JSON.parse(localStorage.getItem('medlearn_srs') || '{}'); }
+function saveSRS(srs) { localStorage.setItem('medlearn_srs', JSON.stringify(srs)); }
+// Box intervals in days: box 1 = same day, up to box 5 = 14 days
+const SRS_INTERVALS = [0, 1, 3, 7, 14];
+
+function updateSRS(generic, known) {
+    const srs = getSRS();
+    let card = srs[generic] || { box: 0 };
+    if (known === true) card.box = Math.min(card.box + 1, 4);
+    else if (known === false) card.box = 0;
+    const intervalDays = SRS_INTERVALS[card.box];
+    card.due = Date.now() + intervalDays * 24 * 60 * 60 * 1000;
+    srs[generic] = card;
+    saveSRS(srs);
+}
+
+function isDue(generic) {
+    const srs = getSRS();
+    const card = srs[generic];
+    if (!card) return true; // never studied = due
+    return card.due <= Date.now();
 }
 
 function startFlashcardDeck() {
     const sel = document.getElementById('fcCategorySelect');
     const catKey = sel ? sel.value : 'all';
+    const srsToggle = document.getElementById('fcSrsMode');
+    const useSrs = srsToggle ? srsToggle.checked : false;
     const allMeds = getAllMeds();
     fcDeck = catKey === 'all' ? allMeds : allMeds.filter(m => m.category === catKey);
-    fcDeck = fcDeck.sort(() => Math.random() - 0.5);
+
+    if (useSrs) {
+        // Only show cards that are "due", prioritize never-studied and lapsed
+        const srs = getSRS();
+        fcDeck = fcDeck.filter(m => isDue(m.generic));
+        fcDeck.sort((a, b) => {
+            const boxA = srs[a.generic] ? srs[a.generic].box : -1;
+            const boxB = srs[b.generic] ? srs[b.generic].box : -1;
+            return boxA - boxB; // lower box (weaker) first
+        });
+        if (fcDeck.length === 0) {
+            document.getElementById('flashcardArea').innerHTML = '<div class="flashcard-container"><h3>&#x1F389; All caught up!</h3><p style="color:var(--text-light);margin-top:0.5rem;">No cards are due for review right now. Come back later or turn off Smart Review to study all cards.</p></div>';
+            return;
+        }
+    } else {
+        fcDeck = fcDeck.sort(() => Math.random() - 0.5);
+    }
     fcIndex = 0; fcKnown = 0; fcUnknown = 0;
     renderFlashcard();
 }
@@ -96,8 +158,10 @@ function renderFlashcard() {
 }
 
 function fcAnswer(known) {
+    const med = fcDeck[fcIndex];
     if (known === true) fcKnown++;
     else if (known === false) fcUnknown++;
+    if (med && known !== null) updateSRS(med.generic, known);
     fcIndex++;
     renderFlashcard();
 }
@@ -341,32 +405,72 @@ const nclexQuestions = [
     { type: "Priority", stem: "Which patient taking antihypertensives should the nurse see FIRST?", options: ["Patient on atenolol with HR 56 and dizziness","Patient on amlodipine with ankle edema","Patient on losartan with potassium 5.1","Patient on HCTZ with sodium 134"], correct: [0], rationale: "HR 56 with dizziness on a beta-blocker indicates symptomatic bradycardia requiring immediate assessment. Ankle edema is expected with CCBs. K+ 5.1 and Na 134 are slightly abnormal but not emergent." },
     { type: "SATA", stem: "A nurse is caring for a patient with a fentanyl transdermal patch. Which interventions are appropriate? (Select all that apply)", options: ["Apply patch to a hairless area","Cut the patch in half if dose seems too high","Avoid applying heat to the patch area","Monitor respiratory rate regularly","Remove old patch before applying new one"], correct: [0,2,3,4], rationale: "Apply to hairless, non-irritated skin. NEVER cut patches (causes dose dumping). Heat increases absorption dangerously. Monitor RR for respiratory depression. Always remove old patch to prevent overdose." },
     { type: "Priority", stem: "A nurse is reviewing labs for patients on medications. Which result requires immediate notification of the provider?", options: ["Phenytoin level 22 mcg/mL","Digoxin level 1.6 ng/mL","INR 2.5 on warfarin","Lithium level 1.0 mEq/L"], correct: [0], rationale: "Phenytoin therapeutic range is 10-20. Level of 22 is toxic and can cause ataxia, nystagmus, seizures. Digoxin 1.6 is therapeutic (0.5-2.0). INR 2.5 is goal range (2-3). Lithium 1.0 is therapeutic (0.6-1.2)." },
-    { type: "SATA", stem: "Which medications require the nurse to check an apical pulse for one full minute before administration? (Select all that apply)", options: ["Digoxin","Metoprolol","Lisinopril","Diltiazem","Furosemide"], correct: [0,1,3], rationale: "Digoxin, beta-blockers (metoprolol), and non-dihydropyridine CCBs (diltiazem) can cause bradycardia. Hold if HR<60. Lisinopril and furosemide don't typically require pulse check before admin." }
+    { type: "SATA", cat: "Cardiovascular", stem: "Which medications require the nurse to check an apical pulse for one full minute before administration? (Select all that apply)", options: ["Digoxin","Metoprolol","Lisinopril","Diltiazem","Furosemide"], correct: [0,1,3], rationale: "Digoxin, beta-blockers (metoprolol), and non-dihydropyridine CCBs (diltiazem) can cause bradycardia. Hold if HR<60. Lisinopril and furosemide don't typically require pulse check before admin." },
+    { type: "Priority", cat: "Endocrine", stem: "A patient with type 1 diabetes has a blood glucose of 45 mg/dL and is alert. What should the nurse do FIRST?", options: ["Give 15 g of fast-acting carbohydrate","Administer IV insulin","Call the provider","Recheck glucose in 1 hour"], correct: [0], rationale: "For conscious hypoglycemia, follow the rule of 15: give 15g fast-acting carb (juice, glucose tabs), recheck in 15 min. Never give insulin when glucose is low. Act before calling provider." },
+    { type: "SATA", cat: "Endocrine", stem: "Which statements about insulin administration are correct? (Select all that apply)", options: ["Regular insulin is the only insulin given IV","Rotate injection sites to prevent lipodystrophy","NPH insulin is clear","Roll (don't shake) cloudy insulin","Rapid-acting insulin is given with meals"], correct: [0,1,3,4], rationale: "Regular insulin is the only IV insulin. Rotate sites. NPH is CLOUDY (not clear). Roll cloudy insulin gently. Rapid-acting (lispro/aspart) given with meals." },
+    { type: "Priority", cat: "Respiratory", stem: "A patient using an albuterol inhaler and a fluticasone inhaler asks which to use first. What should the nurse teach?", options: ["Use albuterol first, then fluticasone","Use fluticasone first, then albuterol","Use them at the same time","Order does not matter"], correct: [0], rationale: "Use the bronchodilator (albuterol) FIRST to open airways, then the corticosteroid (fluticasone) can reach deeper. Always rinse mouth after the steroid to prevent thrush." },
+    { type: "SATA", cat: "Anticoagulants", stem: "A patient on enoxaparin (Lovenox). Which nursing actions are correct? (Select all that apply)", options: ["Give subcutaneously in the abdomen","Do not expel the air bubble in the syringe","Aspirate before injecting","Do not rub the site after injection","Rotate injection sites"], correct: [0,1,3,4], rationale: "Give SubQ in the abdomen (love handles). Do NOT expel air bubble. Do NOT aspirate. Do NOT rub (causes bruising). Rotate sites." },
+    { type: "Priority", cat: "Safety", stem: "The nurse prepares to give IV potassium chloride. Which action is essential for safety?", options: ["Always dilute and infuse via pump - never IV push","Give rapid IV push for faster effect","Give undiluted for accuracy","Push over 1 minute"], correct: [0], rationale: "IV potassium is NEVER given by IV push (causes fatal cardiac arrest). Always dilute and infuse slowly via pump, max 10 mEq/hr peripherally. A high-alert medication." },
+    { type: "SATA", cat: "Pain/Opioids", stem: "A patient is receiving morphine for pain. Which findings require the nurse to hold the dose and notify the provider? (Select all that apply)", options: ["Respiratory rate of 8","Sedation level - difficult to arouse","Pain rating of 6/10","Respiratory rate of 18","Oxygen saturation of 85%"], correct: [0,1,4], rationale: "Hold opioids for RR<12, excessive sedation, and low O2 sat (respiratory depression signs). Pain 6/10 and RR 18 are acceptable to medicate." },
+    { type: "Priority", cat: "Antibiotics", stem: "A patient receiving IV vancomycin develops flushing and redness of the face and neck during infusion. What is the nurse's priority action?", options: ["Slow or stop the infusion","Continue - this is a normal reaction","Increase the infusion rate","Give the next dose early"], correct: [0], rationale: "This is 'Red Man Syndrome' caused by infusing vancomycin too fast. Slow or stop the infusion. Prevent by infusing over at least 60 minutes. Not a true allergy but requires slower rate." },
+    { type: "SATA", cat: "Psychiatric", stem: "A patient is starting an SSRI (sertraline). Which teaching points should the nurse include? (Select all that apply)", options: ["Full effect may take 4-6 weeks","Do not stop abruptly","Report thoughts of self-harm immediately","You can combine it freely with MAOIs","Watch for signs of serotonin syndrome"], correct: [0,1,2,4], rationale: "SSRIs take 4-6 weeks. Do not stop abruptly (discontinuation syndrome). Report suicidal thoughts (black box warning). NEVER combine with MAOIs (serotonin syndrome). Watch for serotonin syndrome." },
+    { type: "Priority", cat: "Endocrine", stem: "A patient on levothyroxine reports palpitations, weight loss, and feeling hot. What does the nurse suspect?", options: ["Dose too high (hyperthyroid symptoms)","Dose too low","Normal response","Allergic reaction"], correct: [0], rationale: "Palpitations, weight loss, heat intolerance = signs of too much thyroid hormone (hyperthyroidism). The dose is likely too high and needs adjustment. Report to provider." },
+    { type: "SATA", cat: "Antibiotics", stem: "Which teaching points apply to a patient taking ciprofloxacin? (Select all that apply)", options: ["Report tendon pain immediately","Avoid taking with antacids or dairy","Increase fluid intake","Use sunscreen (photosensitivity)","Take with calcium for better absorption"], correct: [0,1,2,3], rationale: "Fluoroquinolones cause tendon rupture (report pain). Antacids/dairy/calcium reduce absorption (separate by 2h). Hydrate well. Causes photosensitivity - use sunscreen." },
+    { type: "Priority", cat: "Cardiovascular", stem: "A patient started on lisinopril develops swelling of the lips and tongue. What is the nurse's priority?", options: ["Assess airway and prepare for emergency - this is angioedema","Document as a mild side effect","Give the next dose with food","Reassure the patient it will pass"], correct: [0], rationale: "Lip/tongue swelling = angioedema, a life-threatening emergency with ACE inhibitors. Priority is airway assessment and emergency intervention. Stop the drug and notify provider immediately." },
+    { type: "SATA", cat: "Cardiovascular", stem: "Which are signs of digoxin toxicity the nurse should monitor for? (Select all that apply)", options: ["Nausea and vomiting","Yellow-green vision changes","Bradycardia","Increased appetite","Confusion"], correct: [0,1,2,4], rationale: "Digoxin toxicity: N/V, visual disturbances (yellow-green halos), bradycardia, and confusion. Anorexia (loss of appetite), NOT increased appetite, is an early sign." },
+    { type: "Priority", cat: "Safety", stem: "A patient receiving IV magnesium sulfate has absent deep tendon reflexes. What should the nurse do FIRST?", options: ["Stop the infusion","Increase the rate","Continue and document","Give more magnesium"], correct: [0], rationale: "Absent deep tendon reflexes indicate magnesium toxicity. STOP the infusion first, then notify provider. Antidote is calcium gluconate. Monitor respirations and reflexes." },
+    { type: "SATA", cat: "Endocrine", stem: "Which patient teaching is correct for oral corticosteroids like prednisone? (Select all that apply)", options: ["Take with food","Do not stop abruptly","Monitor blood glucose","Report signs of infection","Take on an empty stomach at bedtime"], correct: [0,1,2,3], rationale: "Take prednisone with food (GI irritation), in the morning (mimics cortisol). Never stop abruptly (adrenal crisis). Monitor glucose (hyperglycemia) and watch for infection (immunosuppression)." },
+    { type: "Priority", cat: "Respiratory", stem: "A patient on theophylline has a level of 22 mcg/mL and reports nausea and palpitations. What is the priority?", options: ["Hold the drug and notify the provider - level is toxic","Give the next dose","Encourage more fluids only","Document as therapeutic"], correct: [0], rationale: "Theophylline therapeutic range is 5-15 mcg/mL. A level of 22 is toxic; nausea and palpitations are toxicity signs. Hold the drug and notify the provider." },
+    { type: "SATA", cat: "Pain/Opioids", stem: "Which interventions help prevent opioid-induced constipation? (Select all that apply)", options: ["Increase fluid intake","Start a bowel regimen (stool softener/laxative)","Increase dietary fiber","Encourage ambulation","Restrict fluids"], correct: [0,1,2,3], rationale: "Opioids commonly cause constipation. Prevent with fluids, prophylactic bowel regimen, fiber, and activity. Restricting fluids would worsen constipation." },
+    { type: "Priority", cat: "Anticoagulants", stem: "A patient on warfarin has an INR of 5.5 with no active bleeding. What does the nurse anticipate?", options: ["Holding warfarin and possibly giving vitamin K","Increasing the warfarin dose","Giving protamine sulfate","No change needed"], correct: [0], rationale: "INR 5.5 is above therapeutic range (2-3) - high bleeding risk. Anticipate holding warfarin and possibly vitamin K. Protamine is for heparin, not warfarin." },
+    { type: "SATA", cat: "Antibiotics", stem: "Which are appropriate when administering IV vancomycin? (Select all that apply)", options: ["Infuse over at least 60 minutes","Monitor trough levels","Monitor renal function","Give rapid IV push","Monitor for ototoxicity"], correct: [0,1,2,4], rationale: "Infuse slowly (>=60 min) to prevent Red Man Syndrome. Monitor troughs, renal function (nephrotoxic), and hearing (ototoxic). Never IV push." },
+    { type: "Priority", cat: "Psychiatric", stem: "A patient on lithium reports vomiting, diarrhea, and coarse tremors. What should the nurse suspect?", options: ["Lithium toxicity","Normal side effects","Underdosing","Allergic reaction"], correct: [0], rationale: "Vomiting, diarrhea, and coarse tremor are signs of lithium toxicity. Therapeutic range is narrow (0.6-1.2 mEq/L). Hold the dose, check level, and ensure hydration." },
+    { type: "SATA", cat: "Safety", stem: "Which are considered high-alert medications requiring extra safety checks? (Select all that apply)", options: ["Insulin","Heparin","IV potassium chloride","Oral acetaminophen","Opioids"], correct: [0,1,2,4], rationale: "Insulin, heparin, concentrated electrolytes (KCl), and opioids are high-alert medications per ISMP. Routine oral acetaminophen is not typically high-alert (though max dose matters)." },
+    { type: "Priority", cat: "Cardiovascular", stem: "A patient on furosemide has a potassium of 2.9 mEq/L. What is the nurse's priority concern?", options: ["Risk of cardiac dysrhythmias","Increased urine output","Mild headache","Weight loss"], correct: [0], rationale: "K+ 2.9 is hypokalemia (normal 3.5-5.0). Loop diuretics waste potassium. Low K+ increases risk of life-threatening cardiac dysrhythmias, especially dangerous with digoxin." },
+    { type: "SATA", cat: "Respiratory", stem: "Which teaching points are correct for a patient using an inhaled corticosteroid? (Select all that apply)", options: ["Rinse mouth after each use","Use a spacer if prescribed","This is a rescue inhaler for attacks","Use it regularly even when feeling well","Watch for oral thrush"], correct: [0,1,3,4], rationale: "Rinse mouth (prevents thrush), use spacer, use regularly (maintenance, NOT rescue), and watch for thrush. Inhaled steroids are NOT rescue inhalers - albuterol is." }
 ];
 
 let nclexIndex = 0;
 let nclexScore = 0;
 let nclexAnswered = false;
+let nclexActive = [];
 
 function openNCLEX() {
     setActiveNav('nclex');
     breadcrumb.innerHTML = '<span class="breadcrumb-item" onclick="app.renderHome()">Home</span><span class="breadcrumb-separator">&#x25B6;</span><span class="breadcrumb-item active">NCLEX Prep</span>';
+    // Build category list
+    const cats = [...new Set(nclexQuestions.map(q => q.cat || 'General'))].sort();
+    let html = '<div class="section-header"><div><h2>&#x1F4DD; NCLEX-Style Practice</h2>';
+    html += `<p class="section-description">${nclexQuestions.length} questions available. Choose a category to begin.</p></div></div>`;
+    html += '<div class="nclex-cat-grid">';
+    html += `<div class="nclex-cat-card" onclick="features.startNCLEX('all')"><div class="ncc-title">&#x1F3AF; All Categories</div><div class="ncc-count">${nclexQuestions.length} questions</div></div>`;
+    cats.forEach(c => {
+        const count = nclexQuestions.filter(q => (q.cat||'General') === c).length;
+        html += `<div class="nclex-cat-card" onclick="features.startNCLEX('${c}')"><div class="ncc-title">${c}</div><div class="ncc-count">${count} questions</div></div>`;
+    });
+    html += '</div>';
+    mainContent.innerHTML = html;
+}
+
+function startNCLEX(cat) {
+    nclexActive = cat === 'all' ? [...nclexQuestions] : nclexQuestions.filter(q => (q.cat||'General') === cat);
+    nclexActive = nclexActive.sort(() => Math.random() - 0.5);
     nclexIndex = 0; nclexScore = 0;
     renderNCLEXQuestion();
 }
 
 function renderNCLEXQuestion() {
-    if (nclexIndex >= nclexQuestions.length) {
-        mainContent.innerHTML = `<div style="text-align:center;padding:3rem 1rem;"><h2>NCLEX Practice Complete!</h2><p style="font-size:2rem;font-weight:700;color:var(--primary);margin:1rem 0;">${nclexScore}/${nclexQuestions.length}</p><p style="color:var(--text-light);">${Math.round((nclexScore/nclexQuestions.length)*100)}%</p><button onclick="features.openNCLEX()" style="margin-top:1rem;padding:0.7rem 1.5rem;background:var(--primary);color:white;border:none;border-radius:8px;font-weight:600;cursor:pointer;">Try Again</button></div>`;
-        saveProgress('nclex', {score: nclexScore, total: nclexQuestions.length, date: new Date().toISOString()});
+    if (nclexIndex >= nclexActive.length) {
+        mainContent.innerHTML = `<div style="text-align:center;padding:3rem 1rem;"><h2>NCLEX Practice Complete!</h2><p style="font-size:2rem;font-weight:700;color:var(--primary);margin:1rem 0;">${nclexScore}/${nclexActive.length}</p><p style="color:var(--text-light);">${Math.round((nclexScore/nclexActive.length)*100)}%</p><button onclick="features.openNCLEX()" style="margin-top:1rem;padding:0.7rem 1.5rem;background:var(--primary);color:white;border:none;border-radius:8px;font-weight:600;cursor:pointer;">Choose Another Category</button></div>`;
+        saveProgress('nclex', {score: nclexScore, total: nclexActive.length, date: new Date().toISOString()});
         return;
     }
     nclexAnswered = false;
-    const q = nclexQuestions[nclexIndex];
+    const q = nclexActive[nclexIndex];
     const isSATA = q.type === 'SATA';
 
     let html = '<div class="section-header"><div><h2>&#x1F4DD; NCLEX Practice</h2>';
-    html += `<p class="section-description">Question ${nclexIndex+1} of ${nclexQuestions.length}</p></div></div>`;
+    html += `<p class="section-description">Question ${nclexIndex+1} of ${nclexActive.length} ${q.cat ? '&bull; '+q.cat : ''}</p></div></div>`;
     html += `<div class="nclex-question-card"><span class="nclex-type">${q.type}</span>`;
     html += `<div class="nclex-stem">${q.stem}</div>`;
     html += '<div id="nclexOptions">';
@@ -397,7 +501,7 @@ function toggleNCLEXOption(i) {
 function selectNCLEXOption(i) {
     if (nclexAnswered) return;
     nclexAnswered = true;
-    const q = nclexQuestions[nclexIndex];
+    const q = nclexActive[nclexIndex];
     const isCorrect = q.correct.includes(i);
     document.querySelectorAll('.nclex-option').forEach((el, idx) => {
         el.classList.add('disabled');
@@ -412,7 +516,7 @@ function selectNCLEXOption(i) {
 function submitNCLEX() {
     if (nclexAnswered) return;
     nclexAnswered = true;
-    const q = nclexQuestions[nclexIndex];
+    const q = nclexActive[nclexIndex];
     const selected = [];
     q.options.forEach((_, i) => {
         if (document.getElementById('nopt'+i).classList.contains('selected')) selected.push(i);
@@ -524,6 +628,183 @@ function checkInteractions() {
     }
 }
 
+// ===== TIMED QUIZ MODE =====
+let tqQuestions = [];
+let tqIndex = 0;
+let tqScore = 0;
+let tqTimer = null;
+let tqTimeLeft = 0;
+let tqStartTime = 0;
+const TQ_SECONDS = 15;
+
+function openTimedQuiz() {
+    setActiveNav('timedquiz');
+    breadcrumb.innerHTML = '<span class="breadcrumb-item" onclick="app.renderHome()">Home</span><span class="breadcrumb-separator">&#x25B6;</span><span class="breadcrumb-item active">Timed Quiz</span>';
+    let html = '<div class="section-header"><div><h2>&#x23F1;&#xFE0F; Timed Quiz Challenge</h2>';
+    html += '<p class="section-description">10 questions, 15 seconds each. Beat the clock!</p></div></div>';
+    html += '<div style="text-align:center;padding:2rem 1rem;">';
+    html += '<div style="margin-bottom:1rem;"><label style="font-size:0.9rem;">Category: </label><select id="tqCategory" style="padding:0.5rem;border:1px solid var(--border);border-radius:8px;"><option value="all">All Medications</option>';
+    for (const [key, cat] of Object.entries(medicationDatabase)) {
+        html += `<option value="${key}">${cat.icon} ${cat.name}</option>`;
+    }
+    html += '</select></div>';
+    html += '<button onclick="features.startTimedQuiz()" style="padding:0.8rem 2rem;background:var(--warning);color:white;border:none;border-radius:8px;font-size:1rem;font-weight:600;cursor:pointer;">&#x1F680; Start Challenge</button>';
+    html += '</div>';
+    mainContent.innerHTML = html;
+}
+
+function startTimedQuiz() {
+    const catKey = document.getElementById('tqCategory') ? document.getElementById('tqCategory').value : 'all';
+    let pool = getAllMeds();
+    if (catKey !== 'all') pool = pool.filter(m => m.category === catKey);
+    if (pool.length < 4) { alert('Not enough medications in this category for a quiz.'); return; }
+
+    tqQuestions = buildTimedQuestions(pool, 10);
+    tqIndex = 0; tqScore = 0; tqStartTime = Date.now();
+    renderTimedQuestion();
+}
+
+function buildTimedQuestions(pool, count) {
+    const questions = [];
+    const shuffled = [...pool].sort(() => Math.random() - 0.5).slice(0, count);
+    const qTypes = ['brand', 'mechanism', 'sideEffect', 'indication'];
+    shuffled.forEach(med => {
+        const others = pool.filter(m => m.generic !== med.generic).sort(() => Math.random() - 0.5).slice(0, 3);
+        const t = qTypes[Math.floor(Math.random() * qTypes.length)];
+        let q = {};
+        if (t === 'brand') q = { text: `Brand name for "${med.generic}"?`, correct: med.brand, options: shuffle([med.brand, ...others.map(m => m.brand)]) };
+        else if (t === 'mechanism') q = { text: `Which drug: "${med.mechanism.substring(0,70)}..."?`, correct: med.generic, options: shuffle([med.generic, ...others.map(m => m.generic)]) };
+        else if (t === 'sideEffect') q = { text: `A side effect of ${med.generic}?`, correct: med.sideEffects[0], options: shuffle([med.sideEffects[0], ...others.map(m => m.sideEffects[0])]) };
+        else q = { text: `An indication for ${med.generic}?`, correct: med.indications[0], options: shuffle([med.indications[0], ...others.map(m => m.indications[0])]) };
+        questions.push(q);
+    });
+    return questions;
+}
+
+function renderTimedQuestion() {
+    if (tqTimer) { clearInterval(tqTimer); tqTimer = null; }
+    if (tqIndex >= tqQuestions.length) {
+        const totalTime = Math.round((Date.now() - tqStartTime) / 1000);
+        mainContent.innerHTML = `<div style="text-align:center;padding:3rem 1rem;"><h2>&#x23F1;&#xFE0F; Challenge Complete!</h2><p style="font-size:2.5rem;font-weight:700;color:var(--primary);margin:1rem 0;">${tqScore}/${tqQuestions.length}</p><p style="color:var(--text-light);">${Math.round((tqScore/tqQuestions.length)*100)}% correct &bull; ${totalTime}s total</p><button onclick="features.openTimedQuiz()" style="margin-top:1.5rem;padding:0.7rem 1.5rem;background:var(--warning);color:white;border:none;border-radius:8px;font-weight:600;cursor:pointer;">Play Again</button></div>`;
+        saveProgress('timed', {score: tqScore, total: tqQuestions.length, date: new Date().toISOString()});
+        return;
+    }
+    const q = tqQuestions[tqIndex];
+    tqTimeLeft = TQ_SECONDS;
+    let html = '<div class="section-header"><div><h2>&#x23F1;&#xFE0F; Timed Quiz</h2>';
+    html += `<p class="section-description">Question ${tqIndex+1} of ${tqQuestions.length} &bull; Score: ${tqScore}</p></div></div>`;
+    html += `<div class="tq-timer-bar"><div class="tq-timer-fill" id="tqTimerFill"></div></div>`;
+    html += `<div class="tq-timer-text" id="tqTimerText">${tqTimeLeft}s</div>`;
+    html += `<div class="nclex-question-card"><div class="nclex-stem">${q.text}</div>`;
+    q.options.forEach((opt, i) => {
+        html += `<div class="nclex-option" id="tqopt${i}" onclick="features.answerTimed(${i})">${opt}</div>`;
+    });
+    html += '</div>';
+    mainContent.innerHTML = html;
+
+    tqTimer = setInterval(() => {
+        tqTimeLeft--;
+        const fill = document.getElementById('tqTimerFill');
+        const txt = document.getElementById('tqTimerText');
+        if (fill) fill.style.width = (tqTimeLeft / TQ_SECONDS * 100) + '%';
+        if (txt) txt.textContent = tqTimeLeft + 's';
+        if (tqTimeLeft <= 0) { answerTimed(-1); }
+    }, 1000);
+}
+
+function answerTimed(i) {
+    if (tqTimer) { clearInterval(tqTimer); tqTimer = null; }
+    const q = tqQuestions[tqIndex];
+    document.querySelectorAll('.nclex-option').forEach((el, idx) => {
+        el.classList.add('disabled');
+        if (q.options[idx] === q.correct) el.classList.add('correct-answer');
+        else if (idx === i) el.classList.add('wrong-answer');
+    });
+    if (i >= 0 && q.options[i] === q.correct) tqScore++;
+    setTimeout(() => { tqIndex++; renderTimedQuestion(); }, 1200);
+}
+
+const mnemonicsData = [
+    { category: "Drug Suffix Patterns", items: [
+        { trick: "-pril", meaning: "ACE Inhibitors", example: "lisinoPRIL, enalaPRIL, ramiPRIL - watch for cough & angioedema" },
+        { trick: "-sartan", meaning: "ARBs (Angiotensin Receptor Blockers)", example: "loSARTAN, valSARTAN - like ACE but no cough" },
+        { trick: "-olol", meaning: "Beta Blockers", example: "metoprOLOL, atenOLOL, propranOLOL - lower HR & BP" },
+        { trick: "-dipine", meaning: "Calcium Channel Blockers (dihydropyridines)", example: "amloDIPINE, nifeDIPINE - watch for edema" },
+        { trick: "-statin", meaning: "HMG-CoA Reductase Inhibitors (cholesterol)", example: "atorvaSTATIN, simvaSTATIN - watch for muscle pain" },
+        { trick: "-prazole", meaning: "Proton Pump Inhibitors", example: "omePRAZOLE, pantoPRAZOLE - reduce stomach acid" },
+        { trick: "-tidine", meaning: "H2 Blockers", example: "famoTIDINE, cimeTIDINE - reduce stomach acid" },
+        { trick: "-cillin", meaning: "Penicillin Antibiotics", example: "amoxiCILLIN, ampiCILLIN - ask about allergy" },
+        { trick: "-floxacin", meaning: "Fluoroquinolone Antibiotics", example: "ciproFLOXACIN, levoFLOXACIN - tendon rupture risk" },
+        { trick: "-cycline", meaning: "Tetracycline Antibiotics", example: "doxyCYCLINE - avoid dairy, sun sensitivity" },
+        { trick: "-mycin/-micin", meaning: "Aminoglycosides / Macrolides", example: "genta-MICIN (nephro/ototoxic); azithro-MYCIN (macrolide)" },
+        { trick: "-pam/-lam", meaning: "Benzodiazepines", example: "loraze-PAM, alprazo-LAM, midazo-LAM - sedation" },
+        { trick: "-ine (SSRIs vary)", meaning: "Many antidepressants", example: "fluoxetine, sertraline, paroxetine - 4-6 wks to work" },
+        { trick: "-vir", meaning: "Antivirals", example: "acyclo-VIR, oseltami-VIR (Tamiflu), tenofo-VIR" },
+        { trick: "-azole", meaning: "Antifungals (and some PPIs)", example: "flucon-AZOLE, ketocon-AZOLE - check LFTs" }
+    ]},
+    { category: "Classic Memory Devices", items: [
+        { trick: "RIPE", meaning: "TB drugs", example: "Rifampin, Isoniazid, Pyrazinamide, Ethambutol" },
+        { trick: "LOT (safe in liver disease)", meaning: "Benzos with no active metabolites", example: "Lorazepam, Oxazepam, Temazepam" },
+        { trick: "'Red devil'", meaning: "Doxorubicin", example: "Red-orange urine + cardiotoxicity" },
+        { trick: "MURDER (aspirin toxicity)", meaning: "Salicylate overdose signs", example: "Metabolic acidosis, Uraemia, Respiratory alkalosis, Dizziness, Epigastric pain, Rhabdomyolysis" },
+        { trick: "'A' insulins are Aspart/Analog rapid", meaning: "Rapid-acting insulin", example: "Aspart (NovoLog), lispro - give with meals" },
+        { trick: "Digoxin: 'SALT'", meaning: "Digoxin toxicity signs", example: "See halos, Arrhythmias, Loss of appetite, Throwing up" },
+        { trick: "Warfarin antidote = Vitamin K", meaning: "Reversal agents", example: "Heparin antidote = Protamine sulfate" },
+        { trick: "'Mag' = calm", meaning: "Magnesium sulfate", example: "Loss of deep tendon reflexes = toxicity; antidote = calcium gluconate" }
+    ]}
+];
+
+function openMnemonics() {
+    setActiveNav('mnemonics');
+    breadcrumb.innerHTML = '<span class="breadcrumb-item" onclick="app.renderHome()">Home</span><span class="breadcrumb-separator">&#x25B6;</span><span class="breadcrumb-item active">Mnemonics</span>';
+    let html = '<div class="section-header"><div><h2>&#x1F9E0; Mnemonics & Memory Aids</h2>';
+    html += '<p class="section-description">Suffix patterns and memory tricks to master pharmacology fast</p></div></div>';
+    mnemonicsData.forEach(group => {
+        html += `<h3 style="margin:1.25rem 0 0.75rem;color:var(--secondary);">${group.category}</h3>`;
+        group.items.forEach(item => {
+            html += `<div class="mnemonic-card">
+                <div class="mnemonic-trick">${item.trick}</div>
+                <div class="mnemonic-meaning">${item.meaning}</div>
+                <div class="mnemonic-example">${item.example}</div>
+            </div>`;
+        });
+    });
+    mainContent.innerHTML = html;
+}
+
+// ===== LOOK-ALIKE / SOUND-ALIKE (LASA) DRUGS =====
+const lasaPairs = [
+    { a: "hydralazine", b: "hydroxyzine", note: "Hydralazine = vasodilator (BP). Hydroxyzine = antihistamine/anxiety. Very commonly confused!" },
+    { a: "hydromorphone", b: "morphine", note: "Hydromorphone (Dilaudid) is ~7x more potent than morphine. Dose errors can be fatal." },
+    { a: "clonidine", b: "klonopin (clonazepam)", note: "Clonidine = antihypertensive. Clonazepam = benzodiazepine. Sound-alike names." },
+    { a: "metformin", b: "metronidazole", note: "Metformin = diabetes. Metronidazole (Flagyl) = antibiotic. Both start with 'metro/metf'." },
+    { a: "prednisone", b: "prednisolone", note: "Both corticosteroids but different potency/forms. Verify carefully." },
+    { a: "celebrex (celecoxib)", b: "celexa (citalopram)", note: "Celebrex = NSAID. Celexa = SSRI antidepressant. Classic sound-alike error." },
+    { a: "lamictal (lamotrigine)", b: "lamisil (terbinafine)", note: "Lamictal = anticonvulsant/mood. Lamisil = antifungal. Look-alike names." },
+    { a: "novolog (aspart)", b: "novolin (regular/NPH)", note: "NovoLog = rapid-acting. Novolin = regular/NPH. Insulin mix-ups are high-alert errors." },
+    { a: "humalog (lispro)", b: "humulin", note: "Humalog = rapid-acting analog. Humulin = human insulin (R or N). Verify insulin type." },
+    { a: "cefazolin", b: "cefotetan", note: "Both cephalosporins with similar names - different spectrum/uses." },
+    { a: "vinblastine", b: "vincristine", note: "Both vinca alkaloid chemo. Different toxicity profiles. Fatal if confused." },
+    { a: "chlorpromazine", b: "chlorpropamide", note: "Chlorpromazine = antipsychotic. Chlorpropamide = sulfonylurea (diabetes)." },
+    { a: "tramadol", b: "trazodone", note: "Tramadol = opioid analgesic. Trazodone = antidepressant/sleep. Sound-alike." },
+    { a: "sitagliptin", b: "sumatriptan", note: "Sitagliptin = diabetes (DPP-4). Sumatriptan = migraine (triptan)." },
+    { a: "fentanyl", b: "sufentanil", note: "Both potent opioids; sufentanil is even more potent. Verify concentration/dose." }
+];
+
+function openLookAlike() {
+    setActiveNav('lookalike');
+    breadcrumb.innerHTML = '<span class="breadcrumb-item" onclick="app.renderHome()">Home</span><span class="breadcrumb-separator">&#x25B6;</span><span class="breadcrumb-item active">Look-Alike/Sound-Alike</span>';
+    let html = '<div class="section-header"><div><h2>&#x1F440; Look-Alike / Sound-Alike (LASA) Drugs</h2>';
+    html += '<p class="section-description">Commonly confused medication pairs. Always verify with two identifiers to prevent errors.</p></div></div>';
+    lasaPairs.forEach(p => {
+        html += `<div class="lasa-card">
+            <div class="lasa-pair"><span class="lasa-drug">${p.a}</span><span class="lasa-vs">vs</span><span class="lasa-drug">${p.b}</span></div>
+            <div class="lasa-note">&#x26A0;&#xFE0F; ${p.note}</div>
+        </div>`;
+    });
+    mainContent.innerHTML = html;
+}
+
 // ===== PUBLIC API =====
 window.features = {
     openFlashcards, startFlashcardDeck, fcAnswer,
@@ -532,8 +813,12 @@ window.features = {
     openHighAlert,
     openLabValues,
     openProgress, saveProgress,
-    openNCLEX, toggleNCLEXOption, selectNCLEXOption, submitNCLEX, nextNCLEX,
-    openInteractions, addInteractionDrug, removeInteractionDrug
+    openNCLEX, startNCLEX, toggleNCLEXOption, selectNCLEXOption, submitNCLEX, nextNCLEX,
+    openInteractions, addInteractionDrug, removeInteractionDrug,
+    openMnemonics,
+    toggleDarkMode,
+    openTimedQuiz, startTimedQuiz, answerTimed,
+    openLookAlike
 };
 
 })();

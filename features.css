@@ -466,3 +466,152 @@
     .feature-nav { padding: 0.5rem; }
     .feature-nav-btn { font-size: 0.7rem; padding: 0.35rem 0.6rem; }
 }
+
+
+/* ===== Mnemonics ===== */
+.mnemonic-card {
+    background: white;
+    border-radius: var(--radius);
+    padding: 1rem 1.25rem;
+    box-shadow: var(--shadow);
+    border-left: 4px solid var(--secondary);
+    margin-bottom: 0.75rem;
+}
+.mnemonic-trick {
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: var(--secondary);
+}
+.mnemonic-meaning {
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: var(--text);
+    margin: 0.2rem 0;
+}
+.mnemonic-example {
+    font-size: 0.82rem;
+    color: var(--text-light);
+}
+
+
+/* ===== NCLEX Category Picker ===== */
+.nclex-cat-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 1rem;
+}
+.nclex-cat-card {
+    background: white;
+    border-radius: var(--radius);
+    padding: 1.25rem;
+    box-shadow: var(--shadow);
+    cursor: pointer;
+    transition: transform 0.2s, box-shadow 0.2s;
+    border-top: 3px solid var(--secondary);
+    text-align: center;
+}
+.nclex-cat-card:hover { transform: translateY(-2px); box-shadow: var(--shadow-md); }
+.nclex-cat-card .ncc-title { font-weight: 700; font-size: 1rem; color: var(--text); }
+.nclex-cat-card .ncc-count { font-size: 0.8rem; color: var(--secondary); margin-top: 0.3rem; }
+
+
+/* ===== Dark Mode Toggle Button ===== */
+.dark-toggle {
+    position: absolute;
+    top: 1rem;
+    right: 1.5rem;
+    background: rgba(255,255,255,0.2);
+    border: none;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    font-size: 1.2rem;
+    cursor: pointer;
+    transition: background 0.2s, transform 0.2s;
+    z-index: 110;
+}
+.dark-toggle:hover { background: rgba(255,255,255,0.35); transform: scale(1.1); }
+
+/* ===== Dark Mode Theme ===== */
+body.dark {
+    --bg: #0f172a;
+    --card-bg: #1e293b;
+    --text: #e2e8f0;
+    --text-light: #94a3b8;
+    --border: #334155;
+    --primary-light: #1e3a5f;
+}
+body.dark .app-header { background: linear-gradient(135deg, #1e3a8a, #4c1d95); }
+body.dark .feature-nav { background: #1e293b; border-bottom-color: #334155; }
+body.dark .feature-nav-btn { background: #0f172a; color: #e2e8f0; border-color: #334155; }
+body.dark .breadcrumb { background: #1e293b; }
+body.dark .search-container input { background: #1e293b; color: #e2e8f0; }
+body.dark .med-tag { background: #334155; color: #cbd5e1; }
+body.dark .search-results { background: #1e293b; }
+body.dark .modal-content { background: #1e293b; }
+body.dark .nursing-alert { background: #422006; }
+body.dark .nursing-alert p { color: #fed7aa; }
+body.dark .quiz-option { background: #0f172a; }
+body.dark .nclex-rationale { background: #052e16; }
+body.dark .compare-table tr:nth-child(even) { background: #0f172a; }
+
+
+/* ===== Timed Quiz ===== */
+.tq-timer-bar {
+    width: 100%;
+    height: 10px;
+    background: var(--border);
+    border-radius: 50px;
+    overflow: hidden;
+    margin-bottom: 0.3rem;
+}
+.tq-timer-fill {
+    height: 100%;
+    width: 100%;
+    background: linear-gradient(90deg, var(--success), var(--warning), var(--danger));
+    border-radius: 50px;
+    transition: width 1s linear;
+}
+.tq-timer-text {
+    text-align: right;
+    font-size: 0.85rem;
+    font-weight: 700;
+    color: var(--warning);
+    margin-bottom: 1rem;
+}
+
+
+/* ===== Look-Alike/Sound-Alike ===== */
+.lasa-card {
+    background: white;
+    border-radius: var(--radius);
+    padding: 1rem 1.25rem;
+    box-shadow: var(--shadow);
+    border-left: 4px solid var(--danger);
+    margin-bottom: 0.75rem;
+}
+.lasa-pair {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    flex-wrap: wrap;
+    margin-bottom: 0.4rem;
+}
+.lasa-drug {
+    font-weight: 700;
+    font-size: 1rem;
+    color: var(--text);
+    text-transform: capitalize;
+}
+.lasa-vs {
+    font-size: 0.75rem;
+    color: white;
+    background: var(--danger);
+    padding: 0.1rem 0.5rem;
+    border-radius: 4px;
+    font-weight: 700;
+}
+.lasa-note {
+    font-size: 0.85rem;
+    color: var(--text-light);
+}
