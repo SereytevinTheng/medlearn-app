@@ -63,8 +63,8 @@ medicationDatabase.cardiovascular.classes.ccb = {
             brand: "Norvasc",
             mechanism: "Blocks L-type calcium channels in vascular smooth muscle, causing vasodilation",
             indications: ["Hypertension", "Chronic stable angina", "Vasospastic angina"],
-            sideEffects: ["Peripheral edema", "Dizziness", "Flushing", "Headache", "Palpitations"],
-            nursingConsiderations: "Monitor BP and heart rate. Assess for peripheral edema. Do not discontinue abruptly. Avoid grapefruit juice.",
+            sideEffects: ["Peripheral oedema", "Dizziness", "Flushing", "Headache", "Palpitations"],
+            nursingConsiderations: "Monitor BP and heart rate. Assess for peripheral oedema. Do not discontinue abruptly. Avoid grapefruit juice.",
             dosageRange: "2.5-10 mg PO daily"
         },
         {
@@ -78,7 +78,7 @@ medicationDatabase.cardiovascular.classes.ccb = {
         },
         {
             generic: "verapamil",
-            brand: "Calan",
+            brand: "Isoptin",
             mechanism: "Non-dihydropyridine CCB; slows AV conduction, reduces contractility",
             indications: ["Hypertension", "Angina", "SVT", "Atrial fibrillation"],
             sideEffects: ["Constipation", "Bradycardia", "Hypotension", "Heart block", "Dizziness"],
@@ -87,10 +87,10 @@ medicationDatabase.cardiovascular.classes.ccb = {
         },
         {
             generic: "nifedipine",
-            brand: "Procardia",
+            brand: "Adalat",
             mechanism: "Dihydropyridine CCB; potent peripheral vasodilator",
-            indications: ["Hypertension", "Chronic stable angina", "Vasospastic angina", "Preterm labor"],
-            sideEffects: ["Reflex tachycardia", "Flushing", "Headache", "Peripheral edema", "Dizziness"],
+            indications: ["Hypertension", "Chronic stable angina", "Vasospastic angina", "Preterm labour"],
+            sideEffects: ["Reflex tachycardia", "Flushing", "Headache", "Peripheral oedema", "Dizziness"],
             nursingConsiderations: "Use extended-release only for hypertension (immediate release can cause dangerous hypotension). Monitor BP. Avoid grapefruit.",
             dosageRange: "30-90 mg PO daily (ER)"
         },
@@ -108,7 +108,7 @@ medicationDatabase.cardiovascular.classes.ccb = {
             brand: "Plendil",
             mechanism: "Dihydropyridine CCB; highly selective for vascular smooth muscle",
             indications: ["Hypertension"],
-            sideEffects: ["Peripheral edema", "Headache", "Flushing", "Dizziness", "Tachycardia"],
+            sideEffects: ["Peripheral oedema", "Headache", "Flushing", "Dizziness", "Tachycardia"],
             nursingConsiderations: "Swallow whole - do not crush or chew ER tablet. Avoid grapefruit (significantly increases drug levels). Monitor BP regularly.",
             dosageRange: "2.5-10 mg PO daily"
         }
@@ -126,8 +126,8 @@ medicationDatabase.cardiovascular.classes.aceInhibitors = {
             brand: "Zestril/Prinivil",
             mechanism: "Inhibits ACE, preventing conversion of angiotensin I to angiotensin II",
             indications: ["Hypertension", "Heart failure", "Post-MI", "Diabetic nephropathy"],
-            sideEffects: ["Dry cough", "Hyperkalemia", "Dizziness", "Angioedema", "Hypotension"],
-            nursingConsiderations: "Monitor potassium levels. Teach patient about dry cough (common reason for discontinuation). Watch for angioedema - emergency! Avoid in pregnancy.",
+            sideEffects: ["Dry cough", "Hyperkalaemia", "Dizziness", "Angiooedema", "Hypotension"],
+            nursingConsiderations: "Monitor potassium levels. Teach patient about dry cough (common reason for discontinuation). Watch for angiooedema - emergency! Avoid in pregnancy.",
             dosageRange: "5-40 mg PO daily"
         },
         {
@@ -135,7 +135,7 @@ medicationDatabase.cardiovascular.classes.aceInhibitors = {
             brand: "Vasotec",
             mechanism: "Prodrug converted to enalaprilat; inhibits ACE",
             indications: ["Hypertension", "Heart failure", "Asymptomatic LV dysfunction"],
-            sideEffects: ["Dry cough", "Hypotension", "Hyperkalemia", "Headache", "Dizziness"],
+            sideEffects: ["Dry cough", "Hypotension", "Hyperkalaemia", "Headache", "Dizziness"],
             nursingConsiderations: "Available in IV form (enalaprilat) for hypertensive emergencies. Monitor renal function and potassium. First-dose hypotension possible.",
             dosageRange: "5-40 mg PO daily in 1-2 doses"
         },
@@ -144,7 +144,7 @@ medicationDatabase.cardiovascular.classes.aceInhibitors = {
             brand: "Altace",
             mechanism: "Prodrug; inhibits ACE, reduces aldosterone secretion",
             indications: ["Hypertension", "Heart failure post-MI", "Stroke prevention", "CV risk reduction"],
-            sideEffects: ["Cough", "Dizziness", "Hyperkalemia", "Fatigue", "Angioedema"],
+            sideEffects: ["Cough", "Dizziness", "Hyperkalaemia", "Fatigue", "Angiooedema"],
             nursingConsiderations: "Can open capsule and mix with applesauce. Monitor BP especially with first dose. Check creatinine and potassium regularly.",
             dosageRange: "1.25-20 mg PO daily"
         },
@@ -162,7 +162,7 @@ medicationDatabase.cardiovascular.classes.aceInhibitors = {
             brand: "Lotensin",
             mechanism: "Prodrug converted to benazeprilat; inhibits ACE",
             indications: ["Hypertension"],
-            sideEffects: ["Cough", "Headache", "Dizziness", "Hyperkalemia", "Fatigue"],
+            sideEffects: ["Cough", "Headache", "Dizziness", "Hyperkalaemia", "Fatigue"],
             nursingConsiderations: "Monitor renal function especially in elderly. Avoid potassium supplements and K-sparing diuretics. Contraindicated in pregnancy.",
             dosageRange: "10-40 mg PO daily"
         },
@@ -171,7 +171,7 @@ medicationDatabase.cardiovascular.classes.aceInhibitors = {
             brand: "Accupril",
             mechanism: "Prodrug; inhibits ACE in tissue and plasma",
             indications: ["Hypertension", "Heart failure"],
-            sideEffects: ["Dizziness", "Cough", "Headache", "Hyperkalemia", "Chest pain"],
+            sideEffects: ["Dizziness", "Cough", "Headache", "Hyperkalaemia", "Chest pain"],
             nursingConsiderations: "High-fat meals may reduce absorption. Monitor BP 2-6 hours after first dose. Assess renal function at baseline and periodically.",
             dosageRange: "10-80 mg PO daily"
         }
@@ -189,7 +189,7 @@ medicationDatabase.cardiovascular.classes.arbs = {
             brand: "Cozaar",
             mechanism: "Blocks AT1 receptors, preventing angiotensin II effects",
             indications: ["Hypertension", "Diabetic nephropathy", "Stroke prevention", "Heart failure"],
-            sideEffects: ["Dizziness", "Hyperkalemia", "Hypotension", "Back pain", "Diarrhea"],
+            sideEffects: ["Dizziness", "Hyperkalaemia", "Hypotension", "Back pain", "Diarrhoea"],
             nursingConsiderations: "Good alternative for patients with ACE inhibitor cough. Monitor potassium and renal function. Contraindicated in pregnancy. Has uricosuric effect.",
             dosageRange: "25-100 mg PO daily"
         },
@@ -198,7 +198,7 @@ medicationDatabase.cardiovascular.classes.arbs = {
             brand: "Diovan",
             mechanism: "Selective AT1 receptor blocker",
             indications: ["Hypertension", "Heart failure", "Post-MI"],
-            sideEffects: ["Dizziness", "Headache", "Hyperkalemia", "Fatigue", "Abdominal pain"],
+            sideEffects: ["Dizziness", "Headache", "Hyperkalaemia", "Fatigue", "Abdominal pain"],
             nursingConsiderations: "Food decreases absorption by 40%. Monitor BP and heart rate. Do not use with ACE inhibitors (dual blockade increases adverse events).",
             dosageRange: "80-320 mg PO daily"
         },
@@ -207,7 +207,7 @@ medicationDatabase.cardiovascular.classes.arbs = {
             brand: "Avapro",
             mechanism: "Non-competitive AT1 receptor antagonist",
             indications: ["Hypertension", "Diabetic nephropathy in type 2 DM"],
-            sideEffects: ["Dizziness", "Diarrhea", "Dyspepsia", "Fatigue", "Hyperkalemia"],
+            sideEffects: ["Dizziness", "Diarrhoea", "Dyspepsia", "Fatigue", "Hyperkalaemia"],
             nursingConsiderations: "Can be taken with or without food. Monitor renal function in diabetic patients. Check potassium levels regularly.",
             dosageRange: "150-300 mg PO daily"
         },
@@ -216,7 +216,7 @@ medicationDatabase.cardiovascular.classes.arbs = {
             brand: "Atacand",
             mechanism: "Tight binding to AT1 receptor with slow dissociation",
             indications: ["Hypertension", "Heart failure"],
-            sideEffects: ["Dizziness", "Back pain", "Hyperkalemia", "Hypotension", "Pharyngitis"],
+            sideEffects: ["Dizziness", "Back pain", "Hyperkalaemia", "Hypotension", "Pharyngitis"],
             nursingConsiderations: "Can be used in patients who cannot tolerate ACE inhibitors. Monitor renal function and electrolytes. Dose adjust in hepatic impairment.",
             dosageRange: "8-32 mg PO daily"
         },
@@ -225,8 +225,8 @@ medicationDatabase.cardiovascular.classes.arbs = {
             brand: "Benicar",
             mechanism: "Blocks AT1 receptors in vascular smooth muscle and adrenal gland",
             indications: ["Hypertension"],
-            sideEffects: ["Dizziness", "Diarrhea", "Sprue-like enteropathy (rare)", "Hyperkalemia", "Back pain"],
-            nursingConsiderations: "Associated with rare but severe sprue-like enteropathy (chronic diarrhea, weight loss). Report persistent GI symptoms immediately.",
+            sideEffects: ["Dizziness", "Diarrhoea", "Sprue-like enteropathy (rare)", "Hyperkalaemia", "Back pain"],
+            nursingConsiderations: "Associated with rare but severe sprue-like enteropathy (chronic diarrhoea, weight loss). Report persistent GI symptoms immediately.",
             dosageRange: "20-40 mg PO daily"
         },
         {
@@ -234,7 +234,7 @@ medicationDatabase.cardiovascular.classes.arbs = {
             brand: "Micardis",
             mechanism: "AT1 receptor blocker with longest half-life in class; partial PPAR-gamma agonist",
             indications: ["Hypertension", "CV risk reduction"],
-            sideEffects: ["Dizziness", "Back pain", "Sinusitis", "Diarrhea", "Hyperkalemia"],
+            sideEffects: ["Dizziness", "Back pain", "Sinusitis", "Diarrhoea", "Hyperkalaemia"],
             nursingConsiderations: "Longest-acting ARB - good for 24hr coverage. Do not remove tablet from blister pack until ready to use. Has mild metabolic benefits.",
             dosageRange: "20-80 mg PO daily"
         }
@@ -251,8 +251,8 @@ medicationDatabase.cardiovascular.classes.diuretics = {
             generic: "furosemide",
             brand: "Lasix",
             mechanism: "Loop diuretic; inhibits Na-K-2Cl cotransporter in ascending loop of Henle",
-            indications: ["Heart failure", "Edema", "Hypertension", "Pulmonary edema", "Acute renal failure"],
-            sideEffects: ["Hypokalemia", "Dehydration", "Ototoxicity", "Hypotension", "Hyponatremia"],
+            indications: ["Heart failure", "Oedema", "Hypertension", "Pulmonary oedema", "Acute renal failure"],
+            sideEffects: ["Hypokalaemia", "Dehydration", "Ototoxicity", "Hypotension", "Hyponatraemia"],
             nursingConsiderations: "Monitor I&O, daily weights, electrolytes (especially K+, Na+, Mg2+). Give in morning to avoid nocturia. Monitor hearing with high doses. Sulfa allergy cross-reactivity.",
             dosageRange: "20-80 mg PO/IV; up to 600mg/day"
         },
@@ -260,26 +260,26 @@ medicationDatabase.cardiovascular.classes.diuretics = {
             generic: "hydrochlorothiazide (HCTZ)",
             brand: "Microzide",
             mechanism: "Thiazide diuretic; inhibits Na-Cl cotransporter in distal convoluted tubule",
-            indications: ["Hypertension", "Edema", "Calcium nephrolithiasis prevention"],
-            sideEffects: ["Hypokalemia", "Hyperglycemia", "Hyperuricemia", "Hypercalcemia", "Photosensitivity"],
+            indications: ["Hypertension", "Oedema", "Calcium nephrolithiasis prevention"],
+            sideEffects: ["Hypokalaemia", "Hyperglycaemia", "Hyperuricaemia", "Hypercalcaemia", "Photosensitivity"],
             nursingConsiderations: "First-line for hypertension. Monitor glucose in diabetics. Causes photosensitivity - use sunscreen. Monitor electrolytes. Less effective if GFR <30.",
             dosageRange: "12.5-50 mg PO daily"
         },
         {
             generic: "spironolactone",
-            brand: "Aldactone",
+            brand: "Aldactone/Spiractin",
             mechanism: "Potassium-sparing diuretic; aldosterone receptor antagonist",
-            indications: ["Heart failure", "Ascites", "Hypertension", "Hypokalemia prevention", "Hirsutism"],
-            sideEffects: ["Hyperkalemia", "Gynecomastia", "Menstrual irregularities", "GI upset", "Dizziness"],
-            nursingConsiderations: "Monitor potassium closely - risk of hyperkalemia! Avoid potassium supplements and ACE inhibitors together. Gynecomastia is dose-related. Takes 2-3 days for full effect.",
+            indications: ["Heart failure", "Ascites", "Hypertension", "Hypokalaemia prevention", "Hirsutism"],
+            sideEffects: ["Hyperkalaemia", "Gynaecomastia", "Menstrual irregularities", "GI upset", "Dizziness"],
+            nursingConsiderations: "Monitor potassium closely - risk of hyperkalaemia! Avoid potassium supplements and ACE inhibitors together. Gynaecomastia is dose-related. Takes 2-3 days for full effect.",
             dosageRange: "25-200 mg PO daily"
         },
         {
             generic: "bumetanide",
             brand: "Bumex",
             mechanism: "Loop diuretic; 40x more potent than furosemide mg per mg",
-            indications: ["Edema", "Heart failure", "Hepatic/renal disease"],
-            sideEffects: ["Hypokalemia", "Dehydration", "Hypotension", "Ototoxicity", "Muscle cramps"],
+            indications: ["Oedema", "Heart failure", "Hepatic/renal disease"],
+            sideEffects: ["Hypokalaemia", "Dehydration", "Hypotension", "Ototoxicity", "Muscle cramps"],
             nursingConsiderations: "More predictable oral absorption than furosemide. 1 mg bumetanide = 40 mg furosemide. Monitor electrolytes and renal function. Assess volume status.",
             dosageRange: "0.5-2 mg PO/IV daily"
         },
@@ -287,8 +287,8 @@ medicationDatabase.cardiovascular.classes.diuretics = {
             generic: "chlorthalidone",
             brand: "Thalitone",
             mechanism: "Thiazide-like diuretic; longer duration of action than HCTZ",
-            indications: ["Hypertension", "Edema"],
-            sideEffects: ["Hypokalemia", "Hyperuricemia", "Hyperglycemia", "Hypotension", "Hyponatremia"],
+            indications: ["Hypertension", "Oedema"],
+            sideEffects: ["Hypokalaemia", "Hyperuricaemia", "Hyperglycaemia", "Hypotension", "Hyponatraemia"],
             nursingConsiderations: "Longer half-life provides better 24hr BP control than HCTZ. Monitor electrolytes. May exacerbate gout. Give in morning.",
             dosageRange: "12.5-25 mg PO daily"
         },
@@ -296,9 +296,9 @@ medicationDatabase.cardiovascular.classes.diuretics = {
             generic: "metolazone",
             brand: "Zaroxolyn",
             mechanism: "Thiazide-like; works synergistically with loop diuretics",
-            indications: ["Edema refractory to loop diuretics", "Heart failure", "Renal impairment"],
-            sideEffects: ["Severe hypokalemia", "Dehydration", "Hypotension", "Hyponatremia", "Metabolic alkalosis"],
-            nursingConsiderations: "Often added to loop diuretics for synergistic effect in resistant edema. Give 30 min before loop diuretic. Monitor electrolytes very closely - can cause profound diuresis.",
+            indications: ["Oedema refractory to loop diuretics", "Heart failure", "Renal impairment"],
+            sideEffects: ["Severe hypokalaemia", "Dehydration", "Hypotension", "Hyponatraemia", "Metabolic alkalosis"],
+            nursingConsiderations: "Often added to loop diuretics for synergistic effect in resistant oedema. Give 30 min before loop diuretic. Monitor electrolytes very closely - can cause profound diuresis.",
             dosageRange: "2.5-10 mg PO daily"
         }
     ]
@@ -312,7 +312,7 @@ medicationDatabase.cardiovascular.classes.betaBlockers = {
     medications: [
         {
             generic: "metoprolol",
-            brand: "Lopressor/Toprol-XL",
+            brand: "Betaloc/Metohexal/Toprol-XL",
             mechanism: "Selective beta-1 blocker; reduces HR, contractility, and cardiac output",
             indications: ["Hypertension", "Heart failure", "Angina", "Post-MI", "Atrial fibrillation"],
             sideEffects: ["Bradycardia", "Fatigue", "Dizziness", "Depression", "Bronchospasm (less likely)"],
@@ -330,10 +330,10 @@ medicationDatabase.cardiovascular.classes.betaBlockers = {
         },
         {
             generic: "carvedilol",
-            brand: "Coreg",
+            brand: "Dilatrend/Kredex",
             mechanism: "Non-selective beta blocker + alpha-1 blocker; causes vasodilation",
             indications: ["Heart failure", "Hypertension", "Post-MI with LV dysfunction"],
-            sideEffects: ["Dizziness", "Hypotension", "Bradycardia", "Weight gain", "Hyperglycemia masking"],
+            sideEffects: ["Dizziness", "Hypotension", "Bradycardia", "Weight gain", "Hyperglycaemia masking"],
             nursingConsiderations: "Take with food to slow absorption and reduce orthostatic hypotension. Start low and titrate slowly in HF. Proven mortality benefit in heart failure.",
             dosageRange: "3.125-25 mg PO BID; CR: 10-80 mg daily"
         },
@@ -343,15 +343,15 @@ medicationDatabase.cardiovascular.classes.betaBlockers = {
             mechanism: "Non-selective beta blocker (beta-1 and beta-2); lipophilic",
             indications: ["Hypertension", "Angina", "Tremor", "Migraine prevention", "Performance anxiety", "Thyroid storm"],
             sideEffects: ["Bradycardia", "Bronchospasm", "Depression", "Nightmares", "Cold extremities", "Fatigue"],
-            nursingConsiderations: "Contraindicated in asthma/COPD (non-selective). Can mask hypoglycemia symptoms in diabetics. Crosses BBB - more CNS effects. Do not stop abruptly.",
+            nursingConsiderations: "Contraindicated in asthma/COPD (non-selective). Can mask hypoglycaemia symptoms in diabetics. Crosses BBB - more CNS effects. Do not stop abruptly.",
             dosageRange: "40-320 mg PO daily in divided doses"
         },
         {
             generic: "bisoprolol",
-            brand: "Zebeta",
+            brand: "Bicor",
             mechanism: "Highly selective beta-1 blocker",
             indications: ["Hypertension", "Heart failure"],
-            sideEffects: ["Bradycardia", "Fatigue", "Dizziness", "Cold extremities", "Diarrhea"],
+            sideEffects: ["Bradycardia", "Fatigue", "Dizziness", "Cold extremities", "Diarrhoea"],
             nursingConsiderations: "One of three beta-blockers with proven HF mortality benefit (with carvedilol and metoprolol succinate). Most beta-1 selective at lower doses.",
             dosageRange: "2.5-10 mg PO daily"
         },
@@ -375,10 +375,10 @@ medicationDatabase.cardiovascular.classes.anticoagulants = {
     medications: [
         {
             generic: "warfarin",
-            brand: "Coumadin",
+            brand: "Coumadin/Marevan",
             mechanism: "Inhibits vitamin K-dependent clotting factors (II, VII, IX, X)",
             indications: ["DVT/PE prevention", "Atrial fibrillation", "Mechanical heart valves", "Stroke prevention"],
-            sideEffects: ["Bleeding", "Bruising", "Hemorrhage", "Skin necrosis (rare)", "Purple toe syndrome"],
+            sideEffects: ["Bleeding", "Bruising", "Haemorrhage", "Skin necrosis (rare)", "Purple toe syndrome"],
             nursingConsiderations: "Monitor INR (goal usually 2-3). Many drug/food interactions - vitamin K foods affect levels. Antidote: vitamin K (phytonadione). Teratogenic - avoid in pregnancy.",
             dosageRange: "1-10 mg PO daily (individualized to INR)"
         },
@@ -393,10 +393,10 @@ medicationDatabase.cardiovascular.classes.anticoagulants = {
         },
         {
             generic: "enoxaparin",
-            brand: "Lovenox",
+            brand: "Clexane",
             mechanism: "Low molecular weight heparin; primarily inhibits factor Xa",
             indications: ["DVT prophylaxis", "DVT/PE treatment", "ACS", "Unstable angina"],
-            sideEffects: ["Bleeding", "Injection site bruising", "Thrombocytopenia", "Anemia", "Fever"],
+            sideEffects: ["Bleeding", "Injection site bruising", "Thrombocytopenia", "Anaemia", "Fever"],
             nursingConsiderations: "Give SubQ in abdomen (alternate sides). Do NOT expel air bubble. Do not rub injection site. Monitor anti-Xa levels in obesity/renal impairment. Partially reversed by protamine.",
             dosageRange: "30-40 mg SubQ daily (prophylaxis); 1 mg/kg SubQ q12h (treatment)"
         },
@@ -405,7 +405,7 @@ medicationDatabase.cardiovascular.classes.anticoagulants = {
             brand: "Xarelto",
             mechanism: "Direct factor Xa inhibitor (DOAC)",
             indications: ["DVT/PE treatment", "Stroke prevention in AFib", "DVT prophylaxis post-surgery"],
-            sideEffects: ["Bleeding", "Bruising", "Back pain", "GI bleeding", "Anemia"],
+            sideEffects: ["Bleeding", "Bruising", "Back pain", "GI bleeding", "Anaemia"],
             nursingConsiderations: "Take with evening meal (>15mg dose needs food for absorption). No routine monitoring needed. Reversal agent: andexanet alfa. Avoid with strong CYP3A4 inhibitors.",
             dosageRange: "10-20 mg PO daily"
         },
@@ -414,7 +414,7 @@ medicationDatabase.cardiovascular.classes.anticoagulants = {
             brand: "Eliquis",
             mechanism: "Direct factor Xa inhibitor (DOAC)",
             indications: ["Stroke prevention in AFib", "DVT/PE treatment", "DVT prophylaxis"],
-            sideEffects: ["Bleeding", "Bruising", "Nausea", "Anemia", "Hypersensitivity"],
+            sideEffects: ["Bleeding", "Bruising", "Nausea", "Anaemia", "Hypersensitivity"],
             nursingConsiderations: "Can be taken with or without food. Lowest GI bleeding risk among DOACs. Reversal: andexanet alfa. Can crush and give via NG tube. Adjust dose in elderly/low weight/renal impairment.",
             dosageRange: "2.5-5 mg PO BID"
         },
@@ -423,7 +423,7 @@ medicationDatabase.cardiovascular.classes.anticoagulants = {
             brand: "Pradaxa",
             mechanism: "Direct thrombin (factor IIa) inhibitor",
             indications: ["Stroke prevention in non-valvular AFib", "DVT/PE treatment"],
-            sideEffects: ["GI bleeding", "Dyspepsia", "Gastritis", "Bruising", "Hemorrhage"],
+            sideEffects: ["GI bleeding", "Dyspepsia", "Gastritis", "Bruising", "Haemorrhage"],
             nursingConsiderations: "Swallow whole - do NOT crush, chew, or open capsules. Store in original bottle (moisture sensitive). Reversal agent: idarucizumab (Praxbind). High GI side effects.",
             dosageRange: "150 mg PO BID (75 mg BID if CrCl 15-30)"
         }
@@ -438,10 +438,10 @@ medicationDatabase.cardiovascular.classes.antiarrhythmics = {
     medications: [
         {
             generic: "amiodarone",
-            brand: "Cordarone/Pacerone",
+            brand: "Cordarone X/Aratac",
             mechanism: "Class III antiarrhythmic; blocks potassium, sodium, and calcium channels; beta-blocking activity",
             indications: ["Ventricular tachycardia", "Ventricular fibrillation", "Atrial fibrillation", "Cardiac arrest (ACLS)"],
-            sideEffects: ["Pulmonary toxicity", "Thyroid dysfunction", "Hepatotoxicity", "Corneal deposits", "Photosensitivity", "Blue-gray skin"],
+            sideEffects: ["Pulmonary toxicity", "Thyroid dysfunction", "Hepatotoxicity", "Corneal deposits", "Photosensitivity", "Blue-grey skin"],
             nursingConsiderations: "Extremely long half-life (40-55 days). Monitor thyroid, liver, and pulmonary function. Use sunscreen (severe photosensitivity). Many drug interactions (increases digoxin/warfarin levels).",
             dosageRange: "200-400 mg PO daily (maintenance); 150 mg IV bolus"
         },
@@ -451,7 +451,7 @@ medicationDatabase.cardiovascular.classes.antiarrhythmics = {
             mechanism: "Cardiac glycoside; inhibits Na-K-ATPase pump, increases intracellular calcium",
             indications: ["Heart failure", "Atrial fibrillation (rate control)"],
             sideEffects: ["Digoxin toxicity (N/V, visual changes, arrhythmias)", "Bradycardia", "Anorexia", "Confusion"],
-            nursingConsiderations: "Narrow therapeutic index (0.5-2.0 ng/mL). Check apical pulse x1 min before giving - hold if <60. Monitor potassium (hypokalemia increases toxicity). Antidote: digoxin immune Fab.",
+            nursingConsiderations: "Narrow therapeutic index (0.5-2.0 ng/mL). Check apical pulse x1 min before giving - hold if <60. Monitor potassium (hypokalaemia increases toxicity). Antidote: digoxin immune Fab.",
             dosageRange: "0.125-0.25 mg PO daily"
         },
         {
@@ -466,7 +466,7 @@ medicationDatabase.cardiovascular.classes.antiarrhythmics = {
         {
             generic: "lidocaine",
             brand: "Xylocaine",
-            mechanism: "Class IB antiarrhythmic; blocks sodium channels in ischemic tissue",
+            mechanism: "Class IB antiarrhythmic; blocks sodium channels in ischaemic tissue",
             indications: ["Ventricular tachycardia", "Ventricular fibrillation", "PVCs (post-MI)"],
             sideEffects: ["CNS toxicity (seizures, confusion)", "Bradycardia", "Hypotension", "Paresthesias", "Drowsiness"],
             nursingConsiderations: "IV only for arrhythmias. Monitor for CNS toxicity (numbness, twitching, seizures). Reduce dose in hepatic impairment and elderly. Use cardiac monitor continuously.",
@@ -500,13 +500,13 @@ medicationDatabase.respiratory.classes.beta2Agonists = {
     description: "Relax bronchial smooth muscle by stimulating beta-2 adrenergic receptors",
     medications: [
         {
-            generic: "albuterol",
-            brand: "ProAir/Ventolin/Proventil",
+            generic: "salbutamol",
+            brand: "Ventolin/Asmol/Airomir",
             mechanism: "Short-acting beta-2 agonist (SABA); relaxes bronchial smooth muscle",
-            indications: ["Acute bronchospasm", "Asthma (rescue)", "COPD exacerbation", "Exercise-induced bronchospasm"],
-            sideEffects: ["Tachycardia", "Tremor", "Nervousness", "Hypokalemia", "Headache"],
-            nursingConsiderations: "Rescue inhaler - use PRN, not scheduled. If using >2x/week, asthma is uncontrolled. Teach proper inhaler technique. Rinse mouth after use. Monitor HR.",
-            dosageRange: "1-2 puffs q4-6h PRN; 2.5 mg nebulized q4-6h"
+            indications: ["Acute bronchospasm", "Asthma (reliever)", "COPD exacerbation", "Exercise-induced bronchospasm"],
+            sideEffects: ["Tachycardia", "Tremor", "Nervousness", "Hypokalaemia", "Headache"],
+            nursingConsiderations: "Reliever inhaler - use PRN, not scheduled. Frequent use signals poorly controlled asthma. Teach correct technique and spacer use. Rinse mouth after use. Monitor HR.",
+            dosageRange: "100-200 microg (1-2 puffs) PRN; 2.5-5 mg nebulised"
         },
         {
             generic: "salmeterol",
@@ -514,35 +514,35 @@ medicationDatabase.respiratory.classes.beta2Agonists = {
             mechanism: "Long-acting beta-2 agonist (LABA); 12-hour bronchodilation",
             indications: ["Asthma maintenance (with ICS)", "COPD maintenance", "Exercise-induced bronchospasm prevention"],
             sideEffects: ["Tachycardia", "Tremor", "Headache", "Throat irritation", "Paradoxical bronchospasm"],
-            nursingConsiderations: "NEVER use as rescue inhaler. Must always be used with inhaled corticosteroid in asthma (FDA black box warning). Use BID at same time daily. Not for acute symptoms.",
-            dosageRange: "1 inhalation (50 mcg) BID"
+            nursingConsiderations: "NEVER use as a reliever. Must always be combined with an inhaled corticosteroid in asthma (TGA boxed warning). Use BD at the same time daily. Not for acute symptoms.",
+            dosageRange: "50 microg (1 inhalation) BD"
         },
         {
-            generic: "formoterol",
-            brand: "Foradil/Perforomist",
+            generic: "formoterol (eformoterol)",
+            brand: "Foradile/Oxis",
             mechanism: "Long-acting beta-2 agonist with rapid onset",
             indications: ["Asthma maintenance (with ICS)", "COPD", "Exercise-induced bronchospasm"],
-            sideEffects: ["Tremor", "Tachycardia", "Headache", "Hypokalemia", "Dizziness"],
-            nursingConsiderations: "Faster onset than salmeterol but still not recommended as sole rescue therapy. Store capsules in blister pack until use. Do not swallow capsules.",
-            dosageRange: "12 mcg inhaled BID"
-        },
-        {
-            generic: "levalbuterol",
-            brand: "Xopenex",
-            mechanism: "R-isomer of albuterol; selective beta-2 agonist with fewer cardiac effects",
-            indications: ["Acute bronchospasm", "Asthma", "COPD"],
-            sideEffects: ["Tachycardia (less than albuterol)", "Tremor", "Nervousness", "Headache"],
-            nursingConsiderations: "May cause fewer cardiac side effects than racemic albuterol. More expensive. Store nebulizer vials in foil pouch until use. Protect from light.",
-            dosageRange: "0.63-1.25 mg nebulized q6-8h"
+            sideEffects: ["Tremor", "Tachycardia", "Headache", "Hypokalaemia", "Dizziness"],
+            nursingConsiderations: "Rapid onset allows use in maintenance-and-reliever therapy (MART) when combined with an ICS (e.g. Symbicort). Store capsules in blister pack until use. Do not swallow capsules.",
+            dosageRange: "12 microg inhaled BD"
         },
         {
             generic: "terbutaline",
-            brand: "Brethine",
-            mechanism: "Beta-2 agonist; also used for tocolysis",
-            indications: ["Bronchospasm", "Preterm labor (tocolysis - off label)"],
-            sideEffects: ["Tachycardia", "Tremor", "Hypokalemia", "Pulmonary edema (with tocolysis)", "Nervousness"],
-            nursingConsiderations: "Available SubQ for severe bronchospasm. In obstetrics: monitor for pulmonary edema and cardiac arrhythmias. FDA warning against prolonged tocolysis use.",
-            dosageRange: "2.5-5 mg PO TID; 0.25 mg SubQ"
+            brand: "Bricanyl",
+            mechanism: "Short-acting beta-2 agonist (SABA); relaxes bronchial smooth muscle",
+            indications: ["Acute bronchospasm", "Asthma (reliever)", "COPD"],
+            sideEffects: ["Tachycardia", "Tremor", "Nervousness", "Hypokalaemia", "Headache"],
+            nursingConsiderations: "Delivered via Turbuhaler (dry powder) in Australia. Reliever - use PRN. Teach correct device technique. Frequent use signals poor control. Monitor HR and potassium.",
+            dosageRange: "500 microg (1 inhalation) PRN via Turbuhaler"
+        },
+        {
+            generic: "olodaterol",
+            brand: "Striverdi Respimat",
+            mechanism: "Ultra-long-acting beta-2 agonist (LABA); 24-hour bronchodilation",
+            indications: ["COPD maintenance"],
+            sideEffects: ["Nasopharyngitis", "Tremor", "Tachycardia", "Dizziness", "Cough"],
+            nursingConsiderations: "Once-daily maintenance for COPD (not asthma). Delivered via Respimat soft-mist inhaler. Not a reliever - do not use for acute bronchospasm. Monitor HR.",
+            dosageRange: "5 microg (2 puffs) once daily via Respimat"
         },
         {
             generic: "indacaterol",
@@ -565,7 +565,7 @@ medicationDatabase.respiratory.classes.inhaledCorticosteroids = {
         {
             generic: "fluticasone",
             brand: "Flovent",
-            mechanism: "Potent topical corticosteroid; reduces airway inflammation, edema, and mucus production",
+            mechanism: "Potent topical corticosteroid; reduces airway inflammation, oedema, and mucus production",
             indications: ["Persistent asthma", "COPD (combination products)"],
             sideEffects: ["Oral thrush (candidiasis)", "Hoarseness", "Sore throat", "Cough", "Adrenal suppression (high doses)"],
             nursingConsiderations: "RINSE MOUTH after each use to prevent thrush. Not for acute attacks. Use spacer with MDI. Maintenance only - takes days to weeks for full effect.",
@@ -575,10 +575,10 @@ medicationDatabase.respiratory.classes.inhaledCorticosteroids = {
             generic: "budesonide",
             brand: "Pulmicort",
             mechanism: "Corticosteroid with high topical potency and good safety profile",
-            indications: ["Persistent asthma", "Croup (nebulized)"],
+            indications: ["Persistent asthma", "Croup (nebulised)"],
             sideEffects: ["Oral thrush", "Dysphonia", "Cough", "Headache", "Growth suppression in children (minor)"],
-            nursingConsiderations: "Available as nebulizer suspension (good for children). Rinse mouth after use. Monitor growth in pediatric patients. Can mix with albuterol in nebulizer.",
-            dosageRange: "180-360 mcg inhaled BID; 0.25-1 mg nebulized"
+            nursingConsiderations: "Available as nebuliser suspension (good for children). Rinse mouth after use. Monitor growth in paediatric patients. Can mix with salbutamol in nebuliser.",
+            dosageRange: "180-360 mcg inhaled BID; 0.25-1 mg nebulised"
         },
         {
             generic: "beclomethasone",
@@ -628,10 +628,10 @@ medicationDatabase.respiratory.classes.anticholinergics = {
             generic: "ipratropium",
             brand: "Atrovent",
             mechanism: "Short-acting muscarinic antagonist (SAMA); blocks acetylcholine in bronchial smooth muscle",
-            indications: ["COPD", "Acute bronchospasm (with albuterol)", "Rhinorrhea (nasal form)"],
+            indications: ["COPD", "Acute bronchospasm (with salbutamol)", "Rhinorrhoea (nasal form)"],
             sideEffects: ["Dry mouth", "Headache", "Cough", "Nausea", "Blurred vision (if contacts eye)"],
-            nursingConsiderations: "Slower onset than albuterol (15-30 min). Often combined with albuterol (DuoNeb/Combivent). Protect eyes during nebulizer treatment. Not first-line rescue in asthma.",
-            dosageRange: "2 puffs QID; 0.5 mg nebulized q6-8h"
+            nursingConsiderations: "Slower onset than salbutamol (15-30 min). Often combined with salbutamol (Combivent). Protect eyes during nebulisation. Not first-line reliever in asthma.",
+            dosageRange: "2 puffs QID; 0.5 mg nebulised q6-8h"
         },
         {
             generic: "tiotropium",
@@ -656,7 +656,7 @@ medicationDatabase.respiratory.classes.anticholinergics = {
             brand: "Tudorza Pressair",
             mechanism: "Long-acting muscarinic antagonist; rapid onset",
             indications: ["COPD maintenance"],
-            sideEffects: ["Headache", "Nasopharyngitis", "Cough", "Diarrhea", "Dry mouth"],
+            sideEffects: ["Headache", "Nasopharyngitis", "Cough", "Diarrhoea", "Dry mouth"],
             nursingConsiderations: "BID dosing (unlike tiotropium). Rapid onset of action. Colored control window turns from green to red when dose is inhaled correctly.",
             dosageRange: "400 mcg inhaled BID"
         },
@@ -666,17 +666,17 @@ medicationDatabase.respiratory.classes.anticholinergics = {
             mechanism: "Long-acting muscarinic antagonist for inhalation",
             indications: ["COPD maintenance"],
             sideEffects: ["UTI", "Upper respiratory infection", "Nasopharyngitis", "Dry mouth", "Constipation"],
-            nursingConsiderations: "Available as nebulizer solution (Lonhala Magnair) or DPI (Seebri). Do not use for acute bronchospasm. Different from glycopyrrolate injection used for secretions.",
-            dosageRange: "15.6 mcg nebulized BID or 15.6 mcg DPI BID"
+            nursingConsiderations: "Available as nebuliser solution (Lonhala Magnair) or DPI (Seebri). Do not use for acute bronchospasm. Different from glycopyrrolate injection used for secretions.",
+            dosageRange: "15.6 mcg nebulised BID or 15.6 mcg DPI BID"
         },
         {
-            generic: "ipratropium/albuterol",
-            brand: "Combivent/DuoNeb",
+            generic: "ipratropium/salbutamol",
+            brand: "Combivent/Duolin",
             mechanism: "Combination SAMA + SABA for dual bronchodilation",
             indications: ["COPD", "Acute bronchospasm"],
             sideEffects: ["Dry mouth", "Tachycardia", "Tremor", "Headache", "Cough"],
-            nursingConsiderations: "Combine anticholinergic and beta-2 agonist for synergistic effect. Commonly used in ER and inpatient for COPD exacerbations. Protect eyes during nebulizer use.",
-            dosageRange: "1 vial (3 mL) nebulized QID; 1 puff QID (Respimat)"
+            nursingConsiderations: "Combines anticholinergic and beta-2 agonist for synergistic effect. Commonly used in ED and on the ward for COPD exacerbations. Protect eyes during nebulisation.",
+            dosageRange: "1 nebule nebulised QID; or metered-dose inhaler QID"
         }
     ]
 };
@@ -694,7 +694,7 @@ medicationDatabase.respiratory.classes.leukotrieneModifiers = {
             indications: ["Asthma prophylaxis", "Allergic rhinitis", "Exercise-induced bronchospasm"],
             sideEffects: ["Headache", "Neuropsychiatric events (depression, suicidal thoughts)", "Abdominal pain", "Fatigue"],
             nursingConsiderations: "FDA black box warning for neuropsychiatric events - monitor mood changes. Take in evening for asthma. Not for acute attacks. Good for children (chewable tablets available).",
-            dosageRange: "10 mg PO daily (adults); 4-5 mg (pediatric)"
+            dosageRange: "10 mg PO daily (adults); 4-5 mg (paediatric)"
         },
         {
             generic: "zafirlukast",
@@ -754,7 +754,7 @@ medicationDatabase.cns.classes.opioids = {
             generic: "morphine",
             brand: "MS Contin/Roxanol",
             mechanism: "Mu-opioid receptor agonist; gold standard opioid analgesic",
-            indications: ["Severe pain", "MI pain", "Pulmonary edema", "Palliative care"],
+            indications: ["Severe pain", "MI pain", "Pulmonary oedema", "Palliative care"],
             sideEffects: ["Respiratory depression", "Constipation", "Nausea/vomiting", "Sedation", "Hypotension", "Pruritus"],
             nursingConsiderations: "Monitor respiratory rate (hold if <12). Assess pain scale before and after. Have naloxone at bedside. Causes histamine release. Titrate slowly in opioid-naive patients.",
             dosageRange: "2-15 mg IV/IM q3-4h; 15-30 mg PO q4h"
@@ -770,38 +770,38 @@ medicationDatabase.cns.classes.opioids = {
         },
         {
             generic: "oxycodone",
-            brand: "OxyContin/Percocet",
+            brand: "Endone/OxyNorm/OxyContin/Targin",
             mechanism: "Semi-synthetic mu-opioid agonist",
-            indications: ["Moderate-severe pain", "Chronic pain (ER form)"],
+            indications: ["Moderate-severe pain", "Chronic pain (controlled-release form)"],
             sideEffects: ["Constipation", "Nausea", "Sedation", "Dizziness", "Respiratory depression", "Euphoria"],
-            nursingConsiderations: "High abuse potential (Schedule II). OxyContin is ER - do not crush. Percocet = oxycodone + acetaminophen (watch total APAP). Initiate bowel regimen prophylactically.",
-            dosageRange: "5-15 mg PO q4-6h (IR); 10-80 mg PO q12h (ER)"
+            nursingConsiderations: "Schedule 8 (S8) controlled drug - requires drug register checks. Endone/OxyNorm are immediate-release; OxyContin is controlled-release (do not crush). Targin combines oxycodone with naloxone to reduce constipation. Start a bowel regimen prophylactically.",
+            dosageRange: "5-15 mg PO q4-6h (IR); 10-80 mg PO q12h (CR)"
         },
         {
             generic: "fentanyl",
-            brand: "Duragesic/Sublimaze",
+            brand: "Durogesic/Sublimaze",
             mechanism: "Synthetic mu-opioid agonist; 80-100x more potent than morphine",
-            indications: ["Severe pain", "Anesthesia", "Chronic pain (patch)", "Breakthrough cancer pain"],
+            indications: ["Severe pain", "Anaesthesia", "Chronic pain (patch)", "Breakthrough cancer pain"],
             sideEffects: ["Respiratory depression", "Bradycardia", "Muscle rigidity", "Constipation", "Sedation"],
-            nursingConsiderations: "Patch: only for opioid-tolerant patients. Do NOT cut patches. Avoid heat (increases absorption). IV: used in anesthesia/ICU. Monitor closely - rapid onset, short duration (IV).",
-            dosageRange: "25-100 mcg/hr transdermal; 25-100 mcg IV"
+            nursingConsiderations: "Schedule 8 (S8) controlled drug. Patch (Durogesic): only for opioid-tolerant patients. Do NOT cut patches. Avoid heat (increases absorption). IV used in anaesthesia/ICU. Monitor closely - rapid onset, short duration (IV).",
+            dosageRange: "12-100 microg/hr transdermal; 25-100 microg IV"
         },
         {
             generic: "tramadol",
-            brand: "Ultram",
-            mechanism: "Weak mu-opioid agonist + inhibits serotonin/norepinephrine reuptake",
+            brand: "Tramal/Zydol",
+            mechanism: "Weak mu-opioid agonist + inhibits serotonin/noradrenaline reuptake",
             indications: ["Moderate pain"],
             sideEffects: ["Nausea", "Dizziness", "Constipation", "Seizures", "Serotonin syndrome", "Headache"],
-            nursingConsiderations: "Lower abuse potential (Schedule IV) but still has opioid effects. Risk of seizures at high doses. Serotonin syndrome risk with SSRIs/SNRIs. Max 400 mg/day.",
+            nursingConsiderations: "Schedule 4 (S4) prescription-only. Lower dependence risk than strong opioids but still has opioid effects. Risk of seizures at high doses. Serotonin syndrome risk with SSRIs/SNRIs. Max 400 mg/day.",
             dosageRange: "50-100 mg PO q4-6h"
         },
         {
             generic: "codeine",
-            brand: "Various (Tylenol #3)",
+            brand: "Panadeine Forte (with paracetamol)",
             mechanism: "Prodrug converted to morphine by CYP2D6; weak opioid agonist",
             indications: ["Mild-moderate pain", "Cough suppression"],
             sideEffects: ["Constipation", "Nausea", "Sedation", "Respiratory depression", "Dizziness"],
-            nursingConsiderations: "Effectiveness depends on CYP2D6 metabolism (ultra-rapid metabolizers at risk for toxicity). Avoid in children <12 and post-tonsillectomy. Often combined with acetaminophen.",
+            nursingConsiderations: "Prescription-only (Schedule 4) in Australia since 2018 - no longer available OTC. Effectiveness depends on CYP2D6 metabolism (ultra-rapid metabolisers at risk of toxicity). Avoid in children <12 and post-tonsillectomy. Often combined with paracetamol.",
             dosageRange: "15-60 mg PO q4-6h"
         }
     ]
@@ -826,8 +826,8 @@ medicationDatabase.cns.classes.anticonvulsants = {
             brand: "Keppra",
             mechanism: "Binds synaptic vesicle protein SV2A; modulates neurotransmitter release",
             indications: ["Partial seizures", "Generalized seizures", "Myoclonic seizures"],
-            sideEffects: ["Behavioral changes", "Irritability", "Drowsiness", "Headache", "Dizziness"],
-            nursingConsiderations: "Few drug interactions (renally eliminated). Monitor for behavioral/mood changes (especially aggression in children). Can give IV or PO. Adjust dose in renal impairment.",
+            sideEffects: ["Behavioural changes", "Irritability", "Drowsiness", "Headache", "Dizziness"],
+            nursingConsiderations: "Few drug interactions (renally eliminated). Monitor for behavioural/mood changes (especially aggression in children). Can give IV or PO. Adjust dose in renal impairment.",
             dosageRange: "500-1500 mg PO BID"
         },
         {
@@ -836,7 +836,7 @@ medicationDatabase.cns.classes.anticonvulsants = {
             mechanism: "Increases GABA, blocks sodium channels, blocks T-type calcium channels",
             indications: ["Seizures (all types)", "Bipolar disorder", "Migraine prevention"],
             sideEffects: ["Hepatotoxicity", "Pancreatitis", "Thrombocytopenia", "Weight gain", "Tremor", "Teratogenic (neural tube defects)"],
-            nursingConsiderations: "Monitor LFTs and CBC. Highly teratogenic - pregnancy test before starting in women. Check levels (50-100 mcg/mL). Can cause fatal hepatotoxicity especially in children <2.",
+            nursingConsiderations: "Monitor LFTs and FBC. Highly teratogenic - pregnancy test before starting in women. Check levels (50-100 mcg/mL). Can cause fatal hepatotoxicity especially in children <2.",
             dosageRange: "500-2000 mg PO daily in divided doses"
         },
         {
@@ -844,8 +844,8 @@ medicationDatabase.cns.classes.anticonvulsants = {
             brand: "Tegretol",
             mechanism: "Blocks voltage-gated sodium channels; stabilizes inactivated state",
             indications: ["Partial seizures", "Tonic-clonic seizures", "Trigeminal neuralgia", "Bipolar disorder"],
-            sideEffects: ["Aplastic anemia", "Agranulocytosis", "SJS/TEN", "Hyponatremia", "Dizziness", "Diplopia"],
-            nursingConsiderations: "Test for HLA-B*1502 in Asian patients (SJS risk). Potent CYP3A4 inducer - many drug interactions. Monitor CBC and sodium. Autoinduces own metabolism.",
+            sideEffects: ["Aplastic anaemia", "Agranulocytosis", "SJS/TEN", "Hyponatraemia", "Dizziness", "Diplopia"],
+            nursingConsiderations: "Test for HLA-B*1502 in Asian patients (SJS risk). Potent CYP3A4 inducer - many drug interactions. Monitor FBC and sodium. Autoinduces own metabolism.",
             dosageRange: "200-1200 mg PO daily in divided doses"
         },
         {
@@ -862,7 +862,7 @@ medicationDatabase.cns.classes.anticonvulsants = {
             brand: "Neurontin",
             mechanism: "Binds alpha-2-delta subunit of voltage-gated calcium channels; reduces neurotransmitter release",
             indications: ["Partial seizures (adjunct)", "Postherpetic neuralgia", "Neuropathic pain", "Fibromyalgia (off-label)"],
-            sideEffects: ["Drowsiness", "Dizziness", "Ataxia", "Peripheral edema", "Weight gain"],
+            sideEffects: ["Drowsiness", "Dizziness", "Ataxia", "Peripheral oedema", "Weight gain"],
             nursingConsiderations: "Not a true GABA analog despite name. Renally eliminated - adjust in renal impairment. Taper when discontinuing. Absorption is saturable - higher doses have less bioavailability.",
             dosageRange: "300-1200 mg PO TID"
         }
@@ -916,7 +916,7 @@ medicationDatabase.cns.classes.antiparkinsonian = {
             brand: "Symmetrel/Gocovri",
             mechanism: "Increases dopamine release; NMDA receptor antagonist; mild anticholinergic",
             indications: ["Parkinson's disease", "Drug-induced EPS", "Levodopa-induced dyskinesia", "Influenza A"],
-            sideEffects: ["Livedo reticularis", "Ankle edema", "Confusion", "Hallucinations", "Insomnia"],
+            sideEffects: ["Livedo reticularis", "Ankle oedema", "Confusion", "Hallucinations", "Insomnia"],
             nursingConsiderations: "Unique mottled skin appearance (livedo reticularis) is harmless. Do not stop abruptly (neuroleptic malignant syndrome risk). Renally eliminated - adjust dose.",
             dosageRange: "100 mg PO BID; ER: 137-274 mg daily"
         },
@@ -942,26 +942,26 @@ medicationDatabase.endocrine.classes.insulins = {
             generic: "insulin lispro",
             brand: "Humalog",
             mechanism: "Rapid-acting insulin analog; mimics prandial insulin secretion",
-            indications: ["Type 1 DM", "Type 2 DM", "DKA", "Hyperkalemia"],
-            sideEffects: ["Hypoglycemia", "Injection site reactions", "Lipodystrophy", "Weight gain", "Hypokalemia"],
+            indications: ["Type 1 DM", "Type 2 DM", "DKA", "Hyperkalaemia"],
+            sideEffects: ["Hypoglycaemia", "Injection site reactions", "Lipodystrophy", "Weight gain", "Hypokalaemia"],
             nursingConsiderations: "Give within 15 min of meals (rapid onset 15 min, peak 1-2 hr). CLEAR solution. Can mix with NPH. Monitor blood glucose. Rotate injection sites.",
             dosageRange: "Individualized; 0.5-1 unit/kg/day total insulin"
         },
         {
             generic: "insulin aspart",
-            brand: "NovoLog",
+            brand: "NovoRapid/Fiasp",
             mechanism: "Rapid-acting insulin analog",
             indications: ["Type 1 DM", "Type 2 DM"],
-            sideEffects: ["Hypoglycemia", "Injection site reactions", "Lipodystrophy", "Weight gain"],
+            sideEffects: ["Hypoglycaemia", "Injection site reactions", "Lipodystrophy", "Weight gain"],
             nursingConsiderations: "Give 5-10 min before meals. Can be used in insulin pumps. CLEAR solution. Faster onset than regular insulin. Do not mix with other insulins in pump.",
             dosageRange: "Individualized based on glucose monitoring"
         },
         {
             generic: "regular insulin (human)",
-            brand: "Humulin R/Novolin R",
+            brand: "Actrapid/Humulin R",
             mechanism: "Short-acting insulin; identical structure to human insulin",
-            indications: ["Type 1 DM", "Type 2 DM", "DKA (IV)", "Hyperkalemia"],
-            sideEffects: ["Hypoglycemia", "Weight gain", "Injection site reactions", "Hypokalemia"],
+            indications: ["Type 1 DM", "Type 2 DM", "DKA (IV)", "Hyperkalaemia"],
+            sideEffects: ["Hypoglycaemia", "Weight gain", "Injection site reactions", "Hypokalaemia"],
             nursingConsiderations: "ONLY insulin that can be given IV. Give 30 min before meals SubQ. CLEAR solution. Used in sliding scales. Onset 30 min, peak 2-4 hr, duration 6-8 hr.",
             dosageRange: "Variable; IV drip 0.1 units/kg/hr for DKA"
         },
@@ -970,7 +970,7 @@ medicationDatabase.endocrine.classes.insulins = {
             brand: "Lantus/Basaglar",
             mechanism: "Long-acting basal insulin; forms microprecipitates for slow absorption",
             indications: ["Type 1 DM (basal)", "Type 2 DM (basal)"],
-            sideEffects: ["Hypoglycemia", "Weight gain", "Injection site reactions", "Lipodystrophy"],
+            sideEffects: ["Hypoglycaemia", "Weight gain", "Injection site reactions", "Lipodystrophy"],
             nursingConsiderations: "Give once daily at SAME TIME each day. CLEAR solution - do NOT mix with other insulins. No peak (peakless). Cannot give IV. Provides 24hr basal coverage.",
             dosageRange: "10-80 units SubQ daily (individualized)"
         },
@@ -979,17 +979,17 @@ medicationDatabase.endocrine.classes.insulins = {
             brand: "Levemir",
             mechanism: "Long-acting insulin; binds to albumin for prolonged action",
             indications: ["Type 1 DM (basal)", "Type 2 DM (basal)"],
-            sideEffects: ["Hypoglycemia", "Weight gain (less than glargine)", "Injection site reactions"],
+            sideEffects: ["Hypoglycaemia", "Weight gain (less than glargine)", "Injection site reactions"],
             nursingConsiderations: "Give once or twice daily. CLEAR solution. Do not mix with other insulins. May cause less weight gain than glargine. Duration 12-24 hours.",
             dosageRange: "10-60 units SubQ daily or BID"
         },
         {
             generic: "NPH insulin",
-            brand: "Humulin N/Novolin N",
+            brand: "Protaphane/Humulin NPH",
             mechanism: "Intermediate-acting insulin; protamine added to delay absorption",
             indications: ["Type 1 DM", "Type 2 DM"],
-            sideEffects: ["Hypoglycemia (especially at peak)", "Weight gain", "Injection site reactions"],
-            nursingConsiderations: "CLOUDY - must gently roll (not shake) to resuspend. Has a distinct peak (4-12 hr) - risk of hypoglycemia. Can mix with rapid/short-acting insulin. Give BID usually.",
+            sideEffects: ["Hypoglycaemia (especially at peak)", "Weight gain", "Injection site reactions"],
+            nursingConsiderations: "CLOUDY - must gently roll (not shake) to resuspend. Has a distinct peak (4-12 hr) - risk of hypoglycaemia. Can mix with rapid/short-acting insulin. Give BID usually.",
             dosageRange: "Individualized; typically BID dosing"
         }
     ]
@@ -1002,11 +1002,11 @@ medicationDatabase.endocrine.classes.oralAntidiabetics = {
     medications: [
         {
             generic: "metformin",
-            brand: "Glucophage",
+            brand: "Diabex/Diaformin/Glucophage",
             mechanism: "Biguanide; decreases hepatic glucose production, increases insulin sensitivity",
             indications: ["Type 2 DM (first-line)", "PCOS", "Prediabetes"],
-            sideEffects: ["GI upset (diarrhea, nausea)", "Metallic taste", "Lactic acidosis (rare)", "B12 deficiency"],
-            nursingConsiderations: "First-line for T2DM. Take with food to reduce GI effects. Hold before contrast dye procedures (48hr). Monitor renal function. No hypoglycemia when used alone. Weight neutral.",
+            sideEffects: ["GI upset (diarrhoea, nausea)", "Metallic taste", "Lactic acidosis (rare)", "B12 deficiency"],
+            nursingConsiderations: "First-line for T2DM. Take with food to reduce GI effects. Hold before contrast dye procedures (48hr). Monitor renal function. No hypoglycaemia when used alone. Weight neutral.",
             dosageRange: "500-2000 mg PO daily in divided doses"
         },
         {
@@ -1014,8 +1014,8 @@ medicationDatabase.endocrine.classes.oralAntidiabetics = {
             brand: "Glucotrol",
             mechanism: "Sulfonylurea; stimulates insulin release from pancreatic beta cells",
             indications: ["Type 2 DM"],
-            sideEffects: ["Hypoglycemia", "Weight gain", "GI upset", "Photosensitivity", "Blood dyscrasias"],
-            nursingConsiderations: "Give 30 min before meals. Can cause HYPOGLYCEMIA - educate patient on symptoms. Avoid in sulfa allergy. Less risk of hypoglycemia in elderly vs glyburide.",
+            sideEffects: ["Hypoglycaemia", "Weight gain", "GI upset", "Photosensitivity", "Blood dyscrasias"],
+            nursingConsiderations: "Give 30 min before meals. Can cause HYPOGLYCEMIA - educate patient on symptoms. Avoid in sulfa allergy. Less risk of hypoglycaemia in elderly vs glyburide.",
             dosageRange: "5-20 mg PO daily; XL: 5-20 mg daily"
         },
         {
@@ -1024,7 +1024,7 @@ medicationDatabase.endocrine.classes.oralAntidiabetics = {
             mechanism: "DPP-4 inhibitor; increases incretin hormones (GLP-1, GIP)",
             indications: ["Type 2 DM"],
             sideEffects: ["Nasopharyngitis", "Headache", "Pancreatitis (rare)", "Joint pain", "Upper respiratory infection"],
-            nursingConsiderations: "Weight neutral, low hypoglycemia risk. Monitor for signs of pancreatitis (severe abdominal pain). Adjust dose in renal impairment. Can be combined with metformin.",
+            nursingConsiderations: "Weight neutral, low hypoglycaemia risk. Monitor for signs of pancreatitis (severe abdominal pain). Adjust dose in renal impairment. Can be combined with metformin.",
             dosageRange: "100 mg PO daily"
         },
         {
@@ -1032,8 +1032,8 @@ medicationDatabase.endocrine.classes.oralAntidiabetics = {
             brand: "Jardiance",
             mechanism: "SGLT2 inhibitor; blocks glucose reabsorption in kidney, causes glycosuria",
             indications: ["Type 2 DM", "Heart failure", "CKD"],
-            sideEffects: ["UTI", "Genital mycotic infections", "DKA (euglycemic)", "Hypotension", "Volume depletion"],
-            nursingConsiderations: "CV and renal protective benefits. Monitor for genital yeast infections. Risk of euglycemic DKA (normal glucose but acidotic). Ensure adequate hydration. Do not use if GFR too low.",
+            sideEffects: ["UTI", "Genital mycotic infections", "DKA (euglycaemic)", "Hypotension", "Volume depletion"],
+            nursingConsiderations: "CV and renal protective benefits. Monitor for genital yeast infections. Risk of euglycaemic DKA (normal glucose but acidotic). Ensure adequate hydration. Do not use if GFR too low.",
             dosageRange: "10-25 mg PO daily"
         },
         {
@@ -1041,8 +1041,8 @@ medicationDatabase.endocrine.classes.oralAntidiabetics = {
             brand: "Victoza/Saxenda",
             mechanism: "GLP-1 receptor agonist; increases insulin secretion, slows gastric emptying, reduces appetite",
             indications: ["Type 2 DM", "Obesity (Saxenda)", "CV risk reduction"],
-            sideEffects: ["Nausea/vomiting", "Diarrhea", "Pancreatitis", "Thyroid C-cell tumors (animal studies)", "Injection site reactions"],
-            nursingConsiderations: "SubQ injection - any time of day independent of meals. Start low and titrate to reduce GI effects. Black box: thyroid C-cell tumors (avoid in MEN2/medullary thyroid cancer history). Promotes weight loss.",
+            sideEffects: ["Nausea/vomiting", "Diarrhoea", "Pancreatitis", "Thyroid C-cell tumours (animal studies)", "Injection site reactions"],
+            nursingConsiderations: "SubQ injection - any time of day independent of meals. Start low and titrate to reduce GI effects. Black box: thyroid C-cell tumours (avoid in MEN2/medullary thyroid cancer history). Promotes weight loss.",
             dosageRange: "0.6-1.8 mg SubQ daily (Victoza)"
         },
         {
@@ -1050,7 +1050,7 @@ medicationDatabase.endocrine.classes.oralAntidiabetics = {
             brand: "Actos",
             mechanism: "Thiazolidinedione (TZD); PPAR-gamma agonist; increases insulin sensitivity",
             indications: ["Type 2 DM"],
-            sideEffects: ["Weight gain", "Edema", "Heart failure", "Fractures", "Bladder cancer risk"],
+            sideEffects: ["Weight gain", "Oedema", "Heart failure", "Fractures", "Bladder cancer risk"],
             nursingConsiderations: "Contraindicated in NYHA Class III/IV heart failure. Monitor for fluid retention and weight gain. Takes 2-3 months for full effect. Monitor LFTs. Black box: CHF risk.",
             dosageRange: "15-45 mg PO daily"
         }
@@ -1065,9 +1065,9 @@ medicationDatabase.endocrine.classes.thyroid = {
     medications: [
         {
             generic: "levothyroxine",
-            brand: "Synthroid/Levoxyl",
+            brand: "Oroxine/Eutroxsig",
             mechanism: "Synthetic T4 (thyroxine); converts to active T3 in tissues",
-            indications: ["Hypothyroidism", "TSH suppression (thyroid cancer)", "Myxedema coma"],
+            indications: ["Hypothyroidism", "TSH suppression (thyroid cancer)", "Myxoedema coma"],
             sideEffects: ["Tachycardia", "Palpitations", "Insomnia", "Weight loss", "Heat intolerance", "Tremor"],
             nursingConsiderations: "Take on empty stomach 30-60 min before breakfast. Many drug interactions (separate from calcium, iron, antacids by 4 hrs). Monitor TSH every 6-8 weeks initially. Narrow therapeutic index.",
             dosageRange: "25-200 mcg PO daily"
@@ -1076,9 +1076,9 @@ medicationDatabase.endocrine.classes.thyroid = {
             generic: "liothyronine",
             brand: "Cytomel",
             mechanism: "Synthetic T3; direct active thyroid hormone",
-            indications: ["Hypothyroidism", "Myxedema coma", "T3 suppression test"],
+            indications: ["Hypothyroidism", "Myxoedema coma", "T3 suppression test"],
             sideEffects: ["Tachycardia", "Angina", "Tremor", "Insomnia", "Headache", "Heat intolerance"],
-            nursingConsiderations: "Faster onset and shorter duration than T4. More cardiac effects. Not usually first-line. Used in myxedema coma (IV). Monitor cardiac patients closely.",
+            nursingConsiderations: "Faster onset and shorter duration than T4. More cardiac effects. Not usually first-line. Used in myxoedema coma (IV). Monitor cardiac patients closely.",
             dosageRange: "25-75 mcg PO daily"
         },
         {
@@ -1087,7 +1087,7 @@ medicationDatabase.endocrine.classes.thyroid = {
             mechanism: "Thioamide; inhibits thyroid peroxidase, blocking thyroid hormone synthesis",
             indications: ["Hyperthyroidism", "Graves' disease", "Pre-thyroidectomy preparation"],
             sideEffects: ["Agranulocytosis", "Rash", "Hepatotoxicity", "Arthralgia", "GI upset"],
-            nursingConsiderations: "Monitor CBC (report sore throat/fever - agranulocytosis). Preferred over PTU except in first trimester pregnancy. Takes 3-8 weeks for full effect. Monitor thyroid levels.",
+            nursingConsiderations: "Monitor FBC (report sore throat/fever - agranulocytosis). Preferred over PTU except in first trimester pregnancy. Takes 3-8 weeks for full effect. Monitor thyroid levels.",
             dosageRange: "5-30 mg PO daily"
         },
         {
@@ -1112,8 +1112,8 @@ medicationDatabase.endocrine.classes.thyroid = {
             generic: "desmopressin",
             brand: "DDAVP",
             mechanism: "Synthetic ADH analog; promotes water reabsorption in collecting ducts",
-            indications: ["Diabetes insipidus (central)", "Nocturnal enuresis", "Hemophilia A", "von Willebrand disease"],
-            sideEffects: ["Hyponatremia", "Water intoxication", "Headache", "Nausea", "Nasal congestion (intranasal)"],
+            indications: ["Diabetes insipidus (central)", "Nocturnal enuresis", "Haemophilia A", "von Willebrand disease"],
+            sideEffects: ["Hyponatraemia", "Water intoxication", "Headache", "Nausea", "Nasal congestion (intranasal)"],
             nursingConsiderations: "Monitor sodium and fluid balance closely. Restrict fluids to prevent water intoxication. Available intranasal, PO, and IV. Teach patient to report persistent headache.",
             dosageRange: "0.1-0.4 mg PO BID; 10-40 mcg intranasal"
         }
@@ -1131,7 +1131,7 @@ medicationDatabase.antiinfective.classes.penicillins = {
             brand: "Amoxil",
             mechanism: "Aminopenicillin; binds PBPs to inhibit cell wall synthesis; broad spectrum",
             indications: ["Otitis media", "Sinusitis", "URI", "UTI", "H. pylori", "Dental infections"],
-            sideEffects: ["Diarrhea", "Rash", "Nausea", "Allergic reactions", "C. diff colitis"],
+            sideEffects: ["Diarrhoea", "Rash", "Nausea", "Allergic reactions", "C. diff colitis"],
             nursingConsiderations: "Most commonly prescribed antibiotic. Ask about penicillin allergy. Rash common with EBV (mono). Complete full course. Refrigerate suspension (good 14 days).",
             dosageRange: "250-875 mg PO BID-TID"
         },
@@ -1140,8 +1140,8 @@ medicationDatabase.antiinfective.classes.penicillins = {
             brand: "Augmentin",
             mechanism: "Amoxicillin + beta-lactamase inhibitor; extends spectrum to resistant organisms",
             indications: ["Sinusitis", "Otitis media", "Pneumonia", "UTI", "Skin infections", "Animal bites"],
-            sideEffects: ["Diarrhea (more than amoxicillin alone)", "Nausea", "Vomiting", "Rash", "Vaginal candidiasis"],
-            nursingConsiderations: "Take with food to reduce GI effects. Higher diarrhea rate than amoxicillin alone. Various formulations - not interchangeable. Refrigerate suspension.",
+            sideEffects: ["Diarrhoea (more than amoxicillin alone)", "Nausea", "Vomiting", "Rash", "Vaginal candidiasis"],
+            nursingConsiderations: "Take with food to reduce GI effects. Higher diarrhoea rate than amoxicillin alone. Various formulations - not interchangeable. Refrigerate suspension.",
             dosageRange: "500/125 to 875/125 mg PO BID"
         },
         {
@@ -1149,7 +1149,7 @@ medicationDatabase.antiinfective.classes.penicillins = {
             brand: "Zosyn",
             mechanism: "Extended-spectrum penicillin + beta-lactamase inhibitor; covers Pseudomonas",
             indications: ["Nosocomial pneumonia", "Intra-abdominal infections", "Sepsis", "Febrile neutropenia"],
-            sideEffects: ["Diarrhea", "Rash", "Thrombocytopenia", "Fever", "Phlebitis"],
+            sideEffects: ["Diarrhoea", "Rash", "Thrombocytopenia", "Fever", "Phlebitis"],
             nursingConsiderations: "IV only - broad-spectrum 'big gun' antibiotic. Infuse over 30 min (or 4 hr extended infusion). Monitor platelets. Adjust dose in renal impairment. Sodium content is significant.",
             dosageRange: "3.375-4.5 g IV q6-8h"
         },
@@ -1158,7 +1158,7 @@ medicationDatabase.antiinfective.classes.penicillins = {
             brand: "Pen-Vee K",
             mechanism: "Narrow-spectrum; effective against streptococci",
             indications: ["Strep pharyngitis", "Rheumatic fever prophylaxis", "Dental infections"],
-            sideEffects: ["GI upset", "Diarrhea", "Rash", "Hypersensitivity", "Oral candidiasis"],
+            sideEffects: ["GI upset", "Diarrhoea", "Rash", "Hypersensitivity", "Oral candidiasis"],
             nursingConsiderations: "Take on empty stomach for best absorption. Complete full 10-day course for strep throat. Drug of choice for Group A strep. Ask about penicillin allergy.",
             dosageRange: "250-500 mg PO QID"
         },
@@ -1175,8 +1175,8 @@ medicationDatabase.antiinfective.classes.penicillins = {
             generic: "ampicillin/sulbactam",
             brand: "Unasyn",
             mechanism: "Aminopenicillin + beta-lactamase inhibitor",
-            indications: ["Intra-abdominal infections", "Gynecologic infections", "Skin infections", "Community-acquired pneumonia"],
-            sideEffects: ["Diarrhea", "Rash", "Pain at injection site", "Thrombophlebitis", "C. diff"],
+            indications: ["Intra-abdominal infections", "Gynaecologic infections", "Skin infections", "Community-acquired pneumonia"],
+            sideEffects: ["Diarrhoea", "Rash", "Pain at injection site", "Thrombophlebitis", "C. diff"],
             nursingConsiderations: "IV/IM administration. Good for mixed infections (aerobic + anaerobic). Adjust dose in renal impairment. Ask about penicillin allergy (~10% cross-reactivity with cephalosporins).",
             dosageRange: "1.5-3 g IV/IM q6h"
         }
@@ -1193,7 +1193,7 @@ medicationDatabase.antiinfective.classes.cephalosporins = {
             brand: "Keflex",
             mechanism: "1st generation; good gram-positive coverage (MSSA, strep)",
             indications: ["Skin infections", "UTI", "Strep pharyngitis", "Otitis media", "Bone infections"],
-            sideEffects: ["GI upset", "Diarrhea", "Rash", "Headache", "Vaginal candidiasis"],
+            sideEffects: ["GI upset", "Diarrhoea", "Rash", "Headache", "Vaginal candidiasis"],
             nursingConsiderations: "Oral 1st gen cephalosporin. Good for skin/soft tissue. Ask about penicillin allergy (1-2% cross-reactivity). Can take with food. Complete full course.",
             dosageRange: "250-500 mg PO QID"
         },
@@ -1201,8 +1201,8 @@ medicationDatabase.antiinfective.classes.cephalosporins = {
             generic: "ceftriaxone",
             brand: "Rocephin",
             mechanism: "3rd generation; broad gram-negative coverage; crosses BBB",
-            indications: ["Meningitis", "Pneumonia", "Gonorrhea", "Sepsis", "UTI", "Lyme disease"],
-            sideEffects: ["Diarrhea", "Biliary sludge/pseudolithiasis", "Rash", "Pain at IM site", "C. diff"],
+            indications: ["Meningitis", "Pneumonia", "Gonorrhoea", "Sepsis", "UTI", "Lyme disease"],
+            sideEffects: ["Diarrhoea", "Biliary sludge/pseudolithiasis", "Rash", "Pain at IM site", "C. diff"],
             nursingConsiderations: "Once-daily dosing (long half-life). Do NOT mix with calcium-containing solutions (IV). Can cause biliary sludge - watch for RUQ pain. IM injection: reconstitute with lidocaine.",
             dosageRange: "1-2 g IV/IM q12-24h"
         },
@@ -1211,7 +1211,7 @@ medicationDatabase.antiinfective.classes.cephalosporins = {
             brand: "Ancef",
             mechanism: "1st generation IV cephalosporin; excellent MSSA coverage",
             indications: ["Surgical prophylaxis", "Skin infections", "UTI", "Bone infections", "Endocarditis"],
-            sideEffects: ["Diarrhea", "Nausea", "Rash", "Phlebitis", "Pain at injection site"],
+            sideEffects: ["Diarrhoea", "Nausea", "Rash", "Phlebitis", "Pain at injection site"],
             nursingConsiderations: "Gold standard for surgical prophylaxis (given within 60 min before incision). Redose intraoperatively for long cases. IV/IM only. Adjust in renal impairment.",
             dosageRange: "1-2 g IV q8h; 2 g IV for surgical prophylaxis"
         },
@@ -1220,7 +1220,7 @@ medicationDatabase.antiinfective.classes.cephalosporins = {
             brand: "Maxipime",
             mechanism: "4th generation; broad spectrum including Pseudomonas",
             indications: ["Febrile neutropenia", "Nosocomial pneumonia", "Complicated UTI", "Meningitis"],
-            sideEffects: ["Neurotoxicity (seizures, encephalopathy)", "Diarrhea", "Rash", "Fever", "Headache"],
+            sideEffects: ["Neurotoxicity (seizures, encephalopathy)", "Diarrhoea", "Rash", "Fever", "Headache"],
             nursingConsiderations: "Monitor for neurotoxicity especially in renal impairment (confusion, seizures, myoclonus). Adjust dose for renal function. Covers Pseudomonas. IV only.",
             dosageRange: "1-2 g IV q8-12h"
         },
@@ -1229,7 +1229,7 @@ medicationDatabase.antiinfective.classes.cephalosporins = {
             brand: "Omnicef",
             mechanism: "3rd generation oral cephalosporin",
             indications: ["Otitis media", "Sinusitis", "Pharyngitis", "Bronchitis", "Skin infections"],
-            sideEffects: ["Diarrhea", "Nausea", "Reddish stools (with iron)", "Rash", "Vaginal candidiasis"],
+            sideEffects: ["Diarrhoea", "Nausea", "Reddish stools (with iron)", "Rash", "Vaginal candidiasis"],
             nursingConsiderations: "Red/orange stools when taken with iron - not blood (reassure parents). Suspension tastes good for children. Separate from antacids and iron by 2 hours.",
             dosageRange: "300 mg PO BID or 600 mg daily"
         },
@@ -1238,7 +1238,7 @@ medicationDatabase.antiinfective.classes.cephalosporins = {
             brand: "Fortaz",
             mechanism: "3rd generation with excellent Pseudomonas coverage",
             indications: ["Pseudomonal infections", "Nosocomial pneumonia", "Meningitis", "Febrile neutropenia"],
-            sideEffects: ["Diarrhea", "Rash", "Nausea", "Eosinophilia", "Candidiasis"],
+            sideEffects: ["Diarrhoea", "Rash", "Nausea", "Eosinophilia", "Candidiasis"],
             nursingConsiderations: "One of the best cephalosporins for Pseudomonas. IV/IM only. Adjust dose in renal impairment. Monitor renal function. Often used in CF exacerbations.",
             dosageRange: "1-2 g IV q8h"
         }
@@ -1253,7 +1253,7 @@ medicationDatabase.antiinfective.classes.fluoroquinolones = {
     medications: [
         {
             generic: "ciprofloxacin",
-            brand: "Cipro",
+            brand: "Ciproxin",
             mechanism: "Inhibits DNA gyrase and topoisomerase IV; bactericidal",
             indications: ["UTI", "Prostatitis", "Anthrax", "GI infections", "Bone/joint infections"],
             sideEffects: ["Tendon rupture", "QT prolongation", "CNS effects", "Photosensitivity", "C. diff", "Aortic dissection"],
@@ -1274,7 +1274,7 @@ medicationDatabase.antiinfective.classes.fluoroquinolones = {
             brand: "Avelox",
             mechanism: "Respiratory fluoroquinolone; excellent anaerobic coverage",
             indications: ["Community-acquired pneumonia", "Sinusitis", "Skin infections", "Intra-abdominal infections"],
-            sideEffects: ["QT prolongation (most in class)", "Nausea", "Dizziness", "Diarrhea", "Hepatotoxicity"],
+            sideEffects: ["QT prolongation (most in class)", "Nausea", "Dizziness", "Diarrhoea", "Hepatotoxicity"],
             nursingConsiderations: "Highest QT prolongation risk in fluoroquinolone class. Do NOT adjust for renal impairment (hepatically eliminated). No urinary concentration (not for UTI). Same black box warnings.",
             dosageRange: "400 mg PO/IV daily"
         },
@@ -1292,7 +1292,7 @@ medicationDatabase.antiinfective.classes.fluoroquinolones = {
             brand: "Baxdela",
             mechanism: "Novel fluoroquinolone; dual-targeting (DNA gyrase and topoisomerase IV equally)",
             indications: ["Acute bacterial skin infections", "Community-acquired pneumonia"],
-            sideEffects: ["Nausea", "Diarrhea", "Headache", "Transaminase elevation", "Tendon effects"],
+            sideEffects: ["Nausea", "Diarrhoea", "Headache", "Transaminase elevation", "Tendon effects"],
             nursingConsiderations: "Newer fluoroquinolone with activity against MRSA. Same class black box warnings apply. IV and PO available. No significant QT prolongation (advantage over others).",
             dosageRange: "450 mg PO BID or 300 mg IV q12h"
         },
@@ -1300,7 +1300,7 @@ medicationDatabase.antiinfective.classes.fluoroquinolones = {
             generic: "norfloxacin",
             brand: "Noroxin",
             mechanism: "First-generation fluoroquinolone; concentrates in urinary tract",
-            indications: ["UTI", "Prostatitis", "Gonorrhea (historical)"],
+            indications: ["UTI", "Prostatitis", "Gonorrhoea (historical)"],
             sideEffects: ["Nausea", "Headache", "Dizziness", "Photosensitivity", "Tendon effects"],
             nursingConsiderations: "Primarily urinary tract concentration. Take on empty stomach with full glass of water. Same class warnings. Being phased out in many markets. Hydrate well.",
             dosageRange: "400 mg PO BID"
@@ -1318,7 +1318,7 @@ medicationDatabase.antiinfective.classes.macrolides = {
             brand: "Zithromax/Z-pack",
             mechanism: "Binds 50S ribosomal subunit; inhibits protein synthesis; bacteriostatic",
             indications: ["Community-acquired pneumonia", "Sinusitis", "Pharyngitis", "STIs (chlamydia)", "MAC prophylaxis"],
-            sideEffects: ["GI upset", "QT prolongation", "Hepatotoxicity", "Hearing loss", "Diarrhea"],
+            sideEffects: ["GI upset", "QT prolongation", "Hepatotoxicity", "Hearing loss", "Diarrhoea"],
             nursingConsiderations: "Z-pack: 5-day course (500mg day 1, then 250mg days 2-5). Long tissue half-life (continues working after last dose). Monitor QT interval. GI effects less than erythromycin.",
             dosageRange: "250-500 mg PO daily; 500 mg IV daily"
         },
@@ -1345,7 +1345,7 @@ medicationDatabase.antiinfective.classes.macrolides = {
             brand: "Dificid",
             mechanism: "Narrow-spectrum macrolide; inhibits RNA polymerase of C. difficile",
             indications: ["C. difficile infection"],
-            sideEffects: ["Nausea", "Vomiting", "Abdominal pain", "GI hemorrhage", "Anemia"],
+            sideEffects: ["Nausea", "Vomiting", "Abdominal pain", "GI haemorrhage", "Anaemia"],
             nursingConsiderations: "Targets C. diff specifically with minimal disruption of normal flora. Lower recurrence rate than vancomycin PO. Very expensive. Can take with or without food.",
             dosageRange: "200 mg PO BID x 10 days"
         },
@@ -1378,19 +1378,19 @@ medicationDatabase.gastrointestinal.classes.ppis = {
     medications: [
         {
             generic: "omeprazole",
-            brand: "Prilosec",
+            brand: "Losec",
             mechanism: "Irreversibly inhibits proton pump (H+/K+-ATPase) in parietal cells",
             indications: ["GERD", "Peptic ulcer disease", "H. pylori (with antibiotics)", "Zollinger-Ellison", "Stress ulcer prophylaxis"],
-            sideEffects: ["Headache", "C. diff risk", "Bone fractures (long-term)", "Hypomagnesemia", "B12 deficiency", "Pneumonia risk"],
-            nursingConsiderations: "Take 30 min before breakfast. Long-term use risks: fractures, C. diff, hypomagnesemia, B12 deficiency. Do not crush DR capsules (can open and sprinkle on applesauce). Interacts with clopidogrel.",
+            sideEffects: ["Headache", "C. diff risk", "Bone fractures (long-term)", "Hypomagnesaemia", "B12 deficiency", "Pneumonia risk"],
+            nursingConsiderations: "Take 30 min before breakfast. Long-term use risks: fractures, C. diff, hypomagnesaemia, B12 deficiency. Do not crush DR capsules (can open and sprinkle on applesauce). Interacts with clopidogrel.",
             dosageRange: "20-40 mg PO daily"
         },
         {
             generic: "pantoprazole",
-            brand: "Protonix",
+            brand: "Somac",
             mechanism: "Proton pump inhibitor; irreversible acid suppression",
-            indications: ["GERD", "Erosive esophagitis", "Stress ulcer prophylaxis (IV)", "Zollinger-Ellison"],
-            sideEffects: ["Headache", "Diarrhea", "Nausea", "C. diff", "Fracture risk", "Hypomagnesemia"],
+            indications: ["GERD", "Erosive oesophagitis", "Stress ulcer prophylaxis (IV)", "Zollinger-Ellison"],
+            sideEffects: ["Headache", "Diarrhoea", "Nausea", "C. diff", "Fracture risk", "Hypomagnesaemia"],
             nursingConsiderations: "IV form commonly used in hospitals for stress ulcer prophylaxis and GI bleeds. Fewer drug interactions than omeprazole. Do not split/crush/chew DR tablets.",
             dosageRange: "40 mg PO/IV daily"
         },
@@ -1398,17 +1398,17 @@ medicationDatabase.gastrointestinal.classes.ppis = {
             generic: "esomeprazole",
             brand: "Nexium",
             mechanism: "S-isomer of omeprazole; proton pump inhibitor",
-            indications: ["GERD", "Erosive esophagitis", "H. pylori", "NSAID-induced ulcer prevention"],
-            sideEffects: ["Headache", "Diarrhea", "Nausea", "Flatulence", "Abdominal pain"],
+            indications: ["GERD", "Erosive oesophagitis", "H. pylori", "NSAID-induced ulcer prevention"],
+            sideEffects: ["Headache", "Diarrhoea", "Nausea", "Flatulence", "Abdominal pain"],
             nursingConsiderations: "Can open capsule and mix granules with water for NG tube administration. Take before meals. Same long-term risks as other PPIs. Available OTC.",
             dosageRange: "20-40 mg PO daily"
         },
         {
             generic: "lansoprazole",
-            brand: "Prevacid",
+            brand: "Zoton",
             mechanism: "Proton pump inhibitor; acid-activated in parietal cell canaliculi",
             indications: ["GERD", "Peptic ulcer disease", "H. pylori", "NSAID-induced ulcers"],
-            sideEffects: ["Diarrhea", "Abdominal pain", "Nausea", "Headache", "C. diff risk"],
+            sideEffects: ["Diarrhoea", "Abdominal pain", "Nausea", "Headache", "C. diff risk"],
             nursingConsiderations: "Available as orally disintegrating tablet (good for patients with swallowing difficulty). Take before eating. SoluTab can be given via NG tube. Same class precautions.",
             dosageRange: "15-30 mg PO daily"
         },
@@ -1417,7 +1417,7 @@ medicationDatabase.gastrointestinal.classes.ppis = {
             brand: "Aciphex",
             mechanism: "Proton pump inhibitor with rapid activation at higher pH",
             indications: ["GERD", "Duodenal ulcer", "H. pylori", "Zollinger-Ellison"],
-            sideEffects: ["Headache", "Diarrhea", "Pharyngitis", "Flatulence", "Infection risk"],
+            sideEffects: ["Headache", "Diarrhoea", "Pharyngitis", "Flatulence", "Infection risk"],
             nursingConsiderations: "Fastest onset of all PPIs. Non-enzymatic activation means fewer drug interactions. Do not crush DR tablets. Swallow whole. Same long-term class risks.",
             dosageRange: "20 mg PO daily"
         },
@@ -1425,8 +1425,8 @@ medicationDatabase.gastrointestinal.classes.ppis = {
             generic: "dexlansoprazole",
             brand: "Dexilant",
             mechanism: "Dual-delayed release PPI; R-enantiomer of lansoprazole",
-            indications: ["GERD", "Erosive esophagitis"],
-            sideEffects: ["Diarrhea", "Abdominal pain", "Nausea", "URI", "Flatulence"],
+            indications: ["GERD", "Erosive oesophagitis"],
+            sideEffects: ["Diarrhoea", "Abdominal pain", "Nausea", "URI", "Flatulence"],
             nursingConsiderations: "Dual-release provides 2 peaks of drug release. Can be taken without regard to meals (unique among PPIs). Can open capsule and sprinkle on applesauce.",
             dosageRange: "30-60 mg PO daily"
         }
@@ -1440,10 +1440,10 @@ medicationDatabase.gastrointestinal.classes.h2Blockers = {
     medications: [
         {
             generic: "famotidine",
-            brand: "Pepcid",
+            brand: "Pepcidine/Pepzan",
             mechanism: "Competitively blocks H2 receptors on gastric parietal cells",
             indications: ["GERD", "Peptic ulcer disease", "Stress ulcer prophylaxis", "Heartburn"],
-            sideEffects: ["Headache", "Dizziness", "Constipation", "Diarrhea", "Thrombocytopenia (rare)"],
+            sideEffects: ["Headache", "Dizziness", "Constipation", "Diarrhoea", "Thrombocytopenia (rare)"],
             nursingConsiderations: "Most commonly used H2 blocker now (ranitidine withdrawn). Less potent than PPIs but faster onset. Can take PRN for heartburn. IV available for hospital use. Fewer drug interactions than PPIs.",
             dosageRange: "20-40 mg PO BID; 20 mg IV q12h"
         },
@@ -1452,8 +1452,8 @@ medicationDatabase.gastrointestinal.classes.h2Blockers = {
             brand: "Tagamet",
             mechanism: "First H2 blocker; blocks histamine stimulation of acid secretion",
             indications: ["GERD", "Peptic ulcer disease", "Heartburn", "Zollinger-Ellison"],
-            sideEffects: ["Gynecomastia", "Impotence", "Confusion (elderly)", "Many drug interactions", "Headache"],
-            nursingConsiderations: "Most drug interactions of all H2 blockers (inhibits CYP450). Can cause gynecomastia (anti-androgenic). Avoid in elderly (confusion). Largely replaced by famotidine.",
+            sideEffects: ["Gynaecomastia", "Impotence", "Confusion (elderly)", "Many drug interactions", "Headache"],
+            nursingConsiderations: "Most drug interactions of all H2 blockers (inhibits CYP450). Can cause gynaecomastia (anti-androgenic). Avoid in elderly (confusion). Largely replaced by famotidine.",
             dosageRange: "200-800 mg PO BID-QID"
         },
         {
@@ -1461,7 +1461,7 @@ medicationDatabase.gastrointestinal.classes.h2Blockers = {
             brand: "Axid",
             mechanism: "H2 receptor antagonist; also promotes GI motility",
             indications: ["GERD", "Peptic ulcer disease", "Heartburn"],
-            sideEffects: ["Headache", "Dizziness", "Diarrhea", "Rhinitis", "Somnolence"],
+            sideEffects: ["Headache", "Dizziness", "Diarrhoea", "Rhinitis", "Somnolence"],
             nursingConsiderations: "Has prokinetic activity (enhances gastric motility) - unique among H2 blockers. No anti-androgenic effects. Fewest drug interactions in class.",
             dosageRange: "150 mg PO BID or 300 mg at bedtime"
         },
@@ -1478,8 +1478,8 @@ medicationDatabase.gastrointestinal.classes.h2Blockers = {
             generic: "misoprostol",
             brand: "Cytotec",
             mechanism: "Prostaglandin E1 analog; replaces protective prostaglandins inhibited by NSAIDs",
-            indications: ["NSAID-induced ulcer prevention", "Labor induction (off-label)", "Incomplete abortion"],
-            sideEffects: ["Diarrhea (dose-related)", "Abdominal pain", "Uterine contractions", "Nausea", "Flatulence"],
+            indications: ["NSAID-induced ulcer prevention", "Labour induction (off-label)", "Incomplete abortion"],
+            sideEffects: ["Diarrhoea (dose-related)", "Abdominal pain", "Uterine contractions", "Nausea", "Flatulence"],
             nursingConsiderations: "CONTRAINDICATED in pregnancy (causes uterine contractions - abortifacient). Women of childbearing age need negative pregnancy test. Take with food. Combined with diclofenac (Arthrotec).",
             dosageRange: "200 mcg PO QID with food"
         },
@@ -1487,7 +1487,7 @@ medicationDatabase.gastrointestinal.classes.h2Blockers = {
             generic: "bismuth subsalicylate",
             brand: "Pepto-Bismol",
             mechanism: "Coats GI mucosa; has antibacterial and antisecretory properties",
-            indications: ["Diarrhea", "H. pylori (quadruple therapy)", "Heartburn", "Traveler's diarrhea prevention"],
+            indications: ["Diarrhoea", "H. pylori (quadruple therapy)", "Heartburn", "Traveler's diarrhoea prevention"],
             sideEffects: ["Black stools/tongue", "Constipation", "Tinnitus (salicylate toxicity)", "Nausea"],
             nursingConsiderations: "Warn patients about harmless black stools and tongue. Contains salicylate - avoid in aspirin allergy and children with viral illness (Reye's). Part of H. pylori quadruple therapy.",
             dosageRange: "524 mg PO q30min-1h PRN (max 8 doses/day)"
@@ -1521,16 +1521,16 @@ medicationDatabase.gastrointestinal.classes.antiemetics = {
         },
         {
             generic: "metoclopramide",
-            brand: "Reglan",
+            brand: "Maxolon",
             mechanism: "Dopamine antagonist; increases GI motility and blocks CTZ",
             indications: ["Gastroparesis", "GERD", "Nausea/vomiting", "Migraine (adjunct)"],
-            sideEffects: ["Tardive dyskinesia", "EPS", "Drowsiness", "Depression", "Diarrhea"],
+            sideEffects: ["Tardive dyskinesia", "EPS", "Drowsiness", "Depression", "Diarrhoea"],
             nursingConsiderations: "BLACK BOX: tardive dyskinesia risk (limit use to <12 weeks). Monitor for EPS (especially in young women). Give 30 min before meals. Treat EPS with diphenhydramine.",
             dosageRange: "5-10 mg PO/IV QID (30 min before meals)"
         },
         {
             generic: "prochlorperazine",
-            brand: "Compazine",
+            brand: "Stemetil",
             mechanism: "Phenothiazine; blocks dopamine D2 receptors in CTZ",
             indications: ["Nausea/vomiting", "Migraines (ER)", "Schizophrenia"],
             sideEffects: ["EPS (dystonia, akathisia)", "Sedation", "Hypotension", "Tardive dyskinesia", "NMS"],
@@ -1569,13 +1569,13 @@ medicationDatabase.psychiatric.classes.ssris = {
             brand: "Zoloft",
             mechanism: "Selectively inhibits serotonin reuptake in the synaptic cleft",
             indications: ["Major depression", "PTSD", "OCD", "Panic disorder", "Social anxiety", "PMDD"],
-            sideEffects: ["Nausea", "Diarrhea", "Sexual dysfunction", "Insomnia", "Headache", "Weight changes"],
+            sideEffects: ["Nausea", "Diarrhoea", "Sexual dysfunction", "Insomnia", "Headache", "Weight changes"],
             nursingConsiderations: "Most commonly prescribed antidepressant. Takes 4-6 weeks for full effect. BLACK BOX: suicidality in young adults/adolescents (monitor closely). Do not stop abruptly (discontinuation syndrome).",
             dosageRange: "50-200 mg PO daily"
         },
         {
             generic: "fluoxetine",
-            brand: "Prozac",
+            brand: "Lovan/Prozac",
             mechanism: "SSRI; most activating SSRI; very long half-life (1-3 days; metabolite 4-16 days)",
             indications: ["Depression", "OCD", "Bulimia nervosa", "Panic disorder", "PMDD"],
             sideEffects: ["Insomnia", "Anxiety", "Nausea", "Headache", "Sexual dysfunction", "Weight loss initially"],
@@ -1593,7 +1593,7 @@ medicationDatabase.psychiatric.classes.ssris = {
         },
         {
             generic: "paroxetine",
-            brand: "Paxil",
+            brand: "Aropax",
             mechanism: "SSRI with mild anticholinergic properties; most potent SSRI",
             indications: ["Depression", "GAD", "PTSD", "OCD", "Panic disorder", "Social anxiety", "Hot flashes"],
             sideEffects: ["Weight gain (most in class)", "Sedation", "Sexual dysfunction", "Discontinuation syndrome (worst)", "Dry mouth"],
@@ -1602,7 +1602,7 @@ medicationDatabase.psychiatric.classes.ssris = {
         },
         {
             generic: "citalopram",
-            brand: "Celexa",
+            brand: "Cipramil",
             mechanism: "SSRI; racemic mixture",
             indications: ["Major depression"],
             sideEffects: ["Nausea", "Dry mouth", "Drowsiness", "Sexual dysfunction", "QT prolongation (>40mg)"],
@@ -1628,7 +1628,7 @@ medicationDatabase.psychiatric.classes.antipsychotics = {
     medications: [
         {
             generic: "haloperidol",
-            brand: "Haldol",
+            brand: "Serenace/Haldol",
             mechanism: "Typical (first-gen) antipsychotic; potent D2 receptor blockade",
             indications: ["Schizophrenia", "Acute psychosis", "Delirium", "Tourette syndrome", "Severe agitation"],
             sideEffects: ["EPS (dystonia, akathisia, parkinsonism)", "Tardive dyskinesia", "QT prolongation", "NMS", "Sedation"],
@@ -1640,7 +1640,7 @@ medicationDatabase.psychiatric.classes.antipsychotics = {
             brand: "Zyprexa",
             mechanism: "Atypical (second-gen); blocks D2, 5-HT2A, H1, muscarinic receptors",
             indications: ["Schizophrenia", "Bipolar disorder", "Agitation", "Treatment-resistant depression (with fluoxetine)"],
-            sideEffects: ["Significant weight gain", "Metabolic syndrome", "Hyperglycemia", "Sedation", "Hyperlipidemia"],
+            sideEffects: ["Significant weight gain", "Metabolic syndrome", "Hyperglycaemia", "Sedation", "Hyperlipidemia"],
             nursingConsiderations: "Highest weight gain of atypicals. Monitor metabolic panel, glucose, lipids, weight at baseline and regularly. IM form for acute agitation (do NOT give with IM benzodiazepines). ODT available.",
             dosageRange: "5-20 mg PO daily; 5-10 mg IM"
         },
@@ -1657,9 +1657,9 @@ medicationDatabase.psychiatric.classes.antipsychotics = {
             generic: "risperidone",
             brand: "Risperdal",
             mechanism: "Atypical; potent D2 and 5-HT2A antagonist",
-            indications: ["Schizophrenia", "Bipolar mania", "Irritability in autism", "Behavioral disturbances"],
+            indications: ["Schizophrenia", "Bipolar mania", "Irritability in autism", "Behavioural disturbances"],
             sideEffects: ["EPS (dose-related)", "Hyperprolactinemia", "Weight gain", "Sedation", "Orthostatic hypotension"],
-            nursingConsiderations: "More EPS than other atypicals (especially at higher doses). Monitor prolactin (galactorrhea, amenorrhea, gynecomastia). Long-acting injection available (Risperdal Consta - q2 weeks).",
+            nursingConsiderations: "More EPS than other atypicals (especially at higher doses). Monitor prolactin (galactorrhoea, amenorrhoea, gynaecomastia). Long-acting injection available (Risperdal Consta - q2 weeks).",
             dosageRange: "1-6 mg PO daily; LAI: 25-50 mg IM q2 weeks"
         },
         {
@@ -1673,11 +1673,11 @@ medicationDatabase.psychiatric.classes.antipsychotics = {
         },
         {
             generic: "clozapine",
-            brand: "Clozaril",
+            brand: "Clozaril/Clopine",
             mechanism: "Atypical; weak D2 block, strong 5-HT2A, H1, muscarinic, alpha-1 block",
             indications: ["Treatment-resistant schizophrenia", "Suicidality in schizophrenia"],
             sideEffects: ["Agranulocytosis", "Metabolic syndrome", "Seizures", "Myocarditis", "Sedation", "Drooling", "Constipation"],
-            nursingConsiderations: "REMS program required (ANC monitoring). Weekly CBC for first 6 months, then biweekly, then monthly. Most effective antipsychotic but reserved due to agranulocytosis risk (~1%). Only for treatment-resistant cases.",
+            nursingConsiderations: "REMS program required (ANC monitoring). Weekly FBC for first 6 months, then biweekly, then monthly. Most effective antipsychotic but reserved due to agranulocytosis risk (~1%). Only for treatment-resistant cases.",
             dosageRange: "25-900 mg PO daily (slow titration)"
         }
     ]
@@ -1718,28 +1718,28 @@ medicationDatabase.psychiatric.classes.benzodiazepines = {
         },
         {
             generic: "midazolam",
-            brand: "Versed",
+            brand: "Hypnovel",
             mechanism: "Ultra-short-acting benzodiazepine; water-soluble at acidic pH",
-            indications: ["Procedural sedation", "Pre-anesthesia", "Status epilepticus", "ICU sedation"],
+            indications: ["Procedural sedation", "Pre-anaesthesia", "Status epilepticus", "ICU sedation"],
             sideEffects: ["Respiratory depression", "Amnesia (desired in procedures)", "Hypotension", "Paradoxical agitation"],
             nursingConsiderations: "Monitor respiratory status continuously. Have resuscitation equipment and flumazenil available. Potent amnestic - patient won't remember procedure. Onset 1-5 min IV. CYP3A4 metabolized.",
             dosageRange: "0.5-2 mg IV titrated; 0.25-1 mg/kg intranasal (seizures)"
         },
         {
             generic: "clonazepam",
-            brand: "Klonopin",
+            brand: "Rivotril",
             mechanism: "Long-acting benzodiazepine; serotonergic properties",
-            indications: ["Seizure disorders", "Panic disorder", "Anxiety", "REM sleep behavior disorder"],
+            indications: ["Seizure disorders", "Panic disorder", "Anxiety", "REM sleep behaviour disorder"],
             sideEffects: ["Sedation", "Ataxia", "Dependence", "Cognitive impairment", "Depression"],
             nursingConsiderations: "Long half-life (18-50 hr) - once or twice daily dosing. Used as chronic anticonvulsant (tolerance develops to sedation). Taper slowly to discontinue. ODT available.",
             dosageRange: "0.5-2 mg PO BID-TID"
         },
         {
             generic: "temazepam",
-            brand: "Restoril",
+            brand: "Normison/Temaze",
             mechanism: "Intermediate-acting benzodiazepine for sleep",
             indications: ["Insomnia (short-term)"],
-            sideEffects: ["Morning drowsiness", "Dizziness", "Dependence", "Complex sleep behaviors", "Rebound insomnia"],
+            sideEffects: ["Morning drowsiness", "Dizziness", "Dependence", "Complex sleep behaviours", "Rebound insomnia"],
             nursingConsiderations: "For short-term insomnia only (7-10 days). Safe in hepatic impairment (LOT rule). Take 30 min before bed. Assess fall risk especially in elderly. Avoid alcohol.",
             dosageRange: "7.5-30 mg PO at bedtime"
         }
@@ -1754,19 +1754,19 @@ medicationDatabase.musculoskeletal.classes.nsaids = {
     medications: [
         {
             generic: "ibuprofen",
-            brand: "Motrin/Advil",
+            brand: "Nurofen/Brufen",
             mechanism: "Non-selective COX-1 and COX-2 inhibitor",
-            indications: ["Pain", "Inflammation", "Fever", "Arthritis", "Dysmenorrhea", "PDA closure (neonates)"],
-            sideEffects: ["GI bleeding/ulcers", "Renal impairment", "CV events", "Hypertension", "Edema", "Platelet dysfunction"],
+            indications: ["Pain", "Inflammation", "Fever", "Arthritis", "Dysmenorrhoea", "PDA closure (neonates)"],
+            sideEffects: ["GI bleeding/ulcers", "Renal impairment", "CV events", "Hypertension", "Oedema", "Platelet dysfunction"],
             nursingConsiderations: "Take with food/milk to reduce GI effects. Avoid in renal impairment, heart failure, and 3rd trimester pregnancy. Monitor renal function with chronic use. Increases bleeding risk.",
             dosageRange: "200-800 mg PO TID-QID (max 3200 mg/day)"
         },
         {
             generic: "naproxen",
-            brand: "Aleve/Naprosyn",
+            brand: "Naprosyn/Anaprox/Naprogesic",
             mechanism: "Non-selective COX inhibitor; longer duration than ibuprofen",
-            indications: ["Pain", "Arthritis", "Gout", "Dysmenorrhea", "Tendinitis", "Bursitis"],
-            sideEffects: ["GI upset/bleeding", "Renal impairment", "CV events", "Headache", "Edema"],
+            indications: ["Pain", "Arthritis", "Gout", "Dysmenorrhoea", "Tendinitis", "Bursitis"],
+            sideEffects: ["GI upset/bleeding", "Renal impairment", "CV events", "Headache", "Oedema"],
             nursingConsiderations: "Longer half-life allows BID dosing. May have lower CV risk than other NSAIDs. Same GI and renal precautions. Take with food. Available OTC (Aleve: 220mg).",
             dosageRange: "250-500 mg PO BID"
         },
@@ -1774,8 +1774,8 @@ medicationDatabase.musculoskeletal.classes.nsaids = {
             generic: "celecoxib",
             brand: "Celebrex",
             mechanism: "Selective COX-2 inhibitor; less GI toxicity than non-selective NSAIDs",
-            indications: ["Osteoarthritis", "Rheumatoid arthritis", "Acute pain", "Dysmenorrhea", "Ankylosing spondylitis"],
-            sideEffects: ["CV events (MI, stroke)", "GI effects (less than other NSAIDs)", "Renal impairment", "Edema", "Headache"],
+            indications: ["Osteoarthritis", "Rheumatoid arthritis", "Acute pain", "Dysmenorrhoea", "Ankylosing spondylitis"],
+            sideEffects: ["CV events (MI, stroke)", "GI effects (less than other NSAIDs)", "Renal impairment", "Oedema", "Headache"],
             nursingConsiderations: "BLACK BOX: increased CV risk. Less GI bleeding than non-selective NSAIDs but NOT zero risk. Contains sulfonamide moiety. Avoid in severe CAD, recent CABG.",
             dosageRange: "100-200 mg PO BID"
         },
@@ -1784,7 +1784,7 @@ medicationDatabase.musculoskeletal.classes.nsaids = {
             brand: "Toradol",
             mechanism: "Potent non-selective COX inhibitor; strongest NSAID analgesic",
             indications: ["Moderate-severe acute pain (short-term)", "Post-operative pain", "Renal colic"],
-            sideEffects: ["GI bleeding (high risk)", "Renal failure", "Bleeding", "Edema", "Headache"],
+            sideEffects: ["GI bleeding (high risk)", "Renal failure", "Bleeding", "Oedema", "Headache"],
             nursingConsiderations: "Limit to 5 DAYS total (all routes combined) due to GI/renal toxicity. Do not use in renal impairment, elderly >65, or with anticoagulants. Most potent NSAID for pain.",
             dosageRange: "10 mg PO QID or 15-30 mg IV/IM q6h (max 5 days)"
         },
@@ -1793,13 +1793,13 @@ medicationDatabase.musculoskeletal.classes.nsaids = {
             brand: "Mobic",
             mechanism: "Preferential COX-2 inhibitor at lower doses",
             indications: ["Osteoarthritis", "Rheumatoid arthritis", "Juvenile arthritis"],
-            sideEffects: ["GI effects", "Edema", "Dizziness", "Headache", "Renal impairment"],
+            sideEffects: ["GI effects", "Oedema", "Dizziness", "Headache", "Renal impairment"],
             nursingConsiderations: "Once-daily dosing (convenient). Preferential COX-2 selectivity at 7.5 mg but loses selectivity at 15 mg. Same class precautions. Popular for arthritis due to convenience.",
             dosageRange: "7.5-15 mg PO daily"
         },
         {
             generic: "indomethacin",
-            brand: "Indocin",
+            brand: "Indocid",
             mechanism: "Potent non-selective COX inhibitor",
             indications: ["Gout (acute)", "PDA closure (neonates)", "Rheumatoid arthritis", "Ankylosing spondylitis", "Pericarditis"],
             sideEffects: ["Severe GI effects", "Headache (common)", "Dizziness", "Renal impairment", "CNS effects"],
@@ -1819,7 +1819,7 @@ medicationDatabase.musculoskeletal.classes.corticosteroids = {
             brand: "Deltasone",
             mechanism: "Synthetic glucocorticoid; inhibits phospholipase A2, reduces inflammatory mediators",
             indications: ["Asthma exacerbation", "Autoimmune diseases", "Allergic reactions", "Organ transplant", "COPD exacerbation"],
-            sideEffects: ["Hyperglycemia", "Osteoporosis", "Immunosuppression", "Cushingoid features", "Adrenal suppression", "Weight gain", "Mood changes"],
+            sideEffects: ["Hyperglycaemia", "Osteoporosis", "Immunosuppression", "Cushingoid features", "Adrenal suppression", "Weight gain", "Mood changes"],
             nursingConsiderations: "Take in morning (mimics natural cortisol). Taper slowly if used >2 weeks (adrenal suppression). Monitor glucose. Increased infection risk. Long-term: bone density, cataracts, GI protection.",
             dosageRange: "5-60 mg PO daily (varies widely by indication)"
         },
@@ -1828,7 +1828,7 @@ medicationDatabase.musculoskeletal.classes.corticosteroids = {
             brand: "Solu-Medrol/Medrol",
             mechanism: "Intermediate-acting glucocorticoid; 5x more potent than hydrocortisone",
             indications: ["Acute asthma", "MS exacerbation", "Spinal cord injury", "Severe inflammation", "Transplant rejection"],
-            sideEffects: ["Same as prednisone", "Hyperglycemia", "Infection", "GI upset", "Insomnia", "Mood changes"],
+            sideEffects: ["Same as prednisone", "Hyperglycaemia", "Infection", "GI upset", "Insomnia", "Mood changes"],
             nursingConsiderations: "IV pulse therapy for MS and severe flares. Dose pack (Medrol Dosepak) is pre-tapered. Give IV push slowly (cardiac arrhythmias with rapid injection). Monitor glucose closely.",
             dosageRange: "4-125 mg IV/PO; pulse: 1 g IV daily x 3-5 days"
         },
@@ -1836,9 +1836,9 @@ medicationDatabase.musculoskeletal.classes.corticosteroids = {
             generic: "dexamethasone",
             brand: "Decadron",
             mechanism: "Long-acting glucocorticoid; 25x more potent than hydrocortisone; minimal mineralocorticoid effect",
-            indications: ["Cerebral edema", "Croup", "Chemo-induced N/V", "Meningitis (adjunct)", "COVID-19 (severe)"],
-            sideEffects: ["Hyperglycemia", "Immunosuppression", "Insomnia", "Psychosis", "Adrenal suppression"],
-            nursingConsiderations: "Very long-acting (36-72 hr). No mineralocorticoid effect (no fluid retention). Used in brain tumors (reduces edema). Monitor neuro status. Not preferred for adrenal insufficiency replacement.",
+            indications: ["Cerebral oedema", "Croup", "Chemo-induced N/V", "Meningitis (adjunct)", "COVID-19 (severe)"],
+            sideEffects: ["Hyperglycaemia", "Immunosuppression", "Insomnia", "Psychosis", "Adrenal suppression"],
+            nursingConsiderations: "Very long-acting (36-72 hr). No mineralocorticoid effect (no fluid retention). Used in brain tumours (reduces oedema). Monitor neuro status. Not preferred for adrenal insufficiency replacement.",
             dosageRange: "0.5-16 mg PO/IV daily"
         },
         {
@@ -1846,7 +1846,7 @@ medicationDatabase.musculoskeletal.classes.corticosteroids = {
             brand: "Cortef/Solu-Cortef",
             mechanism: "Physiologic glucocorticoid; identical to endogenous cortisol",
             indications: ["Adrenal insufficiency", "Adrenal crisis", "Inflammation", "Allergic reactions"],
-            sideEffects: ["Fluid retention", "Hyperglycemia", "Hypokalemia", "Weight gain", "Immunosuppression"],
+            sideEffects: ["Fluid retention", "Hyperglycaemia", "Hypokalaemia", "Weight gain", "Immunosuppression"],
             nursingConsiderations: "Drug of choice for adrenal insufficiency replacement (physiologic dosing). Stress dosing needed during illness/surgery. Give 2/3 in AM, 1/3 in PM to mimic circadian rhythm.",
             dosageRange: "20-240 mg PO/IV daily (replacement: 15-25 mg daily)"
         },
@@ -1918,7 +1918,7 @@ medicationDatabase.musculoskeletal.classes.muscleRelaxants = {
             brand: "Dantrium",
             mechanism: "Acts directly on skeletal muscle; blocks ryanodine receptors, reduces calcium release from SR",
             indications: ["Malignant hyperthermia (treatment)", "Spasticity (cerebral palsy, MS, spinal cord injury)", "NMS"],
-            sideEffects: ["Hepatotoxicity", "Muscle weakness", "Drowsiness", "Diarrhea", "Photosensitivity"],
+            sideEffects: ["Hepatotoxicity", "Muscle weakness", "Drowsiness", "Diarrhoea", "Photosensitivity"],
             nursingConsiderations: "LIFE-SAVING for malignant hyperthermia (IV: 1-2.5 mg/kg, repeat to 10 mg/kg). Monitor LFTs with oral use. Only muscle relaxant acting peripherally (on muscle itself). Keep available in OR.",
             dosageRange: "25-100 mg PO QID; IV: 1-2.5 mg/kg for MH"
         },
@@ -1955,7 +1955,7 @@ medicationDatabase.antiinfective.classes.antivirals = {
             mechanism: "Neuraminidase inhibitor; blocks release of influenza virus from infected cells",
             indications: ["Influenza A and B (treatment)", "Influenza prophylaxis"],
             sideEffects: ["Nausea", "Vomiting", "Headache", "Neuropsychiatric events (rare)", "Insomnia"],
-            nursingConsiderations: "Most effective within 48 hrs of symptom onset. Take with food to reduce GI upset. Monitor for unusual behavior (especially children). Not a substitute for flu vaccine.",
+            nursingConsiderations: "Most effective within 48 hrs of symptom onset. Take with food to reduce GI upset. Monitor for unusual behaviour (especially children). Not a substitute for flu vaccine.",
             dosageRange: "75 mg PO BID x5 days (treatment)"
         },
         {
@@ -1982,7 +1982,7 @@ medicationDatabase.antiinfective.classes.antivirals = {
             mechanism: "Inhibits viral DNA polymerase; active against cytomegalovirus (CMV)",
             indications: ["CMV retinitis", "CMV prevention in transplant", "CMV in immunocompromised"],
             sideEffects: ["Bone marrow suppression", "Neutropenia", "Thrombocytopenia", "Nephrotoxicity", "Seizures"],
-            nursingConsiderations: "Monitor CBC closely (severe myelosuppression). Handle as hazardous drug (teratogenic/carcinogenic). Ensure hydration. Used mainly in immunocompromised patients.",
+            nursingConsiderations: "Monitor FBC closely (severe myelosuppression). Handle as hazardous drug (teratogenic/carcinogenic). Ensure hydration. Used mainly in immunocompromised patients.",
             dosageRange: "5 mg/kg IV q12h (induction)"
         },
         {
@@ -2017,7 +2017,7 @@ medicationDatabase.antiinfective.classes.antifungals = {
             brand: "Mycostatin",
             mechanism: "Polyene antifungal; binds ergosterol, disrupting fungal cell membrane",
             indications: ["Oral candidiasis (thrush)", "Cutaneous candidiasis", "Intestinal candidiasis"],
-            sideEffects: ["Nausea", "Vomiting", "Diarrhea", "Mouth irritation", "Rash (rare)"],
+            sideEffects: ["Nausea", "Vomiting", "Diarrhoea", "Mouth irritation", "Rash (rare)"],
             nursingConsiderations: "Swish and swish for 'swish and swallow' oral suspension - hold in mouth as long as possible. Not absorbed systemically (topical/local action). Continue 48hrs after symptoms resolve.",
             dosageRange: "400,000-600,000 units PO QID (swish and swallow)"
         },
@@ -2026,8 +2026,8 @@ medicationDatabase.antiinfective.classes.antifungals = {
             brand: "Fungizone/Ambisome",
             mechanism: "Polyene antifungal; binds ergosterol, creating pores in fungal membrane",
             indications: ["Severe systemic fungal infections", "Cryptococcal meningitis", "Invasive aspergillosis"],
-            sideEffects: ["Nephrotoxicity (severe)", "Infusion reactions (fever, chills)", "Hypokalemia", "Anemia", "Hypomagnesemia"],
-            nursingConsiderations: "Nicknamed 'amphoterrible' due to toxicity. Premedicate for infusion reactions (acetaminophen, diphenhydramine). Monitor renal function and electrolytes closely. Liposomal form less toxic.",
+            sideEffects: ["Nephrotoxicity (severe)", "Infusion reactions (fever, chills)", "Hypokalaemia", "Anaemia", "Hypomagnesaemia"],
+            nursingConsiderations: "Nicknamed 'amphoterrible' due to toxicity. Premedicate for infusion reactions (paracetamol, an antihistamine). Monitor renal function and electrolytes closely. Liposomal form less toxic.",
             dosageRange: "0.5-1 mg/kg/day IV (conventional)"
         },
         {
@@ -2035,7 +2035,7 @@ medicationDatabase.antiinfective.classes.antifungals = {
             brand: "Nizoral",
             mechanism: "Azole antifungal; inhibits ergosterol synthesis",
             indications: ["Cutaneous fungal infections", "Seborrheic dermatitis (shampoo)", "Dandruff"],
-            sideEffects: ["Hepatotoxicity", "Nausea", "Gynecomastia", "Adrenal suppression", "Drug interactions"],
+            sideEffects: ["Hepatotoxicity", "Nausea", "Gynaecomastia", "Adrenal suppression", "Drug interactions"],
             nursingConsiderations: "Oral form largely discontinued due to hepatotoxicity - mostly topical/shampoo now. Monitor LFTs if oral. Requires acidic environment for absorption. Many drug interactions.",
             dosageRange: "Topical/shampoo 2x/week; 200 mg PO daily (rare)"
         },
@@ -2052,7 +2052,7 @@ medicationDatabase.antiinfective.classes.antifungals = {
             generic: "micafungin",
             brand: "Mycamine",
             mechanism: "Echinocandin; inhibits fungal cell wall synthesis (beta-1,3-glucan)",
-            indications: ["Invasive candidiasis", "Esophageal candidiasis", "Candidemia prophylaxis"],
+            indications: ["Invasive candidiasis", "Oesophageal candidiasis", "Candidemia prophylaxis"],
             sideEffects: ["Elevated liver enzymes", "Nausea", "Histamine reactions", "Phlebitis", "Headache"],
             nursingConsiderations: "IV only. Good safety profile compared to amphotericin. Effective against azole-resistant Candida. Protect from light during infusion. Monitor LFTs.",
             dosageRange: "50-150 mg IV daily"
@@ -2076,7 +2076,7 @@ medicationDatabase.antiinfective.classes.antitubercular = {
             dosageRange: "300 mg PO daily"
         },
         {
-            generic: "rifampin",
+            generic: "rifampicin",
             brand: "Rifadin",
             mechanism: "Inhibits bacterial DNA-dependent RNA polymerase",
             indications: ["Active tuberculosis", "Latent TB", "Meningococcal prophylaxis", "Leprosy"],
@@ -2089,7 +2089,7 @@ medicationDatabase.antiinfective.classes.antitubercular = {
             brand: "PZA",
             mechanism: "Disrupts mycobacterial membrane metabolism and transport (bactericidal in acidic environment)",
             indications: ["Active tuberculosis (first 2 months)"],
-            sideEffects: ["Hepatotoxicity", "Hyperuricemia (gout)", "Arthralgia", "Photosensitivity", "GI upset"],
+            sideEffects: ["Hepatotoxicity", "Hyperuricaemia (gout)", "Arthralgia", "Photosensitivity", "GI upset"],
             nursingConsiderations: "Monitor uric acid (can trigger gout). Monitor LFTs. Used in initial 2-month intensive phase. The 'P' in RIPE. Encourage fluids.",
             dosageRange: "15-30 mg/kg PO daily (max 2 g)"
         },
@@ -2105,10 +2105,10 @@ medicationDatabase.antiinfective.classes.antitubercular = {
         {
             generic: "rifabutin",
             brand: "Mycobutin",
-            mechanism: "Inhibits DNA-dependent RNA polymerase (similar to rifampin)",
-            indications: ["MAC prophylaxis in HIV", "TB in HIV patients (fewer interactions than rifampin)"],
+            mechanism: "Inhibits DNA-dependent RNA polymerase (similar to rifampicin)",
+            indications: ["MAC prophylaxis in HIV", "TB in HIV patients (fewer interactions than rifampicin)"],
             sideEffects: ["Orange discoloration", "Uveitis", "Neutropenia", "GI upset", "Rash"],
-            nursingConsiderations: "Preferred over rifampin in HIV patients on antiretrovirals (fewer drug interactions). Also discolors body fluids. Monitor CBC. Watch for eye pain (uveitis).",
+            nursingConsiderations: "Preferred over rifampicin in HIV patients on antiretrovirals (fewer drug interactions). Also discolours body fluids. Monitor FBC. Watch for eye pain (uveitis).",
             dosageRange: "300 mg PO daily"
         },
         {
@@ -2151,7 +2151,7 @@ medicationDatabase.immuneOncology.classes.immunosuppressants = {
     description: "Suppress immune response for transplant and autoimmune conditions",
     medications: [
         {
-            generic: "cyclosporine",
+            generic: "ciclosporin",
             brand: "Sandimmune/Neoral",
             mechanism: "Calcineurin inhibitor; blocks T-cell activation and IL-2 production",
             indications: ["Organ transplant rejection prevention", "Rheumatoid arthritis", "Psoriasis"],
@@ -2162,9 +2162,9 @@ medicationDatabase.immuneOncology.classes.immunosuppressants = {
         {
             generic: "tacrolimus",
             brand: "Prograf",
-            mechanism: "Calcineurin inhibitor; more potent than cyclosporine",
+            mechanism: "Calcineurin inhibitor; more potent than ciclosporin",
             indications: ["Organ transplant rejection prevention", "Atopic dermatitis (topical)"],
-            sideEffects: ["Nephrotoxicity", "Neurotoxicity", "Hyperglycemia (new-onset diabetes)", "Hyperkalemia", "Tremor"],
+            sideEffects: ["Nephrotoxicity", "Neurotoxicity", "Hyperglycaemia (new-onset diabetes)", "Hyperkalaemia", "Tremor"],
             nursingConsiderations: "Monitor trough levels, renal function, and glucose. Avoid grapefruit. Many drug interactions (CYP3A4). Give at consistent times relative to meals.",
             dosageRange: "Individualized by trough levels"
         },
@@ -2173,8 +2173,8 @@ medicationDatabase.immuneOncology.classes.immunosuppressants = {
             brand: "CellCept",
             mechanism: "Inhibits inosine monophosphate dehydrogenase, blocking lymphocyte proliferation",
             indications: ["Organ transplant rejection prevention", "Lupus nephritis", "Autoimmune diseases"],
-            sideEffects: ["GI upset (diarrhea)", "Bone marrow suppression", "Increased infection risk", "Teratogenic"],
-            nursingConsiderations: "REMS program - highly teratogenic (pregnancy test required, 2 forms contraception). Monitor CBC. Take on empty stomach. Do not crush (or open capsules).",
+            sideEffects: ["GI upset (diarrhoea)", "Bone marrow suppression", "Increased infection risk", "Teratogenic"],
+            nursingConsiderations: "REMS program - highly teratogenic (pregnancy test required, 2 forms contraception). Monitor FBC. Take on empty stomach. Do not crush (or open capsules).",
             dosageRange: "1-1.5 g PO BID"
         },
         {
@@ -2183,7 +2183,7 @@ medicationDatabase.immuneOncology.classes.immunosuppressants = {
             mechanism: "Purine analog; inhibits DNA/RNA synthesis in immune cells",
             indications: ["Transplant rejection", "Rheumatoid arthritis", "IBD (Crohn's, UC)", "Lupus"],
             sideEffects: ["Bone marrow suppression", "Hepatotoxicity", "Increased malignancy risk", "Pancreatitis"],
-            nursingConsiderations: "Check TPMT enzyme levels before starting (deficiency = toxicity). Monitor CBC and LFTs. Avoid with allopurinol (dangerous interaction). Takes weeks for effect.",
+            nursingConsiderations: "Check TPMT enzyme levels before starting (deficiency = toxicity). Monitor FBC and LFTs. Avoid with allopurinol (dangerous interaction). Takes weeks for effect.",
             dosageRange: "1-3 mg/kg PO daily"
         },
         {
@@ -2192,7 +2192,7 @@ medicationDatabase.immuneOncology.classes.immunosuppressants = {
             mechanism: "Folate antagonist; inhibits dihydrofolate reductase, blocking DNA synthesis",
             indications: ["Rheumatoid arthritis", "Psoriasis", "Cancer (chemo)", "Ectopic pregnancy"],
             sideEffects: ["Bone marrow suppression", "Hepatotoxicity", "Mucositis", "Pulmonary toxicity", "Teratogenic"],
-            nursingConsiderations: "WEEKLY dosing for RA/psoriasis (FATAL if taken daily). Give folic acid to reduce side effects. Leucovorin rescue for high doses. Monitor CBC, LFTs. Highly teratogenic.",
+            nursingConsiderations: "WEEKLY dosing for RA/psoriasis (FATAL if taken daily). Give folic acid to reduce side effects. Leucovorin rescue for high doses. Monitor FBC, LFTs. Highly teratogenic.",
             dosageRange: "7.5-25 mg PO/SubQ WEEKLY (RA)"
         },
         {
@@ -2200,7 +2200,7 @@ medicationDatabase.immuneOncology.classes.immunosuppressants = {
             brand: "Deltasone",
             mechanism: "Corticosteroid; broad immunosuppression and anti-inflammatory effects",
             indications: ["Transplant rejection", "Autoimmune diseases", "Severe allergic reactions"],
-            sideEffects: ["Immunosuppression", "Hyperglycemia", "Osteoporosis", "Cushingoid features", "Adrenal suppression"],
+            sideEffects: ["Immunosuppression", "Hyperglycaemia", "Osteoporosis", "Cushingoid features", "Adrenal suppression"],
             nursingConsiderations: "Taper slowly - never stop abruptly (adrenal crisis). Monitor glucose and signs of infection. Take with food in morning. Long-term needs bone protection.",
             dosageRange: "Variable by indication"
         }
@@ -2217,16 +2217,16 @@ medicationDatabase.immuneOncology.classes.chemotherapy = {
             generic: "cyclophosphamide",
             brand: "Cytoxan",
             mechanism: "Alkylating agent; cross-links DNA to prevent cell division",
-            indications: ["Lymphoma", "Leukemia", "Breast cancer", "Lupus nephritis"],
-            sideEffects: ["Hemorrhagic cystitis", "Bone marrow suppression", "Alopecia", "Nausea/vomiting", "Infertility"],
-            nursingConsiderations: "Give mesna and lots of fluids to prevent hemorrhagic cystitis. Monitor CBC (nadir 7-14 days). Handle as hazardous drug. Encourage frequent voiding.",
+            indications: ["Lymphoma", "Leukaemia", "Breast cancer", "Lupus nephritis"],
+            sideEffects: ["Haemorrhagic cystitis", "Bone marrow suppression", "Alopecia", "Nausea/vomiting", "Infertility"],
+            nursingConsiderations: "Give mesna and lots of fluids to prevent haemorrhagic cystitis. Monitor FBC (nadir 7-14 days). Handle as hazardous drug. Encourage frequent voiding.",
             dosageRange: "Individualized by protocol/BSA"
         },
         {
             generic: "doxorubicin",
             brand: "Adriamycin",
             mechanism: "Anthracycline; intercalates DNA and inhibits topoisomerase II",
-            indications: ["Breast cancer", "Lymphoma", "Leukemia", "Sarcoma"],
+            indications: ["Breast cancer", "Lymphoma", "Leukaemia", "Sarcoma"],
             sideEffects: ["Cardiotoxicity (irreversible)", "Bone marrow suppression", "Red urine", "Alopecia", "Severe vesicant"],
             nursingConsiderations: "Nicknamed 'red devil'. Monitor cardiac function (ECHO/MUGA - lifetime dose limit). Vesicant - extravasation causes tissue necrosis. Red-orange urine is harmless.",
             dosageRange: "Individualized (lifetime max 450-550 mg/m2)"
@@ -2235,7 +2235,7 @@ medicationDatabase.immuneOncology.classes.chemotherapy = {
             generic: "vincristine",
             brand: "Oncovin",
             mechanism: "Vinca alkaloid; inhibits microtubule formation, arresting mitosis",
-            indications: ["Leukemia (ALL)", "Lymphoma", "Wilms tumor", "Neuroblastoma"],
+            indications: ["Leukaemia (ALL)", "Lymphoma", "Wilms tumour", "Neuroblastoma"],
             sideEffects: ["Peripheral neuropathy", "Constipation/ileus", "SIADH", "Alopecia", "Jaw pain"],
             nursingConsiderations: "FATAL if given intrathecally (IV ONLY - never into spinal fluid). Monitor for neuropathy (foot drop, numbness). Prevent constipation. Vesicant.",
             dosageRange: "Individualized (max 2 mg/dose)"
@@ -2261,10 +2261,10 @@ medicationDatabase.immuneOncology.classes.chemotherapy = {
         {
             generic: "tamoxifen",
             brand: "Nolvadex",
-            mechanism: "Selective estrogen receptor modulator (SERM); blocks estrogen in breast tissue",
-            indications: ["Estrogen receptor-positive breast cancer", "Breast cancer prevention (high risk)"],
+            mechanism: "Selective oestrogen receptor modulator (SERM); blocks oestrogen in breast tissue",
+            indications: ["Oestrogen receptor-positive breast cancer", "Breast cancer prevention (high risk)"],
             sideEffects: ["Hot flashes", "Increased VTE/clot risk", "Endometrial cancer risk", "Vaginal discharge", "Mood changes"],
-            nursingConsiderations: "Oral - taken for 5-10 years. Report leg pain/swelling (DVT) or abnormal vaginal bleeding (endometrial cancer). Regular gynecologic exams. Not traditional chemo.",
+            nursingConsiderations: "Oral - taken for 5-10 years. Report leg pain/swelling (DVT) or abnormal vaginal bleeding (endometrial cancer). Regular gynaecologic exams. Not traditional chemo.",
             dosageRange: "20 mg PO daily"
         }
     ]
@@ -2378,7 +2378,7 @@ medicationDatabase.ophthalmicOtic.classes.otic = {
         {
             generic: "benzocaine (otic)",
             brand: "Auralgan",
-            mechanism: "Local anesthetic; numbs ear pain",
+            mechanism: "Local anaesthetic; numbs ear pain",
             indications: ["Ear pain (otitis media)", "Cerumen removal discomfort"],
             sideEffects: ["Local irritation", "Allergic reaction", "Masking of symptoms"],
             nursingConsiderations: "For pain relief only - does not treat infection. Do not use with perforated eardrum. Warm to body temp. Only for symptomatic relief while treating underlying cause.",
@@ -2407,8 +2407,8 @@ medicationDatabase.fluidsElectrolytes.classes.ivFluids = {
             brand: "NS",
             mechanism: "Isotonic crystalloid; expands intravascular volume",
             indications: ["Fluid resuscitation", "Dehydration", "Blood transfusion compatible", "Med dilution"],
-            sideEffects: ["Fluid overload", "Hyperchloremic acidosis (large volumes)", "Edema", "Hypernatremia"],
-            nursingConsiderations: "Only fluid compatible with blood products. Isotonic - stays in vascular space. Monitor for fluid overload (crackles, edema, JVD). Caution in heart/renal failure.",
+            sideEffects: ["Fluid overload", "Hyperchloremic acidosis (large volumes)", "Oedema", "Hypernatraemia"],
+            nursingConsiderations: "Only fluid compatible with blood products. Isotonic - stays in vascular space. Monitor for fluid overload (crackles, oedema, JVD). Caution in heart/renal failure.",
             dosageRange: "Rate varies by indication"
         },
         {
@@ -2416,34 +2416,34 @@ medicationDatabase.fluidsElectrolytes.classes.ivFluids = {
             brand: "LR",
             mechanism: "Isotonic crystalloid with electrolytes (Na, K, Ca, Cl, lactate)",
             indications: ["Fluid resuscitation", "Burns", "Surgery", "Dehydration"],
-            sideEffects: ["Fluid overload", "Hyperkalemia (renal failure)", "Metabolic alkalosis", "Edema"],
-            nursingConsiderations: "Contains potassium - caution in renal failure/hyperkalemia. NOT compatible with blood (contains calcium). Lactate converts to bicarbonate. Avoid in liver failure.",
+            sideEffects: ["Fluid overload", "Hyperkalaemia (renal failure)", "Metabolic alkalosis", "Oedema"],
+            nursingConsiderations: "Contains potassium - caution in renal failure/hyperkalaemia. NOT compatible with blood (contains calcium). Lactate converts to bicarbonate. Avoid in liver failure.",
             dosageRange: "Rate varies by indication"
         },
         {
             generic: "5% dextrose in water",
             brand: "D5W",
             mechanism: "Isotonic in bag, becomes hypotonic after dextrose metabolized; provides free water and calories",
-            indications: ["Hydration", "Hypernatremia", "Medication dilution", "Hypoglycemia (as source)"],
-            sideEffects: ["Hyperglycemia", "Fluid shifts", "Water intoxication/hyponatremia", "Cerebral edema risk"],
-            nursingConsiderations: "Provides free water once dextrose is used. Do NOT use for resuscitation. Monitor glucose. Not for blood products. Caution in patients at risk for cerebral edema.",
+            indications: ["Hydration", "Hypernatraemia", "Medication dilution", "Hypoglycaemia (as source)"],
+            sideEffects: ["Hyperglycaemia", "Fluid shifts", "Water intoxication/hyponatraemia", "Cerebral oedema risk"],
+            nursingConsiderations: "Provides free water once dextrose is used. Do NOT use for resuscitation. Monitor glucose. Not for blood products. Caution in patients at risk for cerebral oedema.",
             dosageRange: "Rate varies by indication"
         },
         {
             generic: "0.45% sodium chloride (half normal saline)",
             brand: "1/2 NS",
             mechanism: "Hypotonic crystalloid; provides free water and some sodium",
-            indications: ["Maintenance fluids", "Hypernatremia", "Cellular dehydration", "DKA (after initial NS)"],
-            sideEffects: ["Cellular swelling", "Hypotension", "Cerebral edema", "Fluid shifts into cells"],
-            nursingConsiderations: "Hypotonic - shifts fluid INTO cells. Never give to patients with increased ICP or cerebral edema. Monitor neuro status. Used after initial resuscitation in DKA.",
+            indications: ["Maintenance fluids", "Hypernatraemia", "Cellular dehydration", "DKA (after initial NS)"],
+            sideEffects: ["Cellular swelling", "Hypotension", "Cerebral oedema", "Fluid shifts into cells"],
+            nursingConsiderations: "Hypotonic - shifts fluid INTO cells. Never give to patients with increased ICP or cerebral oedema. Monitor neuro status. Used after initial resuscitation in DKA.",
             dosageRange: "Rate varies by indication"
         },
         {
             generic: "3% sodium chloride (hypertonic saline)",
             brand: "3% NS",
             mechanism: "Hypertonic crystalloid; pulls fluid from cells into vascular space",
-            indications: ["Severe symptomatic hyponatremia", "Cerebral edema", "Increased ICP"],
-            sideEffects: ["Fluid overload", "Osmotic demyelination (if corrected too fast)", "Hypernatremia", "Phlebitis"],
+            indications: ["Severe symptomatic hyponatraemia", "Cerebral oedema", "Increased ICP"],
+            sideEffects: ["Fluid overload", "Osmotic demyelination (if corrected too fast)", "Hypernatraemia", "Phlebitis"],
             nursingConsiderations: "Correct sodium SLOWLY (max 8-10 mEq/L per 24hr) to prevent osmotic demyelination. Monitor sodium frequently. Give via central line if possible. ICU monitoring.",
             dosageRange: "Slow infusion, closely monitored"
         },
@@ -2452,7 +2452,7 @@ medicationDatabase.fluidsElectrolytes.classes.ivFluids = {
             brand: "Albuminar",
             mechanism: "Colloid; increases oncotic pressure to pull fluid into vascular space",
             indications: ["Hypovolemia", "Burns", "Hypoalbuminemia", "Ascites (with paracentesis)"],
-            sideEffects: ["Fluid overload", "Allergic reactions", "Heart failure", "Pulmonary edema"],
+            sideEffects: ["Fluid overload", "Allergic reactions", "Heart failure", "Pulmonary oedema"],
             nursingConsiderations: "Blood product derivative (no cross-match needed). Monitor for fluid overload (especially cardiac patients). 5% for hypovolemia, 25% for oncotic support. Watch for allergic reactions.",
             dosageRange: "Varies (5% or 25% solutions)"
         }
@@ -2469,8 +2469,8 @@ medicationDatabase.fluidsElectrolytes.classes.electrolytes = {
             generic: "potassium chloride",
             brand: "K-Dur/Klor-Con",
             mechanism: "Replaces potassium; essential for cardiac/muscle/nerve function",
-            indications: ["Hypokalemia", "Diuretic-induced potassium loss", "Digoxin therapy"],
-            sideEffects: ["GI irritation", "Hyperkalemia", "Cardiac arrhythmias", "IV site pain/phlebitis"],
+            indications: ["Hypokalaemia", "Diuretic-induced potassium loss", "Digoxin therapy"],
+            sideEffects: ["GI irritation", "Hyperkalaemia", "Cardiac arrhythmias", "IV site pain/phlebitis"],
             nursingConsiderations: "NEVER give IV push (fatal cardiac arrest). Always dilute, max 10 mEq/hr peripherally. Take oral with food/full glass water. Monitor K+ and ECG. Do not crush ER.",
             dosageRange: "20-100 mEq/day PO; IV diluted per protocol"
         },
@@ -2478,7 +2478,7 @@ medicationDatabase.fluidsElectrolytes.classes.electrolytes = {
             generic: "magnesium sulfate",
             brand: "Mag Sulfate",
             mechanism: "Replaces magnesium; cofactor for enzymes, cardiac/neuromuscular function",
-            indications: ["Hypomagnesemia", "Preeclampsia/eclampsia (seizure prevention)", "Torsades de pointes", "Preterm labor"],
+            indications: ["Hypomagnesaemia", "Preeclampsia/eclampsia (seizure prevention)", "Torsades de pointes", "Preterm labour"],
             sideEffects: ["Flushing", "Hypotension", "Respiratory depression", "Loss of deep tendon reflexes", "Cardiac arrest"],
             nursingConsiderations: "Monitor deep tendon reflexes (loss = toxicity), respirations, and urine output. Antidote: calcium gluconate. Continuous monitoring for OB use. Check Mg levels.",
             dosageRange: "1-2 g IV; OB protocols vary"
@@ -2487,7 +2487,7 @@ medicationDatabase.fluidsElectrolytes.classes.electrolytes = {
             generic: "calcium gluconate",
             brand: "Cal-Glu",
             mechanism: "Replaces calcium; essential for cardiac/muscle/bone/clotting",
-            indications: ["Hypocalcemia", "Hyperkalemia (cardioprotection)", "Magnesium toxicity", "Calcium channel blocker overdose"],
+            indications: ["Hypocalcaemia", "Hyperkalaemia (cardioprotection)", "Magnesium toxicity", "Calcium channel blocker overdose"],
             sideEffects: ["Bradycardia", "Hypotension", "Tissue necrosis (extravasation)", "Constipation", "Arrhythmias"],
             nursingConsiderations: "Give IV slowly (rapid = cardiac arrest). Monitor ECG. Vesicant - watch IV site. Antidote for magnesium toxicity. Preferred over calcium chloride peripherally.",
             dosageRange: "1-2 g IV slowly"
@@ -2496,8 +2496,8 @@ medicationDatabase.fluidsElectrolytes.classes.electrolytes = {
             generic: "sodium bicarbonate",
             brand: "Neut",
             mechanism: "Alkalinizing agent; neutralizes acid and raises blood pH",
-            indications: ["Metabolic acidosis", "Hyperkalemia", "Cardiac arrest (specific cases)", "TCA overdose"],
-            sideEffects: ["Metabolic alkalosis", "Hypokalemia", "Fluid overload", "Hypernatremia", "Hypocalcemia"],
+            indications: ["Metabolic acidosis", "Hyperkalaemia", "Cardiac arrest (specific cases)", "TCA overdose"],
+            sideEffects: ["Metabolic alkalosis", "Hypokalaemia", "Fluid overload", "Hypernatraemia", "Hypocalcaemia"],
             nursingConsiderations: "Monitor ABGs and electrolytes. Do not mix with calcium (precipitates). Can cause fluid overload (high sodium). Flush line before/after (incompatible with many drugs).",
             dosageRange: "Varies by ABG/indication"
         },
@@ -2506,17 +2506,17 @@ medicationDatabase.fluidsElectrolytes.classes.electrolytes = {
             brand: "K-Phos/Phospha",
             mechanism: "Replaces phosphate; essential for ATP, bone, cell membranes",
             indications: ["Hypophosphatemia", "Refeeding syndrome", "DKA recovery"],
-            sideEffects: ["Diarrhea", "Hyperphosphatemia", "Hypocalcemia", "Hyperkalemia (K-phos)", "Hypotension"],
-            nursingConsiderations: "Give IV slowly. Monitor phosphate, calcium, and potassium. Watch for hypocalcemia (phosphate binds calcium). Common in refeeding syndrome - monitor closely.",
+            sideEffects: ["Diarrhoea", "Hyperphosphatemia", "Hypocalcaemia", "Hyperkalaemia (K-phos)", "Hypotension"],
+            nursingConsiderations: "Give IV slowly. Monitor phosphate, calcium, and potassium. Watch for hypocalcaemia (phosphate binds calcium). Common in refeeding syndrome - monitor closely.",
             dosageRange: "Varies by level/protocol"
         },
         {
             generic: "oral rehydration salts",
             brand: "Pedialyte",
             mechanism: "Balanced glucose-electrolyte solution using sodium-glucose cotransport",
-            indications: ["Mild-moderate dehydration", "Diarrhea", "Vomiting", "Electrolyte maintenance"],
-            sideEffects: ["Nausea (if too fast)", "Vomiting", "Hypernatremia (if concentrated)"],
-            nursingConsiderations: "Give small frequent sips. Glucose enhances sodium/water absorption. First-line for pediatric dehydration. Better than water or sports drinks for rehydration.",
+            indications: ["Mild-moderate dehydration", "Diarrhoea", "Vomiting", "Electrolyte maintenance"],
+            sideEffects: ["Nausea (if too fast)", "Vomiting", "Hypernatraemia (if concentrated)"],
+            nursingConsiderations: "Give small frequent sips. Glucose enhances sodium/water absorption. First-line for paediatric dehydration. Better than water or sports drinks for rehydration.",
             dosageRange: "Sip frequently, titrate to hydration"
         }
     ]

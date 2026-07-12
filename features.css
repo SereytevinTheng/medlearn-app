@@ -615,3 +615,44 @@ body.dark .compare-table tr:nth-child(even) { background: #0f172a; }
     font-size: 0.85rem;
     color: var(--text-light);
 }
+
+
+/* ===== APINCH box ===== */
+.apinch-box {
+    background: #fef3c7;
+    border-left: 4px solid var(--danger);
+    padding: 1rem 1.25rem;
+    border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+    margin-bottom: 1.5rem;
+    font-size: 0.9rem;
+    line-height: 1.7;
+    color: #7c2d12;
+}
+body.dark .apinch-box { background: #422006; color: #fed7aa; }
+
+
+/* ===== Disclaimer Banner ===== */
+.disclaimer-banner {
+    background: #fffbeb;
+    border-bottom: 1px solid #fde68a;
+    color: #78350f;
+    padding: 0.6rem 2.5rem 0.6rem 1rem;
+    font-size: 0.78rem;
+    line-height: 1.45;
+    position: relative;
+}
+body.dark .disclaimer-banner { background: #422006; color: #fde68a; border-bottom-color: #78350f; }
+.disclaimer-banner.hidden { display: none; }
+.disclaimer-dismiss {
+    position: absolute;
+    top: 0.4rem;
+    right: 0.6rem;
+    background: none;
+    border: none;
+    font-size: 1.2rem;
+    cursor: pointer;
+    color: inherit;
+    line-height: 1;
+    opacity: 0.6;
+}
+.disclaimer-dismiss:hover { opacity: 1; }

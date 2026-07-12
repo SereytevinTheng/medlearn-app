@@ -36,13 +36,19 @@
             <button class="feature-nav-btn" onclick="features.openHighAlert()" data-feature="highalert">&#x1F6A8; High Alert</button>
             <button class="feature-nav-btn" onclick="features.openLabValues()" data-feature="labs">&#x1F52C; Labs</button>
             <button class="feature-nav-btn" onclick="features.openProgress()" data-feature="progress">&#x1F4CA; Progress</button>
-            <button class="feature-nav-btn" onclick="features.openNCLEX()" data-feature="nclex">&#x1F4DD; NCLEX</button>
+            <button class="feature-nav-btn" onclick="features.openNCLEX()" data-feature="nclex">&#x1F4DD; Practice Q's</button>
             <button class="feature-nav-btn" onclick="features.openTimedQuiz()" data-feature="timedquiz">&#x23F1;&#xFE0F; Timed</button>
             <button class="feature-nav-btn" onclick="features.openInteractions()" data-feature="interactions">&#x26A0;&#xFE0F; Interactions</button>
             <button class="feature-nav-btn" onclick="features.openMnemonics()" data-feature="mnemonics">&#x1F9E0; Mnemonics</button>
             <button class="feature-nav-btn" onclick="features.openLookAlike()" data-feature="lookalike">&#x1F440; Look-Alike</button>
             <a href="admin.html" class="feature-nav-btn" style="text-decoration:none;">&#x1F6E0;&#xFE0F; Edit</a>
         </nav>
+
+        <!-- Disclaimer Banner -->
+        <div id="disclaimerBanner" class="disclaimer-banner">
+            <span>&#x26A0;&#xFE0F; <strong>Study aid only - not clinical advice.</strong> Content is adapted to Australian conventions but must be verified against <strong>Therapeutic Guidelines (eTG)</strong> and the <strong>Australian Medicines Handbook (AMH)</strong>. Always follow current guidelines, product information and local policy. Prescribing in Australia uses active-ingredient (generic) names.</span>
+            <button onclick="features.dismissDisclaimer()" class="disclaimer-dismiss" title="Dismiss">&times;</button>
+        </div>
 
         <!-- Navigation Breadcrumb -->
         <nav id="breadcrumb" class="breadcrumb">

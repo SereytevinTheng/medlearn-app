@@ -44,6 +44,21 @@ function applyDarkModeOnLoad() {
 }
 applyDarkModeOnLoad();
 
+// ===== DISCLAIMER BANNER =====
+function dismissDisclaimer() {
+    const banner = document.getElementById('disclaimerBanner');
+    if (banner) banner.classList.add('hidden');
+    localStorage.setItem('medlearn_disclaimer_dismissed', '1');
+}
+
+function applyDisclaimerOnLoad() {
+    if (localStorage.getItem('medlearn_disclaimer_dismissed') === '1') {
+        const banner = document.getElementById('disclaimerBanner');
+        if (banner) banner.classList.add('hidden');
+    }
+}
+applyDisclaimerOnLoad();
+
 
 // ===== 1. FLASHCARD MODE =====
 let fcDeck = [];
@@ -257,14 +272,14 @@ function renderComparison() {
 // ===== 4. HIGH ALERT MEDICATIONS =====
 const highAlertMeds = [
     { generic: "heparin (unfractionated)", reason: "Narrow therapeutic index. Risk of fatal bleeding and HIT. Requires continuous aPTT monitoring." },
-    { generic: "warfarin", reason: "Narrow therapeutic index. Numerous drug/food interactions. Hemorrhage risk. INR monitoring essential." },
-    { generic: "insulin lispro", reason: "High-alert: wrong dose can cause fatal hypoglycemia. Always double-check units. Never abbreviate 'U'." },
+    { generic: "warfarin", reason: "Narrow therapeutic index. Numerous drug/food interactions. Haemorrhage risk. INR monitoring essential." },
+    { generic: "insulin lispro", reason: "High-alert: wrong dose can cause fatal hypoglycaemia. Always double-check units. Never abbreviate 'U'." },
     { generic: "insulin glargine", reason: "Often confused with other insulins. CLEAR solution (unlike NPH). Cannot mix. Wrong insulin = fatal." },
     { generic: "morphine", reason: "Respiratory depression risk. Dose-dependent. Monitor RR<12. Keep naloxone available." },
     { generic: "hydromorphone", reason: "5-7x more potent than morphine. Fatal if dose confused with morphine doses. HIGH ALERT." },
     { generic: "fentanyl", reason: "80-100x potent than morphine. Patch only for opioid-tolerant. Heat increases absorption = overdose." },
     { generic: "methotrexate", reason: "Fatal if given daily instead of weekly. Immunosuppressant. Requires folate supplementation." },
-    { generic: "digoxin", reason: "Narrow therapeutic index (0.5-2.0). Check apical pulse. Hypokalemia increases toxicity." },
+    { generic: "digoxin", reason: "Narrow therapeutic index (0.5-2.0). Check apical pulse. Hypokalaemia increases toxicity." },
     { generic: "potassium chloride", reason: "NEVER give IV push (fatal cardiac arrest). Must dilute. Max rate 10 mEq/hr peripherally." },
     { generic: "amiodarone", reason: "Extremely long half-life. Pulmonary/thyroid/liver toxicity. Numerous drug interactions." },
     { generic: "phenytoin", reason: "Narrow therapeutic index. IV max rate 50mg/min (cardiac arrest risk). Purple glove syndrome." },
@@ -278,8 +293,11 @@ function openHighAlert() {
     breadcrumb.innerHTML = '<span class="breadcrumb-item" onclick="app.renderHome()">Home</span><span class="breadcrumb-separator">&#x25B6;</span><span class="breadcrumb-item active">High Alert</span>';
     const allMeds = getAllMeds();
 
-    let html = '<div class="section-header"><div><h2>&#x1F6A8; High-Alert Medications</h2>';
-    html += '<p class="section-description">Medications with heightened risk of causing significant harm. Know these for NCLEX and clinical practice.</p></div></div>';
+    let html = '<div class="section-header"><div><h2>&#x1F6A8; High-Risk Medicines</h2>';
+    html += '<p class="section-description">Medicines with a heightened risk of causing significant harm. Essential knowledge for safe clinical practice.</p></div></div>';
+    html += '<div class="apinch-box"><strong>&#x1F4CC; Remember A PINCH</strong> - the Australian high-risk medicines mnemonic (ACSQHC):<br>' +
+        '<b>A</b>nti-infectives &bull; <b>P</b>otassium &amp; other electrolytes &bull; <b>I</b>nsulin &bull; ' +
+        '<b>N</b>arcotics (opioids) &amp; sedatives &bull; <b>C</b>hemotherapeutic agents &bull; <b>H</b>eparin &amp; anticoagulants</div>';
 
     highAlertMeds.forEach(ha => {
         const med = allMeds.find(m => m.generic === ha.generic);
@@ -296,18 +314,18 @@ function openHighAlert() {
 
 // ===== 5. LAB VALUES & ANTIDOTES =====
 const labData = [
-    { drug: "digoxin", range: "0.5 - 2.0 ng/mL", toxic: ">2.0 ng/mL", antidote: "Digoxin Immune Fab (Digibind)", monitoring: "Check K+ (hypokalemia increases toxicity). Check apical pulse." },
+    { drug: "digoxin", range: "0.5 - 2.0 ng/mL", toxic: ">2.0 ng/mL", antidote: "Digoxin Immune Fab (Digibind)", monitoring: "Check K+ (hypokalaemia increases toxicity). Check apical pulse." },
     { drug: "phenytoin", range: "10 - 20 mcg/mL", toxic: ">20 mcg/mL (free >2.0)", antidote: "No specific antidote. Supportive care.", monitoring: "Monitor free levels in hypoalbuminemia. Check albumin." },
-    { drug: "lithium", range: "0.6 - 1.2 mEq/L", toxic: ">1.5 mEq/L", antidote: "Hemodialysis for severe toxicity", monitoring: "Monitor Na+, thyroid, renal function. Maintain hydration." },
-    { drug: "theophylline", range: "5 - 15 mcg/mL", toxic: ">20 mcg/mL", antidote: "Charcoal hemoperfusion. Supportive.", monitoring: "Many drug interactions. Smoking affects levels. Monitor HR." },
+    { drug: "lithium", range: "0.6 - 1.2 mEq/L", toxic: ">1.5 mEq/L", antidote: "Haemodialysis for severe toxicity", monitoring: "Monitor Na+, thyroid, renal function. Maintain hydration." },
+    { drug: "theophylline", range: "5 - 15 mcg/mL", toxic: ">20 mcg/mL", antidote: "Charcoal haemoperfusion. Supportive.", monitoring: "Many drug interactions. Smoking affects levels. Monitor HR." },
     { drug: "vancomycin", range: "Trough: 15-20 mcg/mL (serious infections)", toxic: "Trough >20 mcg/mL", antidote: "No antidote. Adjust dose/interval.", monitoring: "Monitor renal function (nephrotoxic). Red man syndrome if infused too fast." },
-    { drug: "gentamicin", range: "Peak: 5-10; Trough: <2 mcg/mL", toxic: "Peak >12; Trough >2", antidote: "Hemodialysis in severe cases", monitoring: "Monitor renal function and hearing (ototoxic + nephrotoxic)." },
+    { drug: "gentamicin", range: "Peak: 5-10; Trough: <2 mcg/mL", toxic: "Peak >12; Trough >2", antidote: "Haemodialysis in severe cases", monitoring: "Monitor renal function and hearing (ototoxic + nephrotoxic)." },
     { drug: "warfarin", range: "INR 2.0 - 3.0 (most indications)", toxic: "INR >4.0 (bleeding risk)", antidote: "Vitamin K (phytonadione); FFP/PCC for emergency", monitoring: "Weekly INR initially. Watch for bleeding. Diet counseling (vitamin K foods)." },
     { drug: "heparin", range: "aPTT 1.5-2.5x control (60-80 sec)", toxic: "aPTT >100 sec", antidote: "Protamine sulfate (1 mg per 100 units heparin)", monitoring: "Check aPTT q6h. Monitor platelets for HIT. Watch for bleeding." },
-    { drug: "valproic acid", range: "50 - 100 mcg/mL", toxic: ">100 mcg/mL", antidote: "L-carnitine for hepatotoxicity. Supportive.", monitoring: "Monitor LFTs, CBC, ammonia. Teratogenic - pregnancy test." },
-    { drug: "carbamazepine", range: "4 - 12 mcg/mL", toxic: ">12 mcg/mL", antidote: "No specific antidote. Supportive.", monitoring: "Monitor CBC (aplastic anemia). Check Na+ (SIADH). HLA-B*1502 testing." },
-    { drug: "metformin", range: "N/A (no routine monitoring)", toxic: "Lactic acidosis (lactate >5)", antidote: "Hemodialysis. Bicarbonate for acidosis.", monitoring: "Monitor renal function (Cr/GFR). Hold before contrast. Monitor B12 annually." },
-    { drug: "acetaminophen", range: "10-30 mcg/mL (therapeutic)", toxic: ">150 mcg/mL at 4hr post-ingestion", antidote: "N-acetylcysteine (NAC / Mucomyst)", monitoring: "Max 4g/day (2g in liver disease). Check LFTs. Rumack-Matthew nomogram." }
+    { drug: "valproic acid", range: "50 - 100 mcg/mL", toxic: ">100 mcg/mL", antidote: "L-carnitine for hepatotoxicity. Supportive.", monitoring: "Monitor LFTs, FBC, ammonia. Teratogenic - pregnancy test." },
+    { drug: "carbamazepine", range: "4 - 12 mcg/mL", toxic: ">12 mcg/mL", antidote: "No specific antidote. Supportive.", monitoring: "Monitor FBC (aplastic anaemia). Check Na+ (SIADH). HLA-B*1502 testing." },
+    { drug: "metformin", range: "N/A (no routine monitoring)", toxic: "Lactic acidosis (lactate >5)", antidote: "Haemodialysis. Bicarbonate for acidosis.", monitoring: "Monitor renal function (Cr/GFR). Hold before contrast. Monitor B12 annually." },
+    { drug: "paracetamol", range: "Therapeutic dosing (no routine level)", toxic: ">150 mg/L at 4hr post-ingestion (use nomogram)", antidote: "Acetylcysteine (NAC)", monitoring: "Max 4g/day (lower in liver disease/low weight). Check LFTs and paracetamol level. Use the paracetamol treatment nomogram (per eTG)." }
 ];
 
 function openLabValues() {
@@ -398,17 +416,17 @@ function openProgress() {
 
 // ===== 7. NCLEX-STYLE QUESTIONS =====
 const nclexQuestions = [
-    { type: "SATA", stem: "A nurse is administering digoxin. Which findings should the nurse report to the provider? (Select all that apply)", options: ["Apical pulse of 58 bpm","Serum potassium of 3.2 mEq/L","Patient reports seeing yellow halos","Blood pressure 128/78","Serum digoxin level 1.8 ng/mL"], correct: [0,1,2], rationale: "Hold digoxin if HR<60. Hypokalemia (K<3.5) increases digoxin toxicity. Yellow/green visual changes indicate toxicity. BP is normal. Digoxin 1.8 is within range (0.5-2.0)." },
+    { type: "SATA", stem: "A nurse is administering digoxin. Which findings should the nurse report to the provider? (Select all that apply)", options: ["Apical pulse of 58 bpm","Serum potassium of 3.2 mEq/L","Patient reports seeing yellow halos","Blood pressure 128/78","Serum digoxin level 1.8 ng/mL"], correct: [0,1,2], rationale: "Hold digoxin if HR<60. Hypokalaemia (K<3.5) increases digoxin toxicity. Yellow/green visual changes indicate toxicity. BP is normal. Digoxin 1.8 is within range (0.5-2.0)." },
     { type: "SATA", stem: "Which nursing interventions are appropriate for a patient receiving heparin IV infusion? (Select all that apply)", options: ["Monitor aPTT every 6 hours","Use an infusion pump","Apply firm pressure to injection sites for 5 minutes","Administer vitamin K as antidote","Monitor platelet count"], correct: [0,1,2,4], rationale: "aPTT monitors heparin effectiveness. Infusion pump ensures accurate dosing. Firm pressure prevents bleeding. Protamine (not vitamin K) is the heparin antidote. Platelets monitor for HIT." },
     { type: "Priority", stem: "A nurse is caring for 4 patients. Which patient should the nurse assess FIRST?", options: ["Patient on morphine with respiratory rate of 10","Patient on furosemide with potassium of 3.4","Patient on metformin reporting nausea","Patient on lisinopril with dry cough"], correct: [0], rationale: "Respiratory rate of 10 with opioid use indicates respiratory depression — life-threatening emergency requiring immediate assessment and possible naloxone. Other findings require attention but are not immediately life-threatening." },
-    { type: "SATA", stem: "A patient is prescribed warfarin. Which patient statements indicate effective teaching? (Select all that apply)", options: ["I will eat consistent amounts of green vegetables","I will use an electric razor for shaving","I will take ibuprofen for headaches","I will get my blood tested regularly","I should avoid contact sports"], correct: [0,1,3,4], rationale: "Consistent vitamin K intake (not elimination) is correct. Electric razor prevents cuts. NSAIDs increase bleeding risk with warfarin - should use acetaminophen. Regular INR monitoring is essential. Avoiding contact sports prevents injury/bleeding." },
-    { type: "Priority", stem: "Which patient taking antihypertensives should the nurse see FIRST?", options: ["Patient on atenolol with HR 56 and dizziness","Patient on amlodipine with ankle edema","Patient on losartan with potassium 5.1","Patient on HCTZ with sodium 134"], correct: [0], rationale: "HR 56 with dizziness on a beta-blocker indicates symptomatic bradycardia requiring immediate assessment. Ankle edema is expected with CCBs. K+ 5.1 and Na 134 are slightly abnormal but not emergent." },
+    { type: "SATA", stem: "A patient is prescribed warfarin. Which patient statements indicate effective teaching? (Select all that apply)", options: ["I will eat consistent amounts of green vegetables","I will use an electric razor for shaving","I will take ibuprofen for headaches","I will get my blood tested regularly","I should avoid contact sports"], correct: [0,1,3,4], rationale: "Consistent vitamin K intake (not elimination) is correct. Electric razor prevents cuts. NSAIDs increase bleeding risk with warfarin - should use paracetamol. Regular INR monitoring is essential. Avoiding contact sports prevents injury/bleeding." },
+    { type: "Priority", stem: "Which patient taking antihypertensives should the nurse see FIRST?", options: ["Patient on atenolol with HR 56 and dizziness","Patient on amlodipine with ankle oedema","Patient on losartan with potassium 5.1","Patient on HCTZ with sodium 134"], correct: [0], rationale: "HR 56 with dizziness on a beta-blocker indicates symptomatic bradycardia requiring immediate assessment. Ankle oedema is expected with CCBs. K+ 5.1 and Na 134 are slightly abnormal but not emergent." },
     { type: "SATA", stem: "A nurse is caring for a patient with a fentanyl transdermal patch. Which interventions are appropriate? (Select all that apply)", options: ["Apply patch to a hairless area","Cut the patch in half if dose seems too high","Avoid applying heat to the patch area","Monitor respiratory rate regularly","Remove old patch before applying new one"], correct: [0,2,3,4], rationale: "Apply to hairless, non-irritated skin. NEVER cut patches (causes dose dumping). Heat increases absorption dangerously. Monitor RR for respiratory depression. Always remove old patch to prevent overdose." },
     { type: "Priority", stem: "A nurse is reviewing labs for patients on medications. Which result requires immediate notification of the provider?", options: ["Phenytoin level 22 mcg/mL","Digoxin level 1.6 ng/mL","INR 2.5 on warfarin","Lithium level 1.0 mEq/L"], correct: [0], rationale: "Phenytoin therapeutic range is 10-20. Level of 22 is toxic and can cause ataxia, nystagmus, seizures. Digoxin 1.6 is therapeutic (0.5-2.0). INR 2.5 is goal range (2-3). Lithium 1.0 is therapeutic (0.6-1.2)." },
     { type: "SATA", cat: "Cardiovascular", stem: "Which medications require the nurse to check an apical pulse for one full minute before administration? (Select all that apply)", options: ["Digoxin","Metoprolol","Lisinopril","Diltiazem","Furosemide"], correct: [0,1,3], rationale: "Digoxin, beta-blockers (metoprolol), and non-dihydropyridine CCBs (diltiazem) can cause bradycardia. Hold if HR<60. Lisinopril and furosemide don't typically require pulse check before admin." },
-    { type: "Priority", cat: "Endocrine", stem: "A patient with type 1 diabetes has a blood glucose of 45 mg/dL and is alert. What should the nurse do FIRST?", options: ["Give 15 g of fast-acting carbohydrate","Administer IV insulin","Call the provider","Recheck glucose in 1 hour"], correct: [0], rationale: "For conscious hypoglycemia, follow the rule of 15: give 15g fast-acting carb (juice, glucose tabs), recheck in 15 min. Never give insulin when glucose is low. Act before calling provider." },
+    { type: "Priority", cat: "Endocrine", stem: "A patient with type 1 diabetes has a blood glucose of 45 mg/dL and is alert. What should the nurse do FIRST?", options: ["Give 15 g of fast-acting carbohydrate","Administer IV insulin","Call the provider","Recheck glucose in 1 hour"], correct: [0], rationale: "For conscious hypoglycaemia, follow the rule of 15: give 15g fast-acting carb (juice, glucose tabs), recheck in 15 min. Never give insulin when glucose is low. Act before calling provider." },
     { type: "SATA", cat: "Endocrine", stem: "Which statements about insulin administration are correct? (Select all that apply)", options: ["Regular insulin is the only insulin given IV","Rotate injection sites to prevent lipodystrophy","NPH insulin is clear","Roll (don't shake) cloudy insulin","Rapid-acting insulin is given with meals"], correct: [0,1,3,4], rationale: "Regular insulin is the only IV insulin. Rotate sites. NPH is CLOUDY (not clear). Roll cloudy insulin gently. Rapid-acting (lispro/aspart) given with meals." },
-    { type: "Priority", cat: "Respiratory", stem: "A patient using an albuterol inhaler and a fluticasone inhaler asks which to use first. What should the nurse teach?", options: ["Use albuterol first, then fluticasone","Use fluticasone first, then albuterol","Use them at the same time","Order does not matter"], correct: [0], rationale: "Use the bronchodilator (albuterol) FIRST to open airways, then the corticosteroid (fluticasone) can reach deeper. Always rinse mouth after the steroid to prevent thrush." },
+    { type: "Priority", cat: "Respiratory", stem: "A patient using a salbutamol inhaler and a fluticasone inhaler asks which to use first. What should the nurse teach?", options: ["Use salbutamol first, then fluticasone","Use fluticasone first, then salbutamol","Use them at the same time","Order does not matter"], correct: [0], rationale: "Use the bronchodilator (salbutamol) FIRST to open airways, then the corticosteroid (fluticasone) can reach deeper. Always rinse mouth after the steroid to prevent thrush." },
     { type: "SATA", cat: "Anticoagulants", stem: "A patient on enoxaparin (Lovenox). Which nursing actions are correct? (Select all that apply)", options: ["Give subcutaneously in the abdomen","Do not expel the air bubble in the syringe","Aspirate before injecting","Do not rub the site after injection","Rotate injection sites"], correct: [0,1,3,4], rationale: "Give SubQ in the abdomen (love handles). Do NOT expel air bubble. Do NOT aspirate. Do NOT rub (causes bruising). Rotate sites." },
     { type: "Priority", cat: "Safety", stem: "The nurse prepares to give IV potassium chloride. Which action is essential for safety?", options: ["Always dilute and infuse via pump - never IV push","Give rapid IV push for faster effect","Give undiluted for accuracy","Push over 1 minute"], correct: [0], rationale: "IV potassium is NEVER given by IV push (causes fatal cardiac arrest). Always dilute and infuse slowly via pump, max 10 mEq/hr peripherally. A high-alert medication." },
     { type: "SATA", cat: "Pain/Opioids", stem: "A patient is receiving morphine for pain. Which findings require the nurse to hold the dose and notify the provider? (Select all that apply)", options: ["Respiratory rate of 8","Sedation level - difficult to arouse","Pain rating of 6/10","Respiratory rate of 18","Oxygen saturation of 85%"], correct: [0,1,4], rationale: "Hold opioids for RR<12, excessive sedation, and low O2 sat (respiratory depression signs). Pain 6/10 and RR 18 are acceptable to medicate." },
@@ -416,18 +434,18 @@ const nclexQuestions = [
     { type: "SATA", cat: "Psychiatric", stem: "A patient is starting an SSRI (sertraline). Which teaching points should the nurse include? (Select all that apply)", options: ["Full effect may take 4-6 weeks","Do not stop abruptly","Report thoughts of self-harm immediately","You can combine it freely with MAOIs","Watch for signs of serotonin syndrome"], correct: [0,1,2,4], rationale: "SSRIs take 4-6 weeks. Do not stop abruptly (discontinuation syndrome). Report suicidal thoughts (black box warning). NEVER combine with MAOIs (serotonin syndrome). Watch for serotonin syndrome." },
     { type: "Priority", cat: "Endocrine", stem: "A patient on levothyroxine reports palpitations, weight loss, and feeling hot. What does the nurse suspect?", options: ["Dose too high (hyperthyroid symptoms)","Dose too low","Normal response","Allergic reaction"], correct: [0], rationale: "Palpitations, weight loss, heat intolerance = signs of too much thyroid hormone (hyperthyroidism). The dose is likely too high and needs adjustment. Report to provider." },
     { type: "SATA", cat: "Antibiotics", stem: "Which teaching points apply to a patient taking ciprofloxacin? (Select all that apply)", options: ["Report tendon pain immediately","Avoid taking with antacids or dairy","Increase fluid intake","Use sunscreen (photosensitivity)","Take with calcium for better absorption"], correct: [0,1,2,3], rationale: "Fluoroquinolones cause tendon rupture (report pain). Antacids/dairy/calcium reduce absorption (separate by 2h). Hydrate well. Causes photosensitivity - use sunscreen." },
-    { type: "Priority", cat: "Cardiovascular", stem: "A patient started on lisinopril develops swelling of the lips and tongue. What is the nurse's priority?", options: ["Assess airway and prepare for emergency - this is angioedema","Document as a mild side effect","Give the next dose with food","Reassure the patient it will pass"], correct: [0], rationale: "Lip/tongue swelling = angioedema, a life-threatening emergency with ACE inhibitors. Priority is airway assessment and emergency intervention. Stop the drug and notify provider immediately." },
+    { type: "Priority", cat: "Cardiovascular", stem: "A patient started on lisinopril develops swelling of the lips and tongue. What is the nurse's priority?", options: ["Assess airway and prepare for emergency - this is angiooedema","Document as a mild side effect","Give the next dose with food","Reassure the patient it will pass"], correct: [0], rationale: "Lip/tongue swelling = angiooedema, a life-threatening emergency with ACE inhibitors. Priority is airway assessment and emergency intervention. Stop the drug and notify provider immediately." },
     { type: "SATA", cat: "Cardiovascular", stem: "Which are signs of digoxin toxicity the nurse should monitor for? (Select all that apply)", options: ["Nausea and vomiting","Yellow-green vision changes","Bradycardia","Increased appetite","Confusion"], correct: [0,1,2,4], rationale: "Digoxin toxicity: N/V, visual disturbances (yellow-green halos), bradycardia, and confusion. Anorexia (loss of appetite), NOT increased appetite, is an early sign." },
     { type: "Priority", cat: "Safety", stem: "A patient receiving IV magnesium sulfate has absent deep tendon reflexes. What should the nurse do FIRST?", options: ["Stop the infusion","Increase the rate","Continue and document","Give more magnesium"], correct: [0], rationale: "Absent deep tendon reflexes indicate magnesium toxicity. STOP the infusion first, then notify provider. Antidote is calcium gluconate. Monitor respirations and reflexes." },
-    { type: "SATA", cat: "Endocrine", stem: "Which patient teaching is correct for oral corticosteroids like prednisone? (Select all that apply)", options: ["Take with food","Do not stop abruptly","Monitor blood glucose","Report signs of infection","Take on an empty stomach at bedtime"], correct: [0,1,2,3], rationale: "Take prednisone with food (GI irritation), in the morning (mimics cortisol). Never stop abruptly (adrenal crisis). Monitor glucose (hyperglycemia) and watch for infection (immunosuppression)." },
+    { type: "SATA", cat: "Endocrine", stem: "Which patient teaching is correct for oral corticosteroids like prednisone? (Select all that apply)", options: ["Take with food","Do not stop abruptly","Monitor blood glucose","Report signs of infection","Take on an empty stomach at bedtime"], correct: [0,1,2,3], rationale: "Take prednisone with food (GI irritation), in the morning (mimics cortisol). Never stop abruptly (adrenal crisis). Monitor glucose (hyperglycaemia) and watch for infection (immunosuppression)." },
     { type: "Priority", cat: "Respiratory", stem: "A patient on theophylline has a level of 22 mcg/mL and reports nausea and palpitations. What is the priority?", options: ["Hold the drug and notify the provider - level is toxic","Give the next dose","Encourage more fluids only","Document as therapeutic"], correct: [0], rationale: "Theophylline therapeutic range is 5-15 mcg/mL. A level of 22 is toxic; nausea and palpitations are toxicity signs. Hold the drug and notify the provider." },
-    { type: "SATA", cat: "Pain/Opioids", stem: "Which interventions help prevent opioid-induced constipation? (Select all that apply)", options: ["Increase fluid intake","Start a bowel regimen (stool softener/laxative)","Increase dietary fiber","Encourage ambulation","Restrict fluids"], correct: [0,1,2,3], rationale: "Opioids commonly cause constipation. Prevent with fluids, prophylactic bowel regimen, fiber, and activity. Restricting fluids would worsen constipation." },
+    { type: "SATA", cat: "Pain/Opioids", stem: "Which interventions help prevent opioid-induced constipation? (Select all that apply)", options: ["Increase fluid intake","Start a bowel regimen (stool softener/laxative)","Increase dietary fibre","Encourage ambulation","Restrict fluids"], correct: [0,1,2,3], rationale: "Opioids commonly cause constipation. Prevent with fluids, prophylactic bowel regimen, fibre, and activity. Restricting fluids would worsen constipation." },
     { type: "Priority", cat: "Anticoagulants", stem: "A patient on warfarin has an INR of 5.5 with no active bleeding. What does the nurse anticipate?", options: ["Holding warfarin and possibly giving vitamin K","Increasing the warfarin dose","Giving protamine sulfate","No change needed"], correct: [0], rationale: "INR 5.5 is above therapeutic range (2-3) - high bleeding risk. Anticipate holding warfarin and possibly vitamin K. Protamine is for heparin, not warfarin." },
     { type: "SATA", cat: "Antibiotics", stem: "Which are appropriate when administering IV vancomycin? (Select all that apply)", options: ["Infuse over at least 60 minutes","Monitor trough levels","Monitor renal function","Give rapid IV push","Monitor for ototoxicity"], correct: [0,1,2,4], rationale: "Infuse slowly (>=60 min) to prevent Red Man Syndrome. Monitor troughs, renal function (nephrotoxic), and hearing (ototoxic). Never IV push." },
-    { type: "Priority", cat: "Psychiatric", stem: "A patient on lithium reports vomiting, diarrhea, and coarse tremors. What should the nurse suspect?", options: ["Lithium toxicity","Normal side effects","Underdosing","Allergic reaction"], correct: [0], rationale: "Vomiting, diarrhea, and coarse tremor are signs of lithium toxicity. Therapeutic range is narrow (0.6-1.2 mEq/L). Hold the dose, check level, and ensure hydration." },
-    { type: "SATA", cat: "Safety", stem: "Which are considered high-alert medications requiring extra safety checks? (Select all that apply)", options: ["Insulin","Heparin","IV potassium chloride","Oral acetaminophen","Opioids"], correct: [0,1,2,4], rationale: "Insulin, heparin, concentrated electrolytes (KCl), and opioids are high-alert medications per ISMP. Routine oral acetaminophen is not typically high-alert (though max dose matters)." },
-    { type: "Priority", cat: "Cardiovascular", stem: "A patient on furosemide has a potassium of 2.9 mEq/L. What is the nurse's priority concern?", options: ["Risk of cardiac dysrhythmias","Increased urine output","Mild headache","Weight loss"], correct: [0], rationale: "K+ 2.9 is hypokalemia (normal 3.5-5.0). Loop diuretics waste potassium. Low K+ increases risk of life-threatening cardiac dysrhythmias, especially dangerous with digoxin." },
-    { type: "SATA", cat: "Respiratory", stem: "Which teaching points are correct for a patient using an inhaled corticosteroid? (Select all that apply)", options: ["Rinse mouth after each use","Use a spacer if prescribed","This is a rescue inhaler for attacks","Use it regularly even when feeling well","Watch for oral thrush"], correct: [0,1,3,4], rationale: "Rinse mouth (prevents thrush), use spacer, use regularly (maintenance, NOT rescue), and watch for thrush. Inhaled steroids are NOT rescue inhalers - albuterol is." }
+    { type: "Priority", cat: "Psychiatric", stem: "A patient on lithium reports vomiting, diarrhoea, and coarse tremors. What should the nurse suspect?", options: ["Lithium toxicity","Normal side effects","Underdosing","Allergic reaction"], correct: [0], rationale: "Vomiting, diarrhoea, and coarse tremor are signs of lithium toxicity. Therapeutic range is narrow (0.6-1.2 mEq/L). Hold the dose, check level, and ensure hydration." },
+    { type: "SATA", cat: "Safety", stem: "Which are considered high-alert medications requiring extra safety checks? (Select all that apply)", options: ["Insulin","Heparin","IV potassium chloride","Oral paracetamol","Opioids"], correct: [0,1,2,4], rationale: "Insulin, heparin, concentrated electrolytes (KCl), and opioids are high-alert medicines. Routine oral paracetamol is not typically high-alert (though the maximum daily dose still matters)." },
+    { type: "Priority", cat: "Cardiovascular", stem: "A patient on furosemide has a potassium of 2.9 mEq/L. What is the nurse's priority concern?", options: ["Risk of cardiac dysrhythmias","Increased urine output","Mild headache","Weight loss"], correct: [0], rationale: "K+ 2.9 is hypokalaemia (normal 3.5-5.0). Loop diuretics waste potassium. Low K+ increases risk of life-threatening cardiac dysrhythmias, especially dangerous with digoxin." },
+    { type: "SATA", cat: "Respiratory", stem: "Which teaching points are correct for a patient using an inhaled corticosteroid? (Select all that apply)", options: ["Rinse mouth after each use","Use a spacer if prescribed","This is a reliever inhaler for attacks","Use it regularly even when feeling well","Watch for oral thrush"], correct: [0,1,3,4], rationale: "Rinse mouth (prevents thrush), use spacer, use regularly (preventer, NOT reliever), and watch for thrush. Inhaled steroids are preventers - salbutamol is the reliever." }
 ];
 
 let nclexIndex = 0;
@@ -440,8 +458,9 @@ function openNCLEX() {
     breadcrumb.innerHTML = '<span class="breadcrumb-item" onclick="app.renderHome()">Home</span><span class="breadcrumb-separator">&#x25B6;</span><span class="breadcrumb-item active">NCLEX Prep</span>';
     // Build category list
     const cats = [...new Set(nclexQuestions.map(q => q.cat || 'General'))].sort();
-    let html = '<div class="section-header"><div><h2>&#x1F4DD; NCLEX-Style Practice</h2>';
-    html += `<p class="section-description">${nclexQuestions.length} questions available. Choose a category to begin.</p></div></div>`;
+    let html = '<div class="section-header"><div><h2>&#x1F4DD; Practice Questions</h2>';
+    html += `<p class="section-description">Scenario-style questions for Australian nursing students (aligned to NMBA registered nurse standards). ${nclexQuestions.length} questions available - choose a category.</p>`;
+    html += '<p style="font-size:0.8rem;color:var(--text-light);margin-top:0.5rem;">Note: Australia uses active-ingredient (generic) prescribing. Always verify against Therapeutic Guidelines (eTG) and AMH.</p></div></div>';
     html += '<div class="nclex-cat-grid">';
     html += `<div class="nclex-cat-card" onclick="features.startNCLEX('all')"><div class="ncc-title">&#x1F3AF; All Categories</div><div class="ncc-count">${nclexQuestions.length} questions</div></div>`;
     cats.forEach(c => {
@@ -461,7 +480,7 @@ function startNCLEX(cat) {
 
 function renderNCLEXQuestion() {
     if (nclexIndex >= nclexActive.length) {
-        mainContent.innerHTML = `<div style="text-align:center;padding:3rem 1rem;"><h2>NCLEX Practice Complete!</h2><p style="font-size:2rem;font-weight:700;color:var(--primary);margin:1rem 0;">${nclexScore}/${nclexActive.length}</p><p style="color:var(--text-light);">${Math.round((nclexScore/nclexActive.length)*100)}%</p><button onclick="features.openNCLEX()" style="margin-top:1rem;padding:0.7rem 1.5rem;background:var(--primary);color:white;border:none;border-radius:8px;font-weight:600;cursor:pointer;">Choose Another Category</button></div>`;
+        mainContent.innerHTML = `<div style="text-align:center;padding:3rem 1rem;"><h2>Practice Complete!</h2><p style="font-size:2rem;font-weight:700;color:var(--primary);margin:1rem 0;">${nclexScore}/${nclexActive.length}</p><p style="color:var(--text-light);">${Math.round((nclexScore/nclexActive.length)*100)}%</p><button onclick="features.openNCLEX()" style="margin-top:1rem;padding:0.7rem 1.5rem;background:var(--primary);color:white;border:none;border-radius:8px;font-weight:600;cursor:pointer;">Choose Another Category</button></div>`;
         saveProgress('nclex', {score: nclexScore, total: nclexActive.length, date: new Date().toISOString()});
         return;
     }
@@ -469,7 +488,7 @@ function renderNCLEXQuestion() {
     const q = nclexActive[nclexIndex];
     const isSATA = q.type === 'SATA';
 
-    let html = '<div class="section-header"><div><h2>&#x1F4DD; NCLEX Practice</h2>';
+    let html = '<div class="section-header"><div><h2>&#x1F4DD; Practice Question</h2>';
     html += `<p class="section-description">Question ${nclexIndex+1} of ${nclexActive.length} ${q.cat ? '&bull; '+q.cat : ''}</p></div></div>`;
     html += `<div class="nclex-question-card"><span class="nclex-type">${q.type}</span>`;
     html += `<div class="nclex-stem">${q.stem}</div>`;
@@ -538,21 +557,21 @@ function nextNCLEX() { nclexIndex++; renderNCLEXQuestion(); }
 
 // ===== 8. DRUG INTERACTION CHECKER =====
 const drugInteractions = [
-    { drugs: ["warfarin","aspirin"], severity: "severe", effect: "Greatly increased bleeding risk. Both affect hemostasis through different mechanisms.", nursing: "Avoid combination unless specifically ordered. Monitor for signs of bleeding." },
-    { drugs: ["warfarin","ibuprofen"], severity: "severe", effect: "NSAIDs increase bleeding risk and can displace warfarin from protein binding.", nursing: "Use acetaminophen instead. If NSAID required, monitor INR closely." },
+    { drugs: ["warfarin","aspirin"], severity: "severe", effect: "Greatly increased bleeding risk. Both affect haemostasis through different mechanisms.", nursing: "Avoid combination unless specifically ordered. Monitor for signs of bleeding." },
+    { drugs: ["warfarin","ibuprofen"], severity: "severe", effect: "NSAIDs increase bleeding risk and can displace warfarin from protein binding.", nursing: "Use paracetamol instead. If NSAID required, monitor INR closely." },
     { drugs: ["metformin","contrast dye"], severity: "severe", effect: "Risk of lactic acidosis. Contrast can impair renal function needed to clear metformin.", nursing: "Hold metformin 48hrs before and after contrast. Check renal function before restarting." },
-    { drugs: ["digoxin","furosemide"], severity: "moderate", effect: "Furosemide causes hypokalemia which increases digoxin toxicity.", nursing: "Monitor potassium closely. May need K+ supplementation. Watch for digoxin toxicity signs." },
+    { drugs: ["digoxin","furosemide"], severity: "moderate", effect: "Furosemide causes hypokalaemia which increases digoxin toxicity.", nursing: "Monitor potassium closely. May need K+ supplementation. Watch for digoxin toxicity signs." },
     { drugs: ["digoxin","amiodarone"], severity: "severe", effect: "Amiodarone increases digoxin levels by 70-100%. Risk of toxicity.", nursing: "Reduce digoxin dose by 50% when starting amiodarone. Monitor digoxin levels." },
-    { drugs: ["ACE inhibitor","potassium"], severity: "severe", effect: "Both increase serum potassium. Risk of fatal hyperkalemia.", nursing: "Avoid K+ supplements with ACE inhibitors unless specifically ordered. Monitor K+ levels." },
+    { drugs: ["ACE inhibitor","potassium"], severity: "severe", effect: "Both increase serum potassium. Risk of fatal hyperkalaemia.", nursing: "Avoid K+ supplements with ACE inhibitors unless specifically ordered. Monitor K+ levels." },
     { drugs: ["SSRI","tramadol"], severity: "severe", effect: "Both increase serotonin. Risk of serotonin syndrome (hyperthermia, rigidity, clonus).", nursing: "Monitor for serotonin syndrome: agitation, tremor, hyperthermia, hyperreflexia. Avoid combination." },
     { drugs: ["SSRI","MAOI"], severity: "severe", effect: "Serotonin syndrome - potentially fatal. Hypertensive crisis possible.", nursing: "NEVER combine. Must wait 14 days after stopping MAOI (5 weeks for fluoxetine) before starting SSRI." },
     { drugs: ["metoprolol","verapamil"], severity: "severe", effect: "Both slow heart rate. Risk of severe bradycardia, heart block, or asystole.", nursing: "Avoid combination. Monitor HR and ECG closely if both necessary. Watch for hypotension." },
     { drugs: ["ciprofloxacin","antacids"], severity: "moderate", effect: "Antacids bind ciprofloxacin in GI tract, reducing absorption by up to 90%.", nursing: "Separate administration by at least 2 hours. Give cipro first." },
     { drugs: ["warfarin","vitamin K foods"], severity: "moderate", effect: "Vitamin K counteracts warfarin. Inconsistent intake causes INR fluctuations.", nursing: "Teach consistent (not zero) vitamin K intake. Monitor INR with diet changes." },
-    { drugs: ["lithium","NSAIDs"], severity: "severe", effect: "NSAIDs reduce lithium excretion, increasing levels to toxic range.", nursing: "Avoid NSAIDs. Use acetaminophen for pain. If NSAID needed, check lithium level in 5 days." },
+    { drugs: ["lithium","NSAIDs"], severity: "severe", effect: "NSAIDs reduce lithium excretion, increasing levels to toxic range.", nursing: "Avoid NSAIDs. Use paracetamol for pain. If NSAID needed, check lithium level in 5 days." },
     { drugs: ["opioids","benzodiazepines"], severity: "severe", effect: "Additive CNS and respiratory depression. FDA black box warning.", nursing: "Avoid combination. If both necessary, use lowest doses and monitor respirations continuously." },
     { drugs: ["levothyroxine","calcium"], severity: "moderate", effect: "Calcium binds levothyroxine reducing absorption significantly.", nursing: "Separate by at least 4 hours. Take levothyroxine on empty stomach in morning." },
-    { drugs: ["spironolactone","ACE inhibitor"], severity: "moderate", effect: "Both increase potassium. Risk of hyperkalemia especially in renal impairment.", nursing: "Monitor potassium closely (within 1 week of starting). Avoid K+ supplements." }
+    { drugs: ["spironolactone","ACE inhibitor"], severity: "moderate", effect: "Both increase potassium. Risk of hyperkalaemia especially in renal impairment.", nursing: "Monitor potassium closely (within 1 week of starting). Avoid K+ supplements." }
 ];
 
 let interactionSelected = [];
@@ -726,10 +745,10 @@ function answerTimed(i) {
 
 const mnemonicsData = [
     { category: "Drug Suffix Patterns", items: [
-        { trick: "-pril", meaning: "ACE Inhibitors", example: "lisinoPRIL, enalaPRIL, ramiPRIL - watch for cough & angioedema" },
+        { trick: "-pril", meaning: "ACE Inhibitors", example: "lisinoPRIL, enalaPRIL, ramiPRIL - watch for cough & angiooedema" },
         { trick: "-sartan", meaning: "ARBs (Angiotensin Receptor Blockers)", example: "loSARTAN, valSARTAN - like ACE but no cough" },
         { trick: "-olol", meaning: "Beta Blockers", example: "metoprOLOL, atenOLOL, propranOLOL - lower HR & BP" },
-        { trick: "-dipine", meaning: "Calcium Channel Blockers (dihydropyridines)", example: "amloDIPINE, nifeDIPINE - watch for edema" },
+        { trick: "-dipine", meaning: "Calcium Channel Blockers (dihydropyridines)", example: "amloDIPINE, nifeDIPINE - watch for oedema" },
         { trick: "-statin", meaning: "HMG-CoA Reductase Inhibitors (cholesterol)", example: "atorvaSTATIN, simvaSTATIN - watch for muscle pain" },
         { trick: "-prazole", meaning: "Proton Pump Inhibitors", example: "omePRAZOLE, pantoPRAZOLE - reduce stomach acid" },
         { trick: "-tidine", meaning: "H2 Blockers", example: "famoTIDINE, cimeTIDINE - reduce stomach acid" },
@@ -743,7 +762,8 @@ const mnemonicsData = [
         { trick: "-azole", meaning: "Antifungals (and some PPIs)", example: "flucon-AZOLE, ketocon-AZOLE - check LFTs" }
     ]},
     { category: "Classic Memory Devices", items: [
-        { trick: "RIPE", meaning: "TB drugs", example: "Rifampin, Isoniazid, Pyrazinamide, Ethambutol" },
+        { trick: "A PINCH", meaning: "Australian high-risk medicines (ACSQHC)", example: "Anti-infectives, Potassium/electrolytes, Insulin, Narcotics/opioids, Chemo, Heparin/anticoagulants" },
+        { trick: "RIPE", meaning: "TB drugs", example: "Rifampicin, Isoniazid, Pyrazinamide, Ethambutol" },
         { trick: "LOT (safe in liver disease)", meaning: "Benzos with no active metabolites", example: "Lorazepam, Oxazepam, Temazepam" },
         { trick: "'Red devil'", meaning: "Doxorubicin", example: "Red-orange urine + cardiotoxicity" },
         { trick: "MURDER (aspirin toxicity)", meaning: "Salicylate overdose signs", example: "Metabolic acidosis, Uraemia, Respiratory alkalosis, Dizziness, Epigastric pain, Rhabdomyolysis" },
@@ -779,9 +799,9 @@ const lasaPairs = [
     { a: "clonidine", b: "klonopin (clonazepam)", note: "Clonidine = antihypertensive. Clonazepam = benzodiazepine. Sound-alike names." },
     { a: "metformin", b: "metronidazole", note: "Metformin = diabetes. Metronidazole (Flagyl) = antibiotic. Both start with 'metro/metf'." },
     { a: "prednisone", b: "prednisolone", note: "Both corticosteroids but different potency/forms. Verify carefully." },
-    { a: "celebrex (celecoxib)", b: "celexa (citalopram)", note: "Celebrex = NSAID. Celexa = SSRI antidepressant. Classic sound-alike error." },
-    { a: "lamictal (lamotrigine)", b: "lamisil (terbinafine)", note: "Lamictal = anticonvulsant/mood. Lamisil = antifungal. Look-alike names." },
-    { a: "novolog (aspart)", b: "novolin (regular/NPH)", note: "NovoLog = rapid-acting. Novolin = regular/NPH. Insulin mix-ups are high-alert errors." },
+    { a: "Losec (omeprazole)", b: "Lasix (frusemide/furosemide)", note: "Losec = proton pump inhibitor. Lasix = loop diuretic. A classic Australian sound-alike/look-alike error." },
+    { a: "Lamictal (lamotrigine)", b: "Lamisil (terbinafine)", note: "Lamictal = anticonvulsant/mood stabiliser. Lamisil = antifungal. Look-alike names, both available in Australia." },
+    { a: "NovoRapid (aspart)", b: "Protaphane (NPH)", note: "NovoRapid = rapid-acting. Protaphane = intermediate NPH. Insulin mix-ups are high-alert errors - always double-check." },
     { a: "humalog (lispro)", b: "humulin", note: "Humalog = rapid-acting analog. Humulin = human insulin (R or N). Verify insulin type." },
     { a: "cefazolin", b: "cefotetan", note: "Both cephalosporins with similar names - different spectrum/uses." },
     { a: "vinblastine", b: "vincristine", note: "Both vinca alkaloid chemo. Different toxicity profiles. Fatal if confused." },
@@ -818,7 +838,8 @@ window.features = {
     openMnemonics,
     toggleDarkMode,
     openTimedQuiz, startTimedQuiz, answerTimed,
-    openLookAlike
+    openLookAlike,
+    dismissDisclaimer
 };
 
 })();
