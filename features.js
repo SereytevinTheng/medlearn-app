@@ -825,6 +825,189 @@ function openLookAlike() {
     mainContent.innerHTML = html;
 }
 
+// ===== RIGHTS OF MEDICATION ADMINISTRATION =====
+function openRights() {
+    setActiveNav('rights');
+    breadcrumb.innerHTML = '<span class="breadcrumb-item" onclick="app.renderHome()">Home</span><span class="breadcrumb-separator">&#x25B6;</span><span class="breadcrumb-item active">Rights</span>';
+    const rights = [
+        ['Right Patient', 'Use 2 identifiers (full name + date of birth). Check the ID band against the chart.'],
+        ['Right Medication', 'Check the medication name against the chart. Beware look-alike/sound-alike names.'],
+        ['Right Dose', 'Confirm the dose and calculation. Have a second nurse check high-risk medicines.'],
+        ['Right Route', 'Confirm the route (PO, IV, IM, SubCut, topical). Never assume.'],
+        ['Right Time', 'Give within the correct time frame. Check frequency and last dose given.'],
+        ['Right Documentation', 'Sign the chart immediately AFTER administration - never before.'],
+        ['Right Reason / Indication', 'Understand why the patient is receiving this medicine.'],
+        ['Right Response', 'Evaluate the effect - did it work? Any adverse reaction?'],
+        ['Right to Refuse', 'A competent patient may refuse. Educate, document, and notify as needed.'],
+        ['Right Education', 'Teach the patient about the medicine, its purpose and side effects.']
+    ];
+    let html = '<div class="section-header"><div><h2>&#x2705; Rights of Medication Administration</h2>';
+    html += '<p class="section-description">The safety framework every nurse follows. Combine with the 3 checks below.</p></div></div>';
+    html += '<div class="rights-3checks"><strong>&#x1F50D; The 3 Checks</strong> - check the medication label: (1) when taking it from storage, (2) when preparing/pouring it, and (3) at the bedside before giving it.</div>';
+    rights.forEach((r, i) => {
+        html += `<div class="right-card"><div class="right-num">${i+1}</div><div class="right-body"><div class="right-title">${r[0]}</div><div class="right-desc">${r[1]}</div></div></div>`;
+    });
+    html += '<div class="apinch-box" style="margin-top:1.5rem;"><strong>Before &amp; after giving, also assess:</strong> relevant vital signs (e.g. BP before antihypertensives, HR before beta-blockers/digoxin, blood glucose before insulin, respiratory rate before opioids), allergies, and relevant pathology (e.g. potassium, INR, drug levels).</div>';
+    mainContent.innerHTML = html;
+}
+
+// ===== CASE STUDIES =====
+const caseStudies = [
+    { title: "Heart failure - fluid overload", scenario: "Mrs Patel, 72, is admitted with worsening heart failure. She is short of breath with pitting oedema and crackles at the lung bases. She is charted frusemide (Lasix) 40 mg IV and takes digoxin daily. Her latest potassium is 3.1 mmol/L.", questions: [
+        { q: "What is the priority concern before giving digoxin?", options: ["The low potassium (hypokalaemia increases digoxin toxicity)","Her oedema","Her shortness of breath","Her age"], correct: 0, rationale: "Hypokalaemia (K 3.1) potentiates digoxin and increases the risk of toxicity and arrhythmias. Check the potassium and apical pulse before giving digoxin; report the low K+." },
+        { q: "The frusemide is likely to worsen which electrolyte problem?", options: ["Hypokalaemia","Hyperkalaemia","Hypercalcaemia","Hypernatraemia"], correct: 0, rationale: "Loop diuretics like frusemide cause potassium loss, which can worsen her already low potassium - monitor closely and anticipate replacement." }
+    ]},
+    { title: "Asthma exacerbation", scenario: "Jack, 19, presents to ED with an acute asthma attack. He is wheezing and using accessory muscles. He is charted salbutamol (Ventolin) via nebuliser and IV hydrocortisone.", questions: [
+        { q: "What is the expected immediate effect of salbutamol?", options: ["Bronchodilation and easier breathing","Reduced inflammation over days","Lowered blood pressure","Sedation"], correct: 0, rationale: "Salbutamol is a short-acting beta-2 agonist (reliever) - it relaxes bronchial smooth muscle for rapid bronchodilation. Steroids work on inflammation over hours to days." },
+        { q: "Which side effect of salbutamol should you monitor?", options: ["Tachycardia and tremor","Bradycardia","Constipation","Hyperkalaemia"], correct: 0, rationale: "Salbutamol commonly causes tachycardia, tremor and can lower potassium. Monitor heart rate and for tremor, especially with repeated dosing." }
+    ]},
+    { title: "Post-op pain and opioids", scenario: "Mr Nguyen, 68, is day 1 post-op. He is charted oxycodone (Endone) for pain. On assessment his respiratory rate is 8 and he is difficult to rouse.", questions: [
+        { q: "What is your priority action?", options: ["Withhold the opioid and assess/escalate - possible respiratory depression","Give the next dose to keep him comfortable","Document and reassess in 4 hours","Encourage him to mobilise"], correct: 0, rationale: "RR of 8 with sedation suggests opioid-induced respiratory depression. Withhold the opioid, stimulate/assess the patient, apply oxygen, escalate, and have naloxone available." },
+        { q: "Oxycodone is what schedule in Australia?", options: ["Schedule 8 (controlled drug)","Schedule 2","Schedule 4","Unscheduled"], correct: 0, rationale: "Oxycodone is a Schedule 8 (S8) controlled drug - it requires drug register checks and two-nurse checking per local policy." }
+    ]},
+    { title: "New warfarin patient", scenario: "Mrs Lee, 65, is started on warfarin (Marevan) for atrial fibrillation. Her INR today is 3.8. She asks about her diet and pain relief for a headache.", questions: [
+        { q: "Her INR of 3.8 (target 2-3) means:", options: ["She is over-anticoagulated - increased bleeding risk","She needs a higher dose","The warfarin isn't working","This is the ideal range"], correct: 0, rationale: "An INR of 3.8 is above the usual target range of 2-3, indicating over-anticoagulation and increased bleeding risk. Anticipate withholding/adjusting the dose per orders." },
+        { q: "What should you advise for her headache?", options: ["Paracetamol (avoid NSAIDs like ibuprofen)","Ibuprofen","Aspirin","Naproxen"], correct: 0, rationale: "NSAIDs and aspirin increase bleeding risk with warfarin. Paracetamol is the preferred simple analgesic." }
+    ]}
+];
+
+let caseIndex = 0;
+let caseQ = 0;
+
+function openCaseStudies() {
+    setActiveNav('cases');
+    breadcrumb.innerHTML = '<span class="breadcrumb-item" onclick="app.renderHome()">Home</span><span class="breadcrumb-separator">&#x25B6;</span><span class="breadcrumb-item active">Case Studies</span>';
+    let html = '<div class="section-header"><div><h2>&#x1F4CB; Clinical Case Studies</h2>';
+    html += '<p class="section-description">Apply your knowledge to realistic scenarios. Choose a case.</p></div></div>';
+    html += '<div class="classes-grid">';
+    caseStudies.forEach((c, i) => {
+        html += `<div class="class-card" onclick="features.startCase(${i})"><div class="class-title">${c.title}</div><div class="class-med-count">${c.questions.length} questions</div></div>`;
+    });
+    html += '</div>';
+    mainContent.innerHTML = html;
+}
+
+function startCase(i) { caseIndex = i; caseQ = 0; renderCase(); }
+
+function renderCase() {
+    const c = caseStudies[caseIndex];
+    let html = '<div class="section-header"><div><h2>&#x1F4CB; ' + c.title + '</h2></div></div>';
+    html += `<div class="case-scenario">${c.scenario}</div>`;
+    const q = c.questions[caseQ];
+    html += `<div class="nclex-question-card"><div class="nclex-stem">Q${caseQ+1}: ${q.q}</div>`;
+    q.options.forEach((opt, idx) => {
+        html += `<div class="nclex-option" id="copt${idx}" onclick="features.answerCase(${idx})">${opt}</div>`;
+    });
+    html += `<div class="nclex-rationale" id="caseRationale"><strong>Rationale:</strong> ${q.rationale}</div>`;
+    html += `<button id="caseNext" style="display:none;margin-top:1rem;padding:0.6rem 1.25rem;background:var(--success);color:white;border:none;border-radius:8px;font-weight:600;cursor:pointer;" onclick="features.nextCase()">${caseQ < c.questions.length-1 ? 'Next Question &#x2192;' : 'Back to Cases'}</button>`;
+    html += '</div>';
+    mainContent.innerHTML = html;
+}
+
+function answerCase(idx) {
+    const c = caseStudies[caseIndex];
+    const q = c.questions[caseQ];
+    document.querySelectorAll('.nclex-option').forEach((el, i) => {
+        el.classList.add('disabled');
+        if (i === q.correct) el.classList.add('correct-answer');
+        else if (i === idx) el.classList.add('wrong-answer');
+    });
+    document.getElementById('caseRationale').classList.add('visible');
+    document.getElementById('caseNext').style.display = 'inline-block';
+}
+
+function nextCase() {
+    const c = caseStudies[caseIndex];
+    if (caseQ < c.questions.length - 1) { caseQ++; renderCase(); }
+    else { openCaseStudies(); }
+}
+
+// ===== DRUG CALCULATIONS PRACTICE =====
+let calcCurrent = null;
+let calcScore = 0;
+let calcAttempts = 0;
+
+function randInt(min, max) { return Math.floor(Math.random() * (max - min + 1)) + min; }
+
+function buildCalcProblem(type) {
+    if (type === 'tablet') {
+        const per = [25, 50, 100, 250, 500][randInt(0,4)];
+        const mult = randInt(1,4) * 0.5;
+        const order = +(per * mult);
+        return { q: `Order: ${order} mg. Stock: ${per} mg tablets. How many tablets do you give?`, a: order/per, unit: 'tablet(s)', work: `Dose \u00F7 stock = ${order} \u00F7 ${per} = ${order/per} tablet(s)` };
+    }
+    if (type === 'liquid') {
+        const strength = [5, 10, 25, 50][randInt(0,3)];
+        const vol = [5, 1][randInt(0,1)];
+        const mult = randInt(2,6);
+        const order = strength * mult;
+        return { q: `Order: ${order} mg. Stock: ${strength} mg/${vol} mL. How many mL do you give?`, a: (order/strength)*vol, unit: 'mL', work: `(Dose \u00F7 stock) \u00D7 volume = (${order} \u00F7 ${strength}) \u00D7 ${vol} = ${(order/strength)*vol} mL` };
+    }
+    if (type === 'ivrate') {
+        const vol = [500, 1000, 250, 100][randInt(0,3)];
+        const hrs = [4, 6, 8, 12, 24][randInt(0,4)];
+        return { q: `Infuse ${vol} mL over ${hrs} hours. What is the rate in mL/hr?`, a: +(vol/hrs).toFixed(1), unit: 'mL/hr', work: `Volume \u00F7 time = ${vol} \u00F7 ${hrs} = ${(vol/hrs).toFixed(1)} mL/hr` };
+    }
+    if (type === 'drops') {
+        const vol = [500, 1000, 100, 250][randInt(0,3)];
+        const min = [60, 120, 240, 30][randInt(0,3)];
+        const df = [20, 15, 60][randInt(0,2)];
+        return { q: `Infuse ${vol} mL over ${min} minutes. Drop factor is ${df} gtt/mL. Calculate drops/min.`, a: Math.round((vol*df)/min), unit: 'gtt/min', work: `(Volume \u00D7 drop factor) \u00F7 time = (${vol} \u00D7 ${df}) \u00F7 ${min} = ${Math.round((vol*df)/min)} gtt/min` };
+    }
+    // mg/kg paediatric
+    const wt = randInt(8, 40);
+    const perKg = [5, 10, 15, 2, 4][randInt(0,4)];
+    return { q: `A child weighs ${wt} kg. The dose is ${perKg} mg/kg/dose. What is the dose?`, a: wt*perKg, unit: 'mg', work: `Weight \u00D7 dose/kg = ${wt} \u00D7 ${perKg} = ${wt*perKg} mg` };
+}
+
+function openCalculations() {
+    setActiveNav('calc');
+    breadcrumb.innerHTML = '<span class="breadcrumb-item" onclick="app.renderHome()">Home</span><span class="breadcrumb-separator">&#x25B6;</span><span class="breadcrumb-item active">Calculations</span>';
+    calcScore = 0; calcAttempts = 0;
+    let html = '<div class="section-header"><div><h2>&#x1F9EE; Drug Calculations Practice</h2>';
+    html += '<p class="section-description">Practice the calculations you\'ll be tested on. Pick a type to begin.</p></div></div>';
+    html += '<div class="calc-type-grid">';
+    const types = [['tablet','&#x1F48A; Tablet Dose'],['liquid','&#x1F9EA; Liquid Dose'],['ivrate','&#x1F4A7; IV Rate (mL/hr)'],['drops','&#x1F4A7; Drops/min (gtt)'],['mgkg','&#x2696;&#xFE0F; mg/kg (Paediatric)'],['mixed','&#x1F3B2; Mixed (all types)']];
+    types.forEach(t => { html += `<div class="calc-type-card" onclick="features.newCalc('${t[0]}')">${t[1]}</div>`; });
+    html += '</div><div id="calcArea"></div>';
+    mainContent.innerHTML = html;
+}
+
+function newCalc(type) {
+    const t = type === 'mixed' ? ['tablet','liquid','ivrate','drops','mgkg'][randInt(0,4)] : type;
+    calcCurrent = buildCalcProblem(t);
+    calcCurrent.baseType = type;
+    let html = `<div class="calc-card">
+        <div class="calc-question">${calcCurrent.q}</div>
+        <div class="calc-input-row">
+            <input type="number" step="any" id="calcAnswer" placeholder="Your answer" onkeydown="if(event.key==='Enter')features.checkCalc()">
+            <span class="calc-unit">${calcCurrent.unit}</span>
+        </div>
+        <button class="calc-btn" onclick="features.checkCalc()">Check Answer</button>
+        <div id="calcFeedback"></div>
+    </div>
+    <div class="calc-score">Score: ${calcScore}/${calcAttempts}</div>`;
+    document.getElementById('calcArea').innerHTML = html;
+    const inp = document.getElementById('calcAnswer'); if (inp) inp.focus();
+}
+
+function checkCalc() {
+    const inp = document.getElementById('calcAnswer');
+    if (!inp || inp.value === '') return;
+    const val = parseFloat(inp.value);
+    const correct = Math.abs(val - calcCurrent.a) < 0.05;
+    calcAttempts++;
+    if (correct) calcScore++;
+    const fb = document.getElementById('calcFeedback');
+    fb.innerHTML = `<div class="calc-feedback ${correct ? 'right' : 'wrong'}">
+        ${correct ? '\u2705 Correct!' : '\u274C Not quite. Correct answer: ' + calcCurrent.a + ' ' + calcCurrent.unit}
+        <div class="calc-work"><strong>Working:</strong> ${calcCurrent.work}</div>
+    </div>
+    <button class="calc-btn" onclick="features.newCalc('${calcCurrent.baseType}')">Next Question &#x2192;</button>`;
+    inp.disabled = true;
+    saveProgress('calc', {score: calcScore, total: calcAttempts, date: new Date().toISOString()});
+}
+
 // ===== PUBLIC API =====
 window.features = {
     openFlashcards, startFlashcardDeck, fcAnswer,
@@ -839,7 +1022,10 @@ window.features = {
     toggleDarkMode,
     openTimedQuiz, startTimedQuiz, answerTimed,
     openLookAlike,
-    dismissDisclaimer
+    dismissDisclaimer,
+    openCalculations, newCalc, checkCalc,
+    openRights,
+    openCaseStudies, startCase, answerCase, nextCase
 };
 
 })();

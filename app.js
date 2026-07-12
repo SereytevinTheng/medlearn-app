@@ -61,6 +61,23 @@
     }
 
     // ===== NAVIGATION =====
+    function getDrugOfTheDay() {
+        // Build a flat list of all medications with their location
+        const all = [];
+        for (const [catKey, cat] of Object.entries(medicationDatabase)) {
+            for (const [classKey, cls] of Object.entries(cat.classes)) {
+                cls.medications.forEach((med, medIndex) => {
+                    all.push({ med, catKey, classKey, medIndex, className: cls.name });
+                });
+            }
+        }
+        if (all.length === 0) return null;
+        // Seed from the calendar date so it stays the same all day
+        const now = new Date();
+        const daySeed = now.getFullYear() * 1000 + (now.getMonth() * 31 + now.getDate());
+        return all[daySeed % all.length];
+    }
+
     function renderHome() {
         currentView = 'home';
         currentCategory = null;
@@ -71,7 +88,20 @@
         if (homeBtn) homeBtn.classList.add('active');
         updateBreadcrumb([{ label: 'Home', level: 'home' }]);
 
-        let html = '<div class="section-header"><div><h2>Medication Categories</h2>';
+        let html = '';
+
+        // Drug of the Day (stable per calendar day)
+        const dotd = getDrugOfTheDay();
+        if (dotd) {
+            html += `<div class="dotd-card" onclick="app.showMedDetail('${dotd.catKey}','${dotd.classKey}',${dotd.medIndex})">
+                <div class="dotd-label">&#x1F4C5; Drug of the Day</div>
+                <div class="dotd-name">${dotd.med.generic}</div>
+                <div class="dotd-brand">${dotd.med.brand} &bull; ${dotd.className}</div>
+                <div class="dotd-hint">Tap to learn more &#x2192;</div>
+            </div>`;
+        }
+
+        html += '<div class="section-header"><div><h2>Medication Categories</h2>';
         html += '<p class="section-description">Select a category to explore drug classes and medications</p></div></div>';
         html += '<div class="categories-grid">';
 
@@ -242,10 +272,45 @@
                     <p>${med.nursingConsiderations}</p>
                 </div>
             </div>
+
+            <div class="med-detail-section">
+                <h3>&#x1F4DD; My Notes</h3>
+                <textarea class="med-notes-area" id="medNotesArea" placeholder="Add your own study notes for ${med.generic}...">${getMedNote(med.generic)}</textarea>
+                <div>
+                    <button class="med-notes-save" onclick="app.saveMedNote('${med.generic.replace(/'/g, "\\'")}')">Save Note</button>
+                    <span class="med-notes-saved" id="medNotesSaved"></span>
+                </div>
+            </div>
         `;
 
         medDetailContent.innerHTML = html;
         medDetailModal.classList.remove('hidden');
+    }
+
+    // ===== PERSONAL NOTES =====
+    function getMedNotes() {
+        return JSON.parse(localStorage.getItem('medlearn_notes') || '{}');
+    }
+
+    function getMedNote(generic) {
+        const notes = getMedNotes();
+        // Escape HTML to safely place inside the textarea
+        const raw = notes[generic] || '';
+        return raw.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+    }
+
+    function saveMedNote(generic) {
+        const area = document.getElementById('medNotesArea');
+        if (!area) return;
+        const notes = getMedNotes();
+        const val = area.value.trim();
+        if (val) { notes[generic] = val; } else { delete notes[generic]; }
+        localStorage.setItem('medlearn_notes', JSON.stringify(notes));
+        const saved = document.getElementById('medNotesSaved');
+        if (saved) {
+            saved.textContent = '\u2713 Saved';
+            setTimeout(() => { saved.textContent = ''; }, 2000);
+        }
     }
 
     // ===== SEARCH =====
@@ -563,7 +628,8 @@
         startQuiz,
         answerQuiz,
         renderHome,
-        printClass
+        printClass,
+        saveMedNote
     };
 
     // Initialize on DOM ready
