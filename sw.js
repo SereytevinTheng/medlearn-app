@@ -1,10 +1,11 @@
 // MedLearn Service Worker - offline support
-const CACHE_NAME = 'medlearn-v1';
+const CACHE_NAME = 'medlearn-v2';
 const ASSETS = [
   './',
   './index.html',
   './styles.css',
   './features.css',
+  './cinematic.css',
   './medications.js',
   './app.js',
   './features.js',
