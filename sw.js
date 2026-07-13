@@ -1,5 +1,5 @@
 // MedLearn Service Worker - offline support
-const CACHE_NAME = 'medlearn-v2';
+const CACHE_NAME = 'medlearn-v3';
 const ASSETS = [
   './',
   './index.html',
@@ -11,7 +11,11 @@ const ASSETS = [
   './features.js',
   './admin.html',
   './manifest.json',
-  './icon.svg'
+  './icon.svg',
+  './icon-192.png',
+  './icon-512.png',
+  './icon-512-maskable.png',
+  './apple-touch-icon.png'
 ];
 
 // Install - cache all core assets
