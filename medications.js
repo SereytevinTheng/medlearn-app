@@ -5,48 +5,56 @@ const medicationDatabase = {
     cardiovascular: {
         name: "Cardiovascular",
         icon: "\u2764\uFE0F",
+        color: "#dc2626",
         description: "Medications affecting the heart and blood vessels",
         classes: {}
     },
     respiratory: {
         name: "Respiratory",
         icon: "\uD83E\uDEC1",
+        color: "#0891b2",
         description: "Medications for lung and airway conditions",
         classes: {}
     },
     cns: {
         name: "Central Nervous System",
         icon: "\uD83E\uDDE0",
+        color: "#7c3aed",
         description: "Medications affecting the brain and nervous system",
         classes: {}
     },
     endocrine: {
         name: "Endocrine",
         icon: "\u2696\uFE0F",
+        color: "#d97706",
         description: "Medications for hormonal and metabolic disorders",
         classes: {}
     },
     antiinfective: {
         name: "Anti-Infective",
         icon: "\uD83E\uDDA0",
+        color: "#059669",
         description: "Medications to fight infections",
         classes: {}
     },
     gastrointestinal: {
         name: "Gastrointestinal",
         icon: "\uD83E\uDDB7",
+        color: "#ca8a04",
         description: "Medications for digestive system disorders",
         classes: {}
     },
     psychiatric: {
         name: "Psychiatric",
         icon: "\uD83E\uDDEC",
+        color: "#db2777",
         description: "Medications for mental health conditions",
         classes: {}
     },
     musculoskeletal: {
         name: "Musculoskeletal",
         icon: "\uD83E\uDDB4",
+        color: "#2563eb",
         description: "Medications for bones, joints, and muscles",
         classes: {}
     }
@@ -2128,18 +2136,21 @@ medicationDatabase.antiinfective.classes.antitubercular = {
 medicationDatabase.immuneOncology = {
     name: "Immune & Oncology",
     icon: "\uD83E\uDDEB",
+    color: "#9333ea",
     description: "Immunosuppressants and chemotherapy agents",
     classes: {}
 };
 medicationDatabase.ophthalmicOtic = {
     name: "Eye & Ear (Ophthalmic/Otic)",
     icon: "\uD83D\uDC41\uFE0F",
+    color: "#0d9488",
     description: "Medications for eye and ear conditions",
     classes: {}
 };
 medicationDatabase.fluidsElectrolytes = {
     name: "IV Fluids & Electrolytes",
     icon: "\uD83D\uDCA7",
+    color: "#0284c7",
     description: "Intravenous fluids and electrolyte replacements",
     classes: {}
 };

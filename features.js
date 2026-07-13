@@ -140,6 +140,7 @@ function renderFlashcard() {
     if (fcIndex >= fcDeck.length) {
         area.innerHTML = `<div class="flashcard-container"><h3>Deck Complete!</h3><p style="margin:1rem 0;font-size:1.2rem;">&#x2705; Known: ${fcKnown} | &#x274C; Review: ${fcUnknown}</p><p style="color:var(--text-light);">${Math.round((fcKnown/fcDeck.length)*100)}% mastery</p><button class="fc-btn fc-btn-right" onclick="features.startFlashcardDeck()" style="margin-top:1rem;max-width:200px;">Restart Deck</button></div>`;
         saveProgress('flashcard', {known: fcKnown, total: fcDeck.length, date: new Date().toISOString()});
+        awardXP(fcKnown * 2 + 5, 'flashcards');
         return;
     }
     const med = fcDeck[fcIndex];
@@ -176,8 +177,36 @@ function fcAnswer(known) {
     const med = fcDeck[fcIndex];
     if (known === true) fcKnown++;
     else if (known === false) fcUnknown++;
-    if (med && known !== null) updateSRS(med.generic, known);
+    if (med && known !== null) {
+        updateSRS(med.generic, known);
+        if (known === false) addWeakSpot(med.generic);
+        else if (known === true) removeWeakSpot(med.generic);
+    }
     fcIndex++;
+    renderFlashcard();
+}
+
+// ===== WEAK SPOTS =====
+function getWeakSpots() { try { return JSON.parse(localStorage.getItem('medlearn_weakspots') || '[]'); } catch(e) { return []; } }
+function saveWeakSpots(w) { localStorage.setItem('medlearn_weakspots', JSON.stringify(w)); }
+function addWeakSpot(generic) { const w = getWeakSpots(); if (!w.includes(generic)) { w.push(generic); saveWeakSpots(w); } }
+function removeWeakSpot(generic) { let w = getWeakSpots(); if (w.includes(generic)) { w = w.filter(x => x !== generic); saveWeakSpots(w); } }
+
+function openWeakSpots() {
+    breadcrumb.innerHTML = '<span class="breadcrumb-item" onclick="app.renderHome()">Home</span><span class="breadcrumb-separator">&#x25B6;</span><span class="breadcrumb-item active">Weak Spots</span>';
+    const weak = getWeakSpots();
+    const allMeds = getAllMeds();
+    fcDeck = allMeds.filter(m => weak.includes(m.generic)).sort(() => Math.random() - 0.5);
+    let html = '<div class="section-header"><div><h2>&#x1F3AF; Weak Spots</h2>';
+    html += `<p class="section-description">Flashcards you marked "Don't Know" collect here. Get one right to clear it. ${fcDeck.length} to review.</p></div></div>`;
+    if (fcDeck.length === 0) {
+        html += '<div class="favorites-empty"><div class="empty-icon">&#x1F389;</div><h3>No weak spots!</h3><p>When you mark a flashcard "Don\'t Know", it appears here for focused review. Nothing to review right now - great work!</p></div>';
+        mainContent.innerHTML = html;
+        return;
+    }
+    html += '<div id="flashcardArea"></div>';
+    mainContent.innerHTML = html;
+    fcIndex = 0; fcKnown = 0; fcUnknown = 0;
     renderFlashcard();
 }
 
@@ -482,6 +511,7 @@ function renderNCLEXQuestion() {
     if (nclexIndex >= nclexActive.length) {
         mainContent.innerHTML = `<div style="text-align:center;padding:3rem 1rem;"><h2>Practice Complete!</h2><p style="font-size:2rem;font-weight:700;color:var(--primary);margin:1rem 0;">${nclexScore}/${nclexActive.length}</p><p style="color:var(--text-light);">${Math.round((nclexScore/nclexActive.length)*100)}%</p><button onclick="features.openNCLEX()" style="margin-top:1rem;padding:0.7rem 1.5rem;background:var(--primary);color:white;border:none;border-radius:8px;font-weight:600;cursor:pointer;">Choose Another Category</button></div>`;
         saveProgress('nclex', {score: nclexScore, total: nclexActive.length, date: new Date().toISOString()});
+        awardXP(nclexScore * 5 + 5, 'practice questions');
         return;
     }
     nclexAnswered = false;
@@ -706,6 +736,7 @@ function renderTimedQuestion() {
         const totalTime = Math.round((Date.now() - tqStartTime) / 1000);
         mainContent.innerHTML = `<div style="text-align:center;padding:3rem 1rem;"><h2>&#x23F1;&#xFE0F; Challenge Complete!</h2><p style="font-size:2.5rem;font-weight:700;color:var(--primary);margin:1rem 0;">${tqScore}/${tqQuestions.length}</p><p style="color:var(--text-light);">${Math.round((tqScore/tqQuestions.length)*100)}% correct &bull; ${totalTime}s total</p><button onclick="features.openTimedQuiz()" style="margin-top:1.5rem;padding:0.7rem 1.5rem;background:var(--warning);color:white;border:none;border-radius:8px;font-weight:600;cursor:pointer;">Play Again</button></div>`;
         saveProgress('timed', {score: tqScore, total: tqQuestions.length, date: new Date().toISOString()});
+        awardXP(tqScore * 3 + 5, 'timed quiz');
         return;
     }
     const q = tqQuestions[tqIndex];
@@ -957,7 +988,7 @@ function answerCase(idx) {
 function nextCase() {
     const c = caseStudies[caseIndex];
     if (caseQ < c.questions.length - 1) { caseQ++; renderCase(); }
-    else { openCaseStudies(); }
+    else { awardXP(15, 'case study'); openCaseStudies(); }
 }
 
 // ===== DRUG CALCULATIONS PRACTICE =====
@@ -1048,7 +1079,7 @@ function checkCalc() {
     const val = parseFloat(inp.value);
     const correct = Math.abs(val - calcCurrent.a) < 0.05;
     calcAttempts++;
-    if (correct) calcScore++;
+    if (correct) { calcScore++; awardXP(3, 'calculation'); }
     const fb = document.getElementById('calcFeedback');
     fb.innerHTML = `<div class="calc-feedback ${correct ? 'right' : 'wrong'}">
         ${correct ? '\u2705 Correct!' : '\u274C Not quite. Correct answer: ' + calcCurrent.a + ' ' + calcCurrent.unit}
@@ -1059,6 +1090,225 @@ function checkCalc() {
     saveProgress('calc', {score: calcScore, total: calcAttempts, date: new Date().toISOString()});
 }
 
+// ===== GAMIFICATION: XP, STREAK, BADGES =====
+function getGame() {
+    try { return JSON.parse(localStorage.getItem('medlearn_game') || '{"xp":0,"streak":0,"lastActive":null,"badges":[]}'); }
+    catch(e) { return { xp: 0, streak: 0, lastActive: null, badges: [] }; }
+}
+function saveGame(g) { localStorage.setItem('medlearn_game', JSON.stringify(g)); }
+
+const LEVELS = [
+    [0, 'Pre-Nursing'], [100, 'Student Nurse'], [300, 'Senior Student'],
+    [600, 'New Graduate'], [1000, 'Registered Nurse'], [1600, 'Clinical Nurse'], [2500, 'Nurse Educator']
+];
+function getLevel(xp) {
+    let idx = 0;
+    LEVELS.forEach((l, i) => { if (xp >= l[0]) idx = i; });
+    const next = LEVELS[idx + 1];
+    return {
+        num: idx + 1, title: LEVELS[idx][1], base: LEVELS[idx][0],
+        nextAt: next ? next[0] : null,
+        progress: next ? Math.round((xp - LEVELS[idx][0]) / (next[0] - LEVELS[idx][0]) * 100) : 100
+    };
+}
+
+function verifiedCount() { try { return Object.keys(JSON.parse(localStorage.getItem('medlearn_verified') || '{}')).length; } catch(e) { return 0; } }
+function sessionCount() { try { return JSON.parse(localStorage.getItem('medlearn_progress') || '[]').length; } catch(e) { return 0; } }
+
+const BADGES = [
+    { id: 'first', icon: '\uD83C\uDF93', name: 'First Steps', desc: 'Earn your first XP', test: g => g.xp > 0 },
+    { id: 'streak3', icon: '\uD83D\uDD25', name: 'On a Roll', desc: '3-day study streak', test: g => g.streak >= 3 },
+    { id: 'streak7', icon: '\uD83D\uDD25', name: 'Week Warrior', desc: '7-day study streak', test: g => g.streak >= 7 },
+    { id: 'xp250', icon: '\u2B50', name: 'Getting Serious', desc: 'Reach 250 XP', test: g => g.xp >= 250 },
+    { id: 'xp500', icon: '\uD83C\uDF1F', name: 'Rising Star', desc: 'Reach 500 XP', test: g => g.xp >= 500 },
+    { id: 'xp1000', icon: '\uD83C\uDFC6', name: 'RN Level', desc: 'Reach 1000 XP', test: g => g.xp >= 1000 },
+    { id: 'verify10', icon: '\u2705', name: 'Fact Checker', desc: 'Verify 10 drug classes', test: () => verifiedCount() >= 10 },
+    { id: 'sessions20', icon: '\uD83D\uDCAA', name: 'Dedicated', desc: 'Complete 20 study sessions', test: () => sessionCount() >= 20 }
+];
+function checkBadges() {
+    const g = getGame();
+    g.badges = g.badges || [];
+    let newly = [];
+    BADGES.forEach(b => { if (!g.badges.includes(b.id) && b.test(g)) { g.badges.push(b.id); newly.push(b); } });
+    if (newly.length) saveGame(g);
+    return newly;
+}
+function updateStreak() {
+    const g = getGame();
+    const today = new Date().toDateString();
+    if (g.lastActive === today) return;
+    const yesterday = new Date(Date.now() - 86400000).toDateString();
+    g.streak = (g.lastActive === yesterday) ? (g.streak || 0) + 1 : 1;
+    g.lastActive = today;
+    saveGame(g);
+}
+function awardXP(points, reason) {
+    const g = getGame();
+    g.xp = (g.xp || 0) + points;
+    saveGame(g);
+    updateStreak();
+    const newBadges = checkBadges();
+    if (newBadges.length) {
+        setTimeout(() => alert('\uD83C\uDF89 New badge unlocked: ' + newBadges.map(b => b.icon + ' ' + b.name).join(', ')), 300);
+    }
+}
+
+function openAchievements() {
+    breadcrumb.innerHTML = '<span class="breadcrumb-item" onclick="app.renderHome()">Home</span><span class="breadcrumb-separator">&#x25B6;</span><span class="breadcrumb-item active">Achievements</span>';
+    const g = getGame();
+    const lvl = getLevel(g.xp || 0);
+    let html = '<div class="section-header"><div><h2>&#x1F3C5; Achievements</h2>';
+    html += '<p class="section-description">Your progress and badges</p></div></div>';
+    html += `<div class="xp-hero">
+        <div class="xp-hero-level">Level ${lvl.num} &bull; ${lvl.title}</div>
+        <div class="xp-hero-xp">${g.xp || 0} XP &bull; &#x1F525; ${g.streak || 0}-day streak</div>
+        <div class="progress-bar-container" style="margin-top:0.6rem;"><div class="progress-bar-fill" style="width:${lvl.progress}%"></div></div>
+        <div class="xp-hero-next">${lvl.nextAt ? (lvl.nextAt - (g.xp || 0)) + ' XP to next level' : 'Max level reached!'}</div>
+    </div>`;
+    html += '<h3 style="margin:1.5rem 0 0.75rem;">Badges</h3><div class="badge-grid">';
+    const earned = g.badges || [];
+    BADGES.forEach(b => {
+        const has = earned.includes(b.id);
+        html += `<div class="badge-card ${has ? 'earned' : 'locked'}">
+            <div class="badge-icon">${has ? b.icon : '\uD83D\uDD12'}</div>
+            <div class="badge-name">${b.name}</div>
+            <div class="badge-desc">${b.desc}</div>
+        </div>`;
+    });
+    html += '</div>';
+    mainContent.innerHTML = html;
+}
+
+// ===== MATCH-UP GAME =====
+let matchSet = [], matchLeft = [], matchRight = [], matchDone = 0, matchMistakes = 0, matchSel = null, matchStartTime = 0, matchTimerId = null, matchMsg = '';
+
+function openMatchGame() {
+    setActiveNav('match');
+    breadcrumb.innerHTML = '<span class="breadcrumb-item" onclick="app.renderHome()">Home</span><span class="breadcrumb-separator">&#x25B6;</span><span class="breadcrumb-item active">Match-Up</span>';
+    let html = '<div class="section-header"><div><h2>&#x1F9E9; Match-Up Game</h2>';
+    html += '<p class="section-description">Match each generic name to its brand. Fast and correct wins!</p></div></div>';
+    html += '<div style="text-align:center;padding:1.5rem 1rem;">';
+    html += '<div style="margin-bottom:1rem;"><label style="font-size:0.9rem;">Category: </label><select id="matchCat" style="padding:0.5rem;border:1px solid var(--border);border-radius:8px;"><option value="all">All Medications</option>';
+    for (const [key, cat] of Object.entries(medicationDatabase)) html += `<option value="${key}">${cat.icon} ${cat.name}</option>`;
+    html += '</select></div>';
+    html += '<button onclick="features.startMatch()" style="padding:0.8rem 2rem;background:var(--secondary);color:white;border:none;border-radius:8px;font-size:1rem;font-weight:600;cursor:pointer;">&#x1F3AE; Start Game</button>';
+    html += '</div>';
+    mainContent.innerHTML = html;
+}
+
+function firstBrand(b) { return b.split('/')[0].trim(); }
+
+function startMatch() {
+    const catSel = document.getElementById('matchCat');
+    const catKey = catSel ? catSel.value : 'all';
+    let pool = getAllMeds();
+    if (catKey !== 'all') pool = pool.filter(m => m.category === catKey);
+    if (pool.length < 5) { alert('Not enough medications in this category. Try another.'); return; }
+    matchSet = [...pool].sort(() => Math.random() - 0.5).slice(0, 6);
+    matchLeft = matchSet.map(m => ({ gen: m.generic, text: m.generic })).sort(() => Math.random() - 0.5);
+    matchRight = matchSet.map(m => ({ gen: m.generic, text: firstBrand(m.brand) })).sort(() => Math.random() - 0.5);
+    matchDone = 0; matchMistakes = 0; matchSel = null; matchMsg = '';
+    matchStartTime = Date.now();
+    if (matchTimerId) clearInterval(matchTimerId);
+    matchTimerId = setInterval(() => { const t = document.getElementById('matchTimer'); if (t) t.textContent = Math.round((Date.now() - matchStartTime) / 1000) + 's'; }, 500);
+    renderMatch();
+}
+
+function renderMatch() {
+    const matched = new Set(matchLeft.filter(l => l._m).map(l => l.gen));
+    let html = '<div class="section-header"><div><h2>&#x1F9E9; Match-Up</h2>';
+    html += `<p class="section-description">Matched ${matchDone}/6 &bull; Mistakes: ${matchMistakes} &bull; <span id="matchTimer">0s</span></p></div></div>`;
+    if (matchMsg) html += `<div class="match-msg">${matchMsg}</div>`;
+    html += '<div class="match-grid"><div class="match-col"><div class="match-col-head">Generic</div>';
+    matchLeft.forEach((l, i) => {
+        const cls = l._m ? 'matched' : (matchSel === i ? 'selected' : '');
+        html += `<button class="match-item ${cls}" ${l._m ? 'disabled' : ''} onclick="features.matchPickLeft(${i})">${l.text}</button>`;
+    });
+    html += '</div><div class="match-col"><div class="match-col-head">Brand</div>';
+    matchRight.forEach((r, j) => {
+        html += `<button class="match-item ${r._m ? 'matched' : ''}" ${r._m ? 'disabled' : ''} onclick="features.matchPickRight(${j})">${r.text}</button>`;
+    });
+    html += '</div></div>';
+    mainContent.innerHTML = html;
+}
+
+function matchPickLeft(i) {
+    if (matchLeft[i]._m) return;
+    matchSel = i; matchMsg = '';
+    renderMatch();
+}
+
+function matchPickRight(j) {
+    if (matchRight[j]._m || matchSel === null) return;
+    const leftGen = matchLeft[matchSel].gen;
+    const rightGen = matchRight[j].gen;
+    if (leftGen === rightGen) {
+        matchLeft[matchSel]._m = true;
+        matchRight[j]._m = true;
+        matchDone++;
+        matchSel = null;
+        matchMsg = '\u2705 Match!';
+        if (matchDone === 6) { finishMatch(); return; }
+    } else {
+        matchMistakes++;
+        matchSel = null;
+        matchMsg = '\u274C Not a match - try again';
+    }
+    renderMatch();
+}
+
+function finishMatch() {
+    if (matchTimerId) { clearInterval(matchTimerId); matchTimerId = null; }
+    const secs = Math.round((Date.now() - matchStartTime) / 1000);
+    const xp = Math.max(10, 40 - matchMistakes * 5);
+    awardXP(xp, 'Match-Up game');
+    saveProgress('match', { score: 6, total: 6 + matchMistakes, date: new Date().toISOString() });
+    mainContent.innerHTML = `<div style="text-align:center;padding:3rem 1rem;"><h2>&#x1F389; All Matched!</h2>
+        <p style="font-size:1.3rem;margin:1rem 0;">Time: <strong>${secs}s</strong> &bull; Mistakes: <strong>${matchMistakes}</strong></p>
+        <p style="color:var(--success);font-weight:700;font-size:1.1rem;">+${xp} XP</p>
+        <button onclick="features.openMatchGame()" style="margin-top:1.5rem;padding:0.7rem 1.5rem;background:var(--secondary);color:white;border:none;border-radius:8px;font-weight:600;cursor:pointer;">Play Again</button></div>`;
+}
+
+// ===== BODY-SYSTEM MAP =====
+function openBodyMap() {
+    breadcrumb.innerHTML = '<span class="breadcrumb-item" onclick="app.renderHome()">Home</span><span class="breadcrumb-separator">&#x25B6;</span><span class="breadcrumb-item active">Body Map</span>';
+    // [categoryKey, topPct, leftPct]
+    const spots = [
+        ['cns', 5, 50], ['psychiatric', 3, 72], ['ophthalmicOtic', 11, 28],
+        ['cardiovascular', 27, 43], ['respiratory', 29, 60],
+        ['endocrine', 40, 39], ['gastrointestinal', 48, 57],
+        ['fluidsElectrolytes', 34, 14], ['musculoskeletal', 74, 39]
+    ];
+    const svg = '<svg class="bodymap-svg" viewBox="0 0 200 360" aria-hidden="true">' +
+        '<circle cx="100" cy="38" r="26"/>' +
+        '<rect x="90" y="60" width="20" height="16"/>' +
+        '<rect x="60" y="74" width="80" height="130" rx="26"/>' +
+        '<rect x="38" y="80" width="18" height="95" rx="9"/>' +
+        '<rect x="144" y="80" width="18" height="95" rx="9"/>' +
+        '<rect x="72" y="198" width="24" height="130" rx="11"/>' +
+        '<rect x="104" y="198" width="24" height="130" rx="11"/>' +
+        '</svg>';
+    let hotspots = '';
+    spots.forEach(s => {
+        const cat = medicationDatabase[s[0]];
+        if (!cat) return;
+        hotspots += `<button class="bodymap-hotspot" style="top:${s[1]}%;left:${s[2]}%;background:${cat.color}" title="${cat.name}" onclick="app.navigateToCategory('${s[0]}')">${cat.icon}</button>`;
+    });
+    let html = '<div class="section-header"><div><h2>&#x1F5FA;&#xFE0F; Body-System Map</h2>';
+    html += '<p class="section-description">Tap a body region or a system below to jump to those medications.</p></div></div>';
+    html += `<div class="bodymap-layout"><div class="bodymap-wrap">${svg}${hotspots}</div>`;
+    html += '<div class="bodymap-legend">';
+    for (const [key, cat] of Object.entries(medicationDatabase)) {
+        html += `<div class="bodymap-legend-item" onclick="app.navigateToCategory('${key}')">
+            <span class="bml-swatch" style="background:${cat.color}"></span>
+            <span class="bml-icon">${cat.icon}</span>
+            <span class="bml-name">${cat.name}</span>
+        </div>`;
+    }
+    html += '</div></div>';
+    mainContent.innerHTML = html;
+}
+
 // ===== GROUP SUB-VIEWS =====
 const featureGroups = {
     study: {
@@ -1066,9 +1316,11 @@ const featureGroups = {
         icon: '\uD83C\uDF93',
         tools: [
             { icon: '\uD83C\uDCCF', title: 'Flashcards', desc: 'Flip cards with optional spaced repetition', action: 'features.openFlashcards()' },
+            { icon: '\uD83C\uDFAF', title: 'Weak Spots', desc: 'Review the cards you keep getting wrong', action: 'features.openWeakSpots()' },
             { icon: '\uD83D\uDCDD', title: "Practice Questions", desc: 'NMBA-style questions by category', action: 'features.openNCLEX()' },
             { icon: '\u23F1\uFE0F', title: 'Timed Quiz', desc: 'Beat the clock - 10 rapid questions', action: 'features.openTimedQuiz()' },
             { icon: '\uD83D\uDCCB', title: 'Case Studies', desc: 'Clinical scenarios with reasoning', action: 'features.openCaseStudies()' },
+            { icon: '\uD83E\uDDE9', title: 'Match-Up Game', desc: 'Match generics to brands against the clock', action: 'features.openMatchGame()' },
             { icon: '\u2696\uFE0F', title: 'Compare Drugs', desc: 'Side-by-side comparison of two meds', action: 'features.openCompare()' }
         ]
     },
@@ -1128,7 +1380,11 @@ window.features = {
     openCalculations, newCalc, checkCalc,
     openRights,
     openCaseStudies, startCase, answerCase, nextCase,
-    openGroup
+    openGroup,
+    openBodyMap,
+    openMatchGame, startMatch, matchPickLeft, matchPickRight,
+    openAchievements,
+    openWeakSpots
 };
 
 })();

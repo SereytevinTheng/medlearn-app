@@ -101,6 +101,21 @@
 
         let html = '';
 
+        // XP / streak stats bar
+        let game = { xp: 0, streak: 0 };
+        try { game = JSON.parse(localStorage.getItem('medlearn_game') || '{"xp":0,"streak":0}'); } catch(e) {}
+        const levelThresholds = [[0,'Pre-Nursing'],[100,'Student Nurse'],[300,'Senior Student'],[600,'New Graduate'],[1000,'Registered Nurse'],[1600,'Clinical Nurse'],[2500,'Nurse Educator']];
+        let li = 0;
+        levelThresholds.forEach((l, i) => { if ((game.xp||0) >= l[0]) li = i; });
+        const nextAt = levelThresholds[li+1] ? levelThresholds[li+1][0] : null;
+        const lvlProgress = nextAt ? Math.round(((game.xp||0) - levelThresholds[li][0]) / (nextAt - levelThresholds[li][0]) * 100) : 100;
+        html += `<div class="xp-bar" onclick="features.openAchievements()" title="View achievements">
+            <span class="xp-bar-level">&#x1F3C5; Lvl ${li+1} &middot; ${levelThresholds[li][1]}</span>
+            <span class="xp-bar-streak">&#x1F525; ${game.streak||0}</span>
+            <span class="xp-bar-prog"><span class="progress-bar-container"><span class="progress-bar-fill" style="display:block;width:${lvlProgress}%"></span></span></span>
+            <span class="xp-bar-xp">${game.xp||0} XP</span>
+        </div>`;
+
         // Drug of the Day (stable per calendar day)
         const dotd = getDrugOfTheDay();
         if (dotd) {
@@ -115,12 +130,14 @@
         // Dashboard tiles
         const tiles = [
             { icon: '\uD83D\uDC8A', title: 'Medications', desc: 'Browse drugs by category, class and detail', stat: `${stats.meds} medications &bull; ${stats.cats} categories`, action: "app.renderMedications()", accent: 'var(--primary)' },
-            { icon: '\uD83C\uDF93', title: 'Study & Practice', desc: 'Flashcards, practice questions, timed quiz & cases', stat: '4 study tools', action: "features.openGroup('study')", accent: 'var(--secondary)' },
+            { icon: '\uD83D\uDDFA\uFE0F', title: 'Body-System Map', desc: 'Explore medications visually by body region', stat: 'Interactive map', action: "features.openBodyMap()", accent: '#0d9488' },
+            { icon: '\uD83C\uDF93', title: 'Study & Practice', desc: 'Flashcards, match game, quizzes & cases', stat: '7 study tools', action: "features.openGroup('study')", accent: 'var(--secondary)' },
             { icon: '\uD83E\uDDEE', title: 'Drug Calculations', desc: 'Dosage, IV rates, drops/min & paediatric maths', stat: '5 problem types', action: "features.openCalculations()", accent: 'var(--success)' },
             { icon: '\uD83D\uDEE1\uFE0F', title: 'Safety', desc: 'High-risk meds, interactions, look-alikes & rights', stat: '4 safety tools', action: "features.openGroup('safety')", accent: 'var(--danger)' },
             { icon: '\uD83D\uDCDA', title: 'Reference', desc: 'Lab values, therapeutic ranges & mnemonics', stat: '2 reference tools', action: "features.openGroup('reference')", accent: 'var(--warning)' },
             { icon: '\u2B50', title: 'Favourites', desc: 'Your saved medications for quick review', stat: `${favCount} saved`, action: "features.openFavorites()", accent: '#f59e0b' },
             { icon: '\uD83D\uDCCA', title: 'Progress', desc: 'Track your quiz scores and study sessions', stat: `${sessionCount} sessions`, action: "features.openProgress()", accent: '#0891b2' },
+            { icon: '\uD83C\uDFC5', title: 'Achievements', desc: 'Your level, XP, streak and badges', stat: `Level ${li+1}`, action: "features.openAchievements()", accent: '#eab308' },
             { icon: '\uD83D\uDEE0\uFE0F', title: 'Edit Medications', desc: 'Add, edit or delete medications yourself', stat: 'Admin panel', action: "window.location.href='admin.html'", accent: '#64748b' }
         ];
 
@@ -166,12 +183,13 @@
             for (const cls of Object.values(category.classes)) {
                 medCount += cls.medications.length;
             }
+            const catColor = category.color || 'var(--primary)';
             html += `
-                <div class="category-card" onclick="app.navigateToCategory('${key}')">
+                <div class="category-card" style="border-left-color:${catColor}" onclick="app.navigateToCategory('${key}')">
                     <div class="card-icon">${category.icon}</div>
                     <div class="card-title">${category.name}</div>
                     <div class="card-description">${category.description}</div>
-                    <div class="card-count">${classCount} classes &bull; ${medCount} medications</div>
+                    <div class="card-count" style="color:${catColor};background:${catColor}1a">${classCount} classes &bull; ${medCount} medications</div>
                 </div>
             `;
         }
@@ -200,13 +218,14 @@
         html += '</div>';
         html += '<div class="classes-grid">';
 
+        const catColor = category.color || 'var(--secondary)';
         for (const [key, drugClass] of Object.entries(category.classes)) {
             const vBadge = isClassVerified(categoryKey, key) ? '<span class="class-verified-badge">&#x2705; Verified</span>' : '';
             html += `
-                <div class="class-card" onclick="app.navigateToClass('${categoryKey}', '${key}')">
+                <div class="class-card" style="border-top-color:${catColor}" onclick="app.navigateToClass('${categoryKey}', '${key}')">
                     <div class="class-title">${drugClass.name} ${vBadge}</div>
                     <div class="class-description">${drugClass.description}</div>
-                    <div class="class-med-count">${drugClass.medications.length} medications</div>
+                    <div class="class-med-count" style="color:${catColor}">${drugClass.medications.length} medications</div>
                 </div>
             `;
         }
@@ -248,9 +267,10 @@
 
         html += '<div class="medications-grid">';
 
+        const medColor = category.color || 'var(--success)';
         drugClass.medications.forEach((med, index) => {
             html += `
-                <div class="med-card" onclick="app.showMedDetail('${categoryKey}', '${classKey}', ${index})">
+                <div class="med-card" style="border-left-color:${medColor}" onclick="app.showMedDetail('${categoryKey}', '${classKey}', ${index})">
                     <div class="med-generic">${med.generic}</div>
                     <div class="med-brand">${med.brand}</div>
                     <div class="med-quick-info">
