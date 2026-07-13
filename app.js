@@ -135,7 +135,7 @@
             { icon: '\uD83C\uDF93', title: 'Study & Practice', desc: 'Flashcards, match game, quizzes & cases', stat: '7 study tools', action: "features.openGroup('study')", accent: 'var(--secondary)' },
             { icon: '\uD83E\uDDEE', title: 'Drug Calculations', desc: 'Dosage, IV rates, drops/min & paediatric maths', stat: '5 problem types', action: "features.openCalculations()", accent: 'var(--success)' },
             { icon: '\uD83D\uDEE1\uFE0F', title: 'Safety', desc: 'High-risk meds, interactions, look-alikes & rights', stat: '4 safety tools', action: "features.openGroup('safety')", accent: 'var(--danger)' },
-            { icon: '\uD83D\uDCDA', title: 'Reference', desc: 'Lab values, therapeutic ranges & mnemonics', stat: '2 reference tools', action: "features.openGroup('reference')", accent: 'var(--warning)' },
+            { icon: '\uD83D\uDCDA', title: 'Reference', desc: 'Lab values, ranges, mnemonics & external links', stat: '3 reference tools', action: "features.openGroup('reference')", accent: 'var(--warning)' },
             { icon: '\u2B50', title: 'Favourites', desc: 'Your saved medications for quick review', stat: `${favCount} saved`, action: "features.openFavorites()", accent: '#f59e0b' },
             { icon: '\uD83D\uDCCA', title: 'Progress', desc: 'Track your quiz scores and study sessions', stat: `${sessionCount} sessions`, action: "features.openProgress()", accent: '#0891b2' },
             { icon: '\uD83C\uDFC5', title: 'Achievements', desc: 'Your level, XP, streak and badges', stat: `Level ${li+1}`, action: "features.openAchievements()", accent: '#eab308' },
