@@ -460,3 +460,120 @@ body.dark .quiz-option:hover { background: rgba(99,102,241,.18); }
     background-clip: padding-box;
 }
 ::-webkit-scrollbar-track { background: transparent; }
+
+
+/* =====================================================================
+   EXTERNAL REFERENCES HUB
+   ===================================================================== */
+.ref-note {
+    background: var(--glass-bg);
+    backdrop-filter: var(--glass-blur);
+    border: 1px solid var(--glass-border);
+    border-left: 4px solid var(--accent);
+    border-radius: var(--radius-sm);
+    padding: 0.9rem 1.1rem;
+    font-size: 0.9rem;
+    line-height: 1.55;
+    color: var(--text-light);
+    box-shadow: var(--shadow);
+    margin-bottom: 1.5rem;
+}
+
+.ref-group-title {
+    font-family: 'Sora', 'Inter', sans-serif;
+    font-size: 1.05rem;
+    color: var(--text);
+    margin: 1.75rem 0 0.9rem;
+    letter-spacing: -0.01em;
+}
+
+.ref-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+    gap: 1rem;
+}
+
+.ref-card {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    text-decoration: none;
+    color: inherit;
+    background: var(--glass-bg);
+    backdrop-filter: var(--glass-blur);
+    border: 1px solid var(--glass-border);
+    border-radius: var(--radius-sm);
+    padding: 1.1rem 1.15rem;
+    box-shadow: var(--shadow);
+    position: relative;
+    overflow: hidden;
+    transition: transform .3s cubic-bezier(.2,.8,.2,1), box-shadow .3s, border-color .3s;
+}
+.ref-card::before {
+    content: "";
+    position: absolute;
+    left: 0; top: 0; bottom: 0;
+    width: 3px;
+    background: var(--grad-accent);
+    opacity: 0;
+    transition: opacity .3s;
+}
+.ref-card:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-lg);
+    border-color: rgba(99,102,241,.4);
+}
+.ref-card:hover::before { opacity: 1; }
+
+.ref-card-top {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 0.6rem;
+}
+.ref-name {
+    font-weight: 700;
+    font-size: 0.98rem;
+    line-height: 1.3;
+    color: var(--text);
+}
+.ref-desc {
+    font-size: 0.85rem;
+    color: var(--text-light);
+    line-height: 1.5;
+    flex-grow: 1;
+}
+.ref-link {
+    font-size: 0.82rem;
+    font-weight: 600;
+    color: var(--primary);
+    display: inline-flex;
+    align-items: center;
+    gap: 0.3rem;
+    margin-top: 0.25rem;
+}
+.ref-arrow { transition: transform .25s; }
+.ref-card:hover .ref-arrow { transform: translate(2px, -2px); }
+
+/* Access badges */
+.ref-badge {
+    flex-shrink: 0;
+    font-size: 0.66rem;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    padding: 0.2rem 0.5rem;
+    border-radius: 999px;
+    white-space: nowrap;
+    line-height: 1.4;
+}
+.ref-badge.free  { background: rgba(16,185,129,.15); color: #059669; border: 1px solid rgba(16,185,129,.35); }
+.ref-badge.sub   { background: rgba(245,158,11,.15); color: #b45309; border: 1px solid rgba(245,158,11,.4); }
+.ref-badge.login { background: rgba(99,102,241,.15); color: #4f46e5; border: 1px solid rgba(99,102,241,.4); }
+
+/* Dark mode */
+body.dark .ref-link { color: #a5b4fc; }
+body.dark .ref-badge.free  { background: rgba(16,185,129,.18); color: #6ee7b7; }
+body.dark .ref-badge.sub   { background: rgba(245,158,11,.18); color: #fcd34d; }
+body.dark .ref-badge.login { background: rgba(129,140,248,.2); color: #c7d2fe; }
+body.dark .ref-card:hover { border-color: rgba(129,140,248,.6); box-shadow: var(--shadow-lg), 0 0 26px -8px rgba(99,102,241,.5); }

@@ -823,6 +823,83 @@ function openMnemonics() {
     mainContent.innerHTML = html;
 }
 
+// ===== EXTERNAL REFERENCES & RESOURCES =====
+// Curated authoritative Australian drug & clinical references.
+// access: 'free' | 'sub' (subscription) | 'login' (institutional/personal login)
+const referenceGroups = [
+    {
+        group: 'Core Drug References',
+        icon: '\uD83D\uDCD8',
+        items: [
+            { name: 'Australian Medicines Handbook (AMH)', desc: 'Independent, evidence-based national drug reference for quality use of medicines.', url: 'https://amhonline.amh.net.au/', access: 'sub' },
+            { name: 'Therapeutic Guidelines (eTG complete)', desc: 'Trusted, expert, evidence-based treatment guidelines across conditions.', url: 'https://www.tg.org.au/', access: 'sub' },
+            { name: 'Australian Injectable Drugs Handbook (AIDH)', desc: 'Preparation & administration info for 500+ injectable medicines. The "yellow book".', url: 'https://www.tg.org.au/products/australianinjectabledrugshandbook/', access: 'sub' },
+            { name: 'AMH Children\u2019s Dosing Companion', desc: 'Paediatric dosing guidance (birth to 18 years), aligned with AMH.', url: 'https://shop.amh.net.au/cdc', access: 'sub' },
+            { name: 'MIMS Online', desc: 'Comprehensive prescribing and product information database.', url: 'https://www.mimsonline.com.au/', access: 'sub' }
+        ]
+    },
+    {
+        group: 'Government & Regulatory',
+        icon: '\uD83C\uDFDB\uFE0F',
+        items: [
+            { name: 'TGA \u2013 PI & CMI Search', desc: 'Official Product Information and Consumer Medicine Information documents (ARTG).', url: 'https://www.tga.gov.au/', access: 'free' },
+            { name: 'PBS \u2013 Pharmaceutical Benefits Scheme', desc: 'Subsidised medicines, restrictions, authority requirements and pricing.', url: 'https://www.pbs.gov.au/', access: 'free' },
+            { name: 'TGA Medicine Shortages', desc: 'Current and anticipated medicine shortage information.', url: 'https://apps.tga.gov.au/prod/MSI/search', access: 'free' }
+        ]
+    },
+    {
+        group: 'Consumer & Professional Information',
+        icon: '\uD83D\uDCF0',
+        items: [
+            { name: 'healthdirect \u2013 Medicines', desc: 'Government-funded, plain-language consumer medicine information.', url: 'https://www.healthdirect.gov.au/medicines', access: 'free' },
+            { name: 'Australian Prescriber', desc: 'Free, independent, peer-reviewed journal of drugs and therapeutics.', url: 'https://australianprescriber.tg.org.au/', access: 'free' }
+        ]
+    },
+    {
+        group: 'Standards & Medication Safety',
+        icon: '\u2705',
+        items: [
+            { name: 'NMBA \u2013 Standards for Practice', desc: 'Registered Nurse standards, decision-making framework and codes.', url: 'https://www.nursingmidwiferyboard.gov.au/', access: 'free' },
+            { name: 'ACSQHC \u2013 Medication Safety', desc: 'National standards, high-risk medicines (A PINCH) and safety resources.', url: 'https://www.safetyandquality.gov.au/our-work/medication-safety', access: 'free' }
+        ]
+    }
+];
+
+const ACCESS_LABELS = {
+    free: { text: 'Free', cls: 'free' },
+    sub: { text: 'Subscription', cls: 'sub' },
+    login: { text: 'Institutional login', cls: 'login' }
+};
+
+function openReferences() {
+    setActiveNav('references');
+    breadcrumb.innerHTML = '<span class="breadcrumb-item" onclick="app.renderHome()">Home</span><span class="breadcrumb-separator">&#x25B6;</span><span class="breadcrumb-item active">References</span>';
+
+    let html = '<div class="section-header"><div><h2>&#x1F517; References & Resources</h2>';
+    html += '<p class="section-description">Authoritative Australian drug and clinical references. Always verify medicines against these primary sources before clinical practice.</p></div></div>';
+
+    html += '<div class="ref-note">&#x2139;&#xFE0F; Links open the official sites in a new tab. Resources marked <span class="ref-badge sub">Subscription</span> or <span class="ref-badge login">Institutional login</span> usually require a personal subscription or access through your hospital, university or library (e.g. CIAP in NSW, or an OpenAthens/library login).</div>';
+
+    referenceGroups.forEach(group => {
+        html += `<h3 class="ref-group-title">${group.icon} ${group.group}</h3>`;
+        html += '<div class="ref-grid">';
+        group.items.forEach(item => {
+            const badge = ACCESS_LABELS[item.access] || ACCESS_LABELS.free;
+            html += `<a class="ref-card" href="${item.url}" target="_blank" rel="noopener noreferrer">
+                <div class="ref-card-top">
+                    <span class="ref-name">${item.name}</span>
+                    <span class="ref-badge ${badge.cls}">${badge.text}</span>
+                </div>
+                <div class="ref-desc">${item.desc}</div>
+                <div class="ref-link">Open resource <span class="ref-arrow">&#x2197;</span></div>
+            </a>`;
+        });
+        html += '</div>';
+    });
+
+    mainContent.innerHTML = html;
+}
+
 // ===== LOOK-ALIKE / SOUND-ALIKE (LASA) DRUGS =====
 const lasaPairs = [
     { a: "hydralazine", b: "hydroxyzine", note: "Hydralazine = vasodilator (BP). Hydroxyzine = antihistamine/anxiety. Very commonly confused!" },
@@ -1339,7 +1416,8 @@ const featureGroups = {
         icon: '\uD83D\uDCDA',
         tools: [
             { icon: '\uD83D\uDD2C', title: 'Lab Values & Antidotes', desc: 'Therapeutic ranges, toxic levels, antidotes', action: 'features.openLabValues()' },
-            { icon: '\uD83E\uDDE0', title: 'Mnemonics', desc: 'Suffix patterns & memory aids', action: 'features.openMnemonics()' }
+            { icon: '\uD83E\uDDE0', title: 'Mnemonics', desc: 'Suffix patterns & memory aids', action: 'features.openMnemonics()' },
+            { icon: '\uD83D\uDD17', title: 'References & Resources', desc: 'AMH, eTG, AIDH & official AU drug resources', action: 'features.openReferences()' }
         ]
     }
 };
@@ -1379,6 +1457,7 @@ window.features = {
     dismissDisclaimer,
     openCalculations, newCalc, checkCalc,
     openRights,
+    openReferences,
     openCaseStudies, startCase, answerCase, nextCase,
     openGroup,
     openBodyMap,
