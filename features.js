@@ -853,35 +853,73 @@ function openRights() {
 
 // ===== CASE STUDIES =====
 const caseStudies = [
-    { title: "Heart failure - fluid overload", scenario: "Mrs Patel, 72, is admitted with worsening heart failure. She is short of breath with pitting oedema and crackles at the lung bases. She is charted frusemide (Lasix) 40 mg IV and takes digoxin daily. Her latest potassium is 3.1 mmol/L.", questions: [
+    { title: "Heart failure - fluid overload", system: "Cardiovascular", scenario: "Mrs Patel, 72, is admitted with worsening heart failure. She is short of breath with pitting oedema and crackles at the lung bases. She is charted frusemide (Lasix) 40 mg IV and takes digoxin daily. Her latest potassium is 3.1 mmol/L.", questions: [
         { q: "What is the priority concern before giving digoxin?", options: ["The low potassium (hypokalaemia increases digoxin toxicity)","Her oedema","Her shortness of breath","Her age"], correct: 0, rationale: "Hypokalaemia (K 3.1) potentiates digoxin and increases the risk of toxicity and arrhythmias. Check the potassium and apical pulse before giving digoxin; report the low K+." },
         { q: "The frusemide is likely to worsen which electrolyte problem?", options: ["Hypokalaemia","Hyperkalaemia","Hypercalcaemia","Hypernatraemia"], correct: 0, rationale: "Loop diuretics like frusemide cause potassium loss, which can worsen her already low potassium - monitor closely and anticipate replacement." }
     ]},
-    { title: "Asthma exacerbation", scenario: "Jack, 19, presents to ED with an acute asthma attack. He is wheezing and using accessory muscles. He is charted salbutamol (Ventolin) via nebuliser and IV hydrocortisone.", questions: [
+    { title: "Asthma exacerbation", system: "Respiratory", scenario: "Jack, 19, presents to ED with an acute asthma attack. He is wheezing and using accessory muscles. He is charted salbutamol (Ventolin) via nebuliser and IV hydrocortisone.", questions: [
         { q: "What is the expected immediate effect of salbutamol?", options: ["Bronchodilation and easier breathing","Reduced inflammation over days","Lowered blood pressure","Sedation"], correct: 0, rationale: "Salbutamol is a short-acting beta-2 agonist (reliever) - it relaxes bronchial smooth muscle for rapid bronchodilation. Steroids work on inflammation over hours to days." },
         { q: "Which side effect of salbutamol should you monitor?", options: ["Tachycardia and tremor","Bradycardia","Constipation","Hyperkalaemia"], correct: 0, rationale: "Salbutamol commonly causes tachycardia, tremor and can lower potassium. Monitor heart rate and for tremor, especially with repeated dosing." }
     ]},
-    { title: "Post-op pain and opioids", scenario: "Mr Nguyen, 68, is day 1 post-op. He is charted oxycodone (Endone) for pain. On assessment his respiratory rate is 8 and he is difficult to rouse.", questions: [
+    { title: "Post-op pain and opioids", system: "CNS", scenario: "Mr Nguyen, 68, is day 1 post-op. He is charted oxycodone (Endone) for pain. On assessment his respiratory rate is 8 and he is difficult to rouse.", questions: [
         { q: "What is your priority action?", options: ["Withhold the opioid and assess/escalate - possible respiratory depression","Give the next dose to keep him comfortable","Document and reassess in 4 hours","Encourage him to mobilise"], correct: 0, rationale: "RR of 8 with sedation suggests opioid-induced respiratory depression. Withhold the opioid, stimulate/assess the patient, apply oxygen, escalate, and have naloxone available." },
         { q: "Oxycodone is what schedule in Australia?", options: ["Schedule 8 (controlled drug)","Schedule 2","Schedule 4","Unscheduled"], correct: 0, rationale: "Oxycodone is a Schedule 8 (S8) controlled drug - it requires drug register checks and two-nurse checking per local policy." }
     ]},
-    { title: "New warfarin patient", scenario: "Mrs Lee, 65, is started on warfarin (Marevan) for atrial fibrillation. Her INR today is 3.8. She asks about her diet and pain relief for a headache.", questions: [
+    { title: "New warfarin patient", system: "Cardiovascular", scenario: "Mrs Lee, 65, is started on warfarin (Marevan) for atrial fibrillation. Her INR today is 3.8. She asks about her diet and pain relief for a headache.", questions: [
         { q: "Her INR of 3.8 (target 2-3) means:", options: ["She is over-anticoagulated - increased bleeding risk","She needs a higher dose","The warfarin isn't working","This is the ideal range"], correct: 0, rationale: "An INR of 3.8 is above the usual target range of 2-3, indicating over-anticoagulation and increased bleeding risk. Anticipate withholding/adjusting the dose per orders." },
         { q: "What should you advise for her headache?", options: ["Paracetamol (avoid NSAIDs like ibuprofen)","Ibuprofen","Aspirin","Naproxen"], correct: 0, rationale: "NSAIDs and aspirin increase bleeding risk with warfarin. Paracetamol is the preferred simple analgesic." }
+    ]},
+    { title: "Seizure management - phenytoin", system: "CNS", scenario: "Mr Brown, 45, is on IV phenytoin (Dilantin) for status epilepticus. His latest phenytoin level is 25 mg/L. You notice he has nystagmus, slurred speech and unsteadiness.", questions: [
+        { q: "What do these findings most likely indicate?", options: ["Phenytoin toxicity (level is above the therapeutic range)","A new stroke","Normal post-seizure state","Alcohol intoxication"], correct: 0, rationale: "The therapeutic range is 10-20 mg/L. A level of 25 with nystagmus, ataxia and slurred speech are classic signs of phenytoin toxicity. Withhold the dose and notify the prescriber." },
+        { q: "Which is essential when giving IV phenytoin?", options: ["Give slowly with cardiac monitoring (max 50 mg/min) and flush with saline","Give as a rapid bolus","Mix with glucose (dextrose) solution","Give IM for faster effect"], correct: 0, rationale: "IV phenytoin must be given slowly (max 50 mg/min) with cardiac monitoring due to risk of hypotension and arrhythmias. It is incompatible with glucose solutions - flush the line with normal saline." }
+    ]},
+    { title: "Hypoglycaemia - insulin", system: "Endocrine", scenario: "Sophie, 24, has type 1 diabetes. Before lunch she is sweaty, shaky and confused. Her blood glucose is 2.8 mmol/L. She is conscious and able to swallow.", questions: [
+        { q: "What is your first action?", options: ["Give 15 g of fast-acting carbohydrate and recheck in 15 minutes","Give her rapid-acting insulin","Call a code and start CPR","Withhold all food until the doctor reviews"], correct: 0, rationale: "For conscious hypoglycaemia, follow the rule of 15: give 15 g fast-acting carbohydrate (e.g. juice or glucose tablets), recheck BGL in 15 minutes. Never give insulin when the glucose is low." },
+        { q: "Which insulin is given WITH meals to cover carbohydrate?", options: ["Rapid-acting (e.g. aspart / NovoRapid)","Long-acting (e.g. glargine / Lantus)","Isophane / NPH only","No insulin is given with meals"], correct: 0, rationale: "Rapid-acting insulins (aspart, lispro) are given with meals to cover carbohydrate intake. Long-acting insulins provide background (basal) cover and are not meal-dependent." }
+    ]},
+    { title: "Hypothyroidism - levothyroxine", system: "Endocrine", scenario: "Mrs Kelly, 58, is newly prescribed levothyroxine (Oroxine) for hypothyroidism. She takes a calcium supplement and an iron tablet each morning with breakfast.", questions: [
+        { q: "What is the best administration advice?", options: ["Take on an empty stomach 30-60 min before breakfast, separate from calcium/iron by 4 hours","Take it with the calcium and iron for convenience","Take it at night with food","It does not matter when it is taken"], correct: 0, rationale: "Levothyroxine is best absorbed on an empty stomach 30-60 minutes before food. Calcium and iron significantly reduce its absorption, so separate them by about 4 hours." },
+        { q: "Which finding suggests the dose may be too high?", options: ["Palpitations, tremor, weight loss and heat intolerance","Fatigue, weight gain and cold intolerance","Constipation and dry skin","No symptoms at all"], correct: 0, rationale: "Signs of over-replacement mimic hyperthyroidism: palpitations, tremor, weight loss, heat intolerance. Report these - the dose likely needs reducing. TSH is monitored to guide dosing." }
+    ]},
+    { title: "Lithium monitoring", system: "Psychiatric", scenario: "Mr Adams, 40, takes lithium for bipolar disorder. He presents with vomiting, diarrhoea, a coarse tremor and slurred speech after a recent gastro illness. His lithium level is 1.8 mmol/L.", questions: [
+        { q: "What do these findings indicate?", options: ["Lithium toxicity (level above the narrow therapeutic range)","Normal side effects","The dose is too low","A viral illness only"], correct: 0, rationale: "The therapeutic range is narrow (0.6-1.2 mmol/L). A level of 1.8 with GI upset, coarse tremor and slurred speech signals toxicity. Dehydration from gastro raises lithium levels. Withhold and escalate." },
+        { q: "Which advice helps prevent lithium toxicity?", options: ["Maintain consistent fluid and salt intake; avoid dehydration and NSAIDs","Restrict all fluids","Take extra doses when feeling unwell","Add ibuprofen for aches"], correct: 0, rationale: "Lithium levels rise with dehydration, low sodium, and NSAIDs. Teach consistent hydration and salt intake, and to avoid NSAIDs. Regular level monitoring is essential." }
+    ]},
+    { title: "Serotonin syndrome risk", system: "Psychiatric", scenario: "Ms Taylor, 33, takes sertraline (an SSRI). She is given tramadol for back pain. Hours later she is agitated, sweaty, with tremor, hyperreflexia and a temperature of 38.9 degrees C.", questions: [
+        { q: "What is the most likely cause?", options: ["Serotonin syndrome from combining an SSRI with tramadol","A simple fever","Opioid overdose","An allergic reaction"], correct: 0, rationale: "SSRIs plus other serotonergic drugs (tramadol) can cause serotonin syndrome: agitation, tremor, hyperreflexia, hyperthermia, sweating. Stop the serotonergic agents and escalate urgently." },
+        { q: "SSRIs typically take how long for full antidepressant effect?", options: ["4-6 weeks","Within a few hours","24 hours","6 months"], correct: 0, rationale: "SSRIs take about 4-6 weeks for full effect. Teach patients not to stop abruptly (discontinuation syndrome) and to report worsening mood or suicidal thoughts early in treatment." }
+    ]},
+    { title: "NSAID risks & gout", system: "Musculoskeletal", scenario: "Mr Rossi, 62, has an acute gout flare and is charted indometacin (Indocid). He has a history of a peptic ulcer, hypertension and stage 3 chronic kidney disease.", questions: [
+        { q: "What is the main concern with an NSAID for this patient?", options: ["GI bleeding, worsening renal function and fluid retention/raised BP","Sedation","Bradycardia","Hypoglycaemia"], correct: 0, rationale: "NSAIDs increase the risk of GI bleeding (especially with a prior ulcer), can worsen renal function, and cause fluid retention that raises blood pressure. Use with caution - report concerns to the prescriber." },
+        { q: "What advice reduces NSAID GI risk?", options: ["Take with food; a PPI may be prescribed for protection","Take on an empty stomach","Crush and take without water","Double the dose for faster relief"], correct: 0, rationale: "Taking NSAIDs with food and co-prescribing a proton pump inhibitor (e.g. pantoprazole) reduces GI irritation and ulcer risk. Use the lowest effective dose for the shortest time." }
+    ]},
+    { title: "Long-term corticosteroids", system: "Musculoskeletal", scenario: "Mrs Osei, 70, has taken prednisolone daily for 6 months for polymyalgia rheumatica. She asks if she can just stop it now that she feels better.", questions: [
+        { q: "What is the key teaching point?", options: ["Never stop abruptly - it must be tapered to avoid adrenal crisis","Stop immediately once symptoms improve","Double the dose then stop","Only take it when in pain"], correct: 0, rationale: "Long-term corticosteroids suppress the adrenal axis. Abrupt cessation can cause acute adrenal insufficiency (adrenal crisis). The dose must be tapered slowly under medical guidance." },
+        { q: "Which long-term effect should be monitored?", options: ["Hyperglycaemia, osteoporosis, infection risk and weight gain","Bradycardia","Low blood glucose","Hair loss only"], correct: 0, rationale: "Long-term steroids cause hyperglycaemia, osteoporosis, immunosuppression (infection risk), weight gain, and Cushingoid features. Monitor glucose, bone health, and signs of infection." }
     ]}
 ];
 
 let caseIndex = 0;
 let caseQ = 0;
 
-function openCaseStudies() {
+let caseFilter = 'All';
+
+function openCaseStudies(filter) {
     setActiveNav('cases');
+    if (filter) caseFilter = filter;
     breadcrumb.innerHTML = '<span class="breadcrumb-item" onclick="app.renderHome()">Home</span><span class="breadcrumb-separator">&#x25B6;</span><span class="breadcrumb-item active">Case Studies</span>';
+    const systems = ['All', ...[...new Set(caseStudies.map(c => c.system || 'Other'))].sort()];
     let html = '<div class="section-header"><div><h2>&#x1F4CB; Clinical Case Studies</h2>';
-    html += '<p class="section-description">Apply your knowledge to realistic scenarios. Choose a case.</p></div></div>';
+    html += '<p class="section-description">Apply your knowledge to realistic scenarios. Filter by body system, then choose a case.</p></div></div>';
+    html += '<div class="case-filter-row">';
+    systems.forEach(s => {
+        html += `<button class="case-filter-btn ${caseFilter === s ? 'active' : ''}" onclick="features.openCaseStudies('${s}')">${s}</button>`;
+    });
+    html += '</div>';
     html += '<div class="classes-grid">';
     caseStudies.forEach((c, i) => {
-        html += `<div class="class-card" onclick="features.startCase(${i})"><div class="class-title">${c.title}</div><div class="class-med-count">${c.questions.length} questions</div></div>`;
+        if (caseFilter !== 'All' && (c.system || 'Other') !== caseFilter) return;
+        html += `<div class="class-card" onclick="features.startCase(${i})"><div class="class-title">${c.title}</div><div class="class-description"><span class="case-system-badge">${c.system || 'Other'}</span></div><div class="class-med-count">${c.questions.length} questions</div></div>`;
     });
     html += '</div>';
     mainContent.innerHTML = html;
@@ -954,6 +992,19 @@ function buildCalcProblem(type) {
         const df = [20, 15, 60][randInt(0,2)];
         return { q: `Infuse ${vol} mL over ${min} minutes. Drop factor is ${df} gtt/mL. Calculate drops/min.`, a: Math.round((vol*df)/min), unit: 'gtt/min', work: `(Volume \u00D7 drop factor) \u00F7 time = (${vol} \u00D7 ${df}) \u00F7 ${min} = ${Math.round((vol*df)/min)} gtt/min` };
     }
+    if (type === 'conversion') {
+        const conversions = [
+            () => { const v = randInt(1,20)*0.5; return { q: `Convert ${v} mg to micrograms (mcg).`, a: v*1000, unit: 'mcg', work: `1 mg = 1000 mcg, so ${v} \u00D7 1000 = ${v*1000} mcg` }; },
+            () => { const v = randInt(1,20)*250; return { q: `Convert ${v} mcg to milligrams (mg).`, a: v/1000, unit: 'mg', work: `1000 mcg = 1 mg, so ${v} \u00F7 1000 = ${v/1000} mg` }; },
+            () => { const v = randInt(1,10)*0.25; return { q: `Convert ${v} g to milligrams (mg).`, a: v*1000, unit: 'mg', work: `1 g = 1000 mg, so ${v} \u00D7 1000 = ${v*1000} mg` }; },
+            () => { const v = randInt(1,20)*250; return { q: `Convert ${v} mg to grams (g).`, a: v/1000, unit: 'g', work: `1000 mg = 1 g, so ${v} \u00F7 1000 = ${v/1000} g` }; },
+            () => { const v = randInt(1,4)*0.25; return { q: `Convert ${v} L to millilitres (mL).`, a: v*1000, unit: 'mL', work: `1 L = 1000 mL, so ${v} \u00D7 1000 = ${v*1000} mL` }; },
+            () => { const v = randInt(1,20)*100; return { q: `Convert ${v} mL to litres (L).`, a: v/1000, unit: 'L', work: `1000 mL = 1 L, so ${v} \u00F7 1000 = ${v/1000} L` }; },
+            () => { const v = randInt(3,50); return { q: `A patient weighs ${v} kg. Convert to pounds (lb). Use 1 kg = 2.2 lb.`, a: +(v*2.2).toFixed(1), unit: 'lb', work: `${v} \u00D7 2.2 = ${(v*2.2).toFixed(1)} lb` }; },
+            () => { const v = randInt(20,220); return { q: `A patient weighs ${v} lb. Convert to kilograms (kg). Use 1 kg = 2.2 lb.`, a: +(v/2.2).toFixed(1), unit: 'kg', work: `${v} \u00F7 2.2 = ${(v/2.2).toFixed(1)} kg` }; }
+        ];
+        return conversions[randInt(0, conversions.length-1)]();
+    }
     // mg/kg paediatric
     const wt = randInt(8, 40);
     const perKg = [5, 10, 15, 2, 4][randInt(0,4)];
@@ -967,14 +1018,14 @@ function openCalculations() {
     let html = '<div class="section-header"><div><h2>&#x1F9EE; Drug Calculations Practice</h2>';
     html += '<p class="section-description">Practice the calculations you\'ll be tested on. Pick a type to begin.</p></div></div>';
     html += '<div class="calc-type-grid">';
-    const types = [['tablet','&#x1F48A; Tablet Dose'],['liquid','&#x1F9EA; Liquid Dose'],['ivrate','&#x1F4A7; IV Rate (mL/hr)'],['drops','&#x1F4A7; Drops/min (gtt)'],['mgkg','&#x2696;&#xFE0F; mg/kg (Paediatric)'],['mixed','&#x1F3B2; Mixed (all types)']];
+    const types = [['tablet','&#x1F48A; Tablet Dose'],['liquid','&#x1F9EA; Liquid Dose'],['ivrate','&#x1F4A7; IV Rate (mL/hr)'],['drops','&#x1F4A7; Drops/min (gtt)'],['mgkg','&#x2696;&#xFE0F; mg/kg (Paediatric)'],['conversion','&#x1F504; Unit Conversion'],['mixed','&#x1F3B2; Mixed (all types)']];
     types.forEach(t => { html += `<div class="calc-type-card" onclick="features.newCalc('${t[0]}')">${t[1]}</div>`; });
     html += '</div><div id="calcArea"></div>';
     mainContent.innerHTML = html;
 }
 
 function newCalc(type) {
-    const t = type === 'mixed' ? ['tablet','liquid','ivrate','drops','mgkg'][randInt(0,4)] : type;
+    const t = type === 'mixed' ? ['tablet','liquid','ivrate','drops','mgkg','conversion'][randInt(0,5)] : type;
     calcCurrent = buildCalcProblem(t);
     calcCurrent.baseType = type;
     let html = `<div class="calc-card">

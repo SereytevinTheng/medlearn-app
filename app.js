@@ -149,6 +149,15 @@
 
         let html = '<div class="section-header"><div><h2>Medication Categories</h2>';
         html += '<p class="section-description">Select a category to explore drug classes and medications</p></div></div>';
+
+        // Verification progress
+        const vs = verifiedStats();
+        const pct = vs.total ? Math.round((vs.done / vs.total) * 100) : 0;
+        html += `<div class="verify-progress">
+            <div class="verify-progress-label">&#x2705; Cross-check progress: ${vs.done} of ${vs.total} drug classes verified against eTG/AMH (${pct}%)</div>
+            <div class="progress-bar-container"><div class="progress-bar-fill" style="width:${pct}%"></div></div>
+        </div>`;
+
         html += '<div class="categories-grid">';
 
         for (const [key, category] of Object.entries(medicationDatabase)) {
@@ -192,9 +201,10 @@
         html += '<div class="classes-grid">';
 
         for (const [key, drugClass] of Object.entries(category.classes)) {
+            const vBadge = isClassVerified(categoryKey, key) ? '<span class="class-verified-badge">&#x2705; Verified</span>' : '';
             html += `
                 <div class="class-card" onclick="app.navigateToClass('${categoryKey}', '${key}')">
-                    <div class="class-title">${drugClass.name}</div>
+                    <div class="class-title">${drugClass.name} ${vBadge}</div>
                     <div class="class-description">${drugClass.description}</div>
                     <div class="class-med-count">${drugClass.medications.length} medications</div>
                 </div>
@@ -228,6 +238,14 @@
         html += `<button class="quiz-btn" style="background:var(--secondary);" onclick="app.printClass()">&#x1F5A8;&#xFE0F; Print / PDF</button>`;
         html += '</div>';
         html += '</div>';
+
+        // Verified tracker banner
+        const verified = isClassVerified(categoryKey, classKey);
+        html += `<div class="verify-banner ${verified ? 'verified' : ''}" id="verifyBanner">
+            <span>${verified ? '\u2705 You have marked this class as verified against eTG/AMH.' : '\u2139\uFE0F Not yet verified. After checking this class against eTG/AMH, mark it below to track your progress.'}</span>
+            <button class="verify-btn" onclick="app.toggleClassVerified('${categoryKey}','${classKey}')">${verified ? 'Unmark' : 'Mark as verified \u2713'}</button>
+        </div>`;
+
         html += '<div class="medications-grid">';
 
         drugClass.medications.forEach((med, index) => {
@@ -629,6 +647,32 @@
         `;
     }
 
+    // ===== VERIFIED TRACKER =====
+    function getVerified() {
+        try { return JSON.parse(localStorage.getItem('medlearn_verified') || '{}'); } catch(e) { return {}; }
+    }
+    function isClassVerified(catKey, classKey) {
+        return !!getVerified()[catKey + '.' + classKey];
+    }
+    function toggleClassVerified(catKey, classKey) {
+        const v = getVerified();
+        const key = catKey + '.' + classKey;
+        if (v[key]) { delete v[key]; } else { v[key] = true; }
+        localStorage.setItem('medlearn_verified', JSON.stringify(v));
+        navigateToClass(catKey, classKey); // re-render to update banner
+    }
+    function verifiedStats() {
+        let total = 0, done = 0;
+        const v = getVerified();
+        for (const [catKey, cat] of Object.entries(medicationDatabase)) {
+            for (const classKey of Object.keys(cat.classes)) {
+                total++;
+                if (v[catKey + '.' + classKey]) done++;
+            }
+        }
+        return { total, done };
+    }
+
     // ===== PRINT / PDF EXPORT =====
     function printClass() {
         if (!currentCategory || !currentClass) return;
@@ -681,7 +725,8 @@
         renderHome,
         renderMedications,
         printClass,
-        saveMedNote
+        saveMedNote,
+        toggleClassVerified
     };
 
     // Initialize on DOM ready
