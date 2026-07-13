@@ -19,6 +19,7 @@
     let currentView = 'home';
     let currentCategory = null;
     let currentClass = null;
+    let medOrigin = 'medications'; // 'medications' or 'bodymap' - where the user entered the drug browser from
     let quizQuestions = [];
     let quizIndex = 0;
     let quizScore = 0;
@@ -154,9 +155,23 @@
         mainContent.innerHTML = html;
     }
 
+    // Returns the second breadcrumb crumb based on where the user entered the browser
+    function originCrumb() {
+        return medOrigin === 'bodymap'
+            ? { label: 'Body Map', level: 'bodymap' }
+            : { label: 'Medications', level: 'medications' };
+    }
+
+    // Enter the drug browser from the body-system map (keeps a Body Map trail)
+    function browseCategoryFromMap(categoryKey) {
+        medOrigin = 'bodymap';
+        navigateToCategory(categoryKey);
+    }
+
     // ===== MEDICATION BROWSER =====
     function renderMedications() {
         currentView = 'medications';
+        medOrigin = 'medications';
         currentCategory = null;
         currentClass = null;
         updateBreadcrumb([
@@ -206,7 +221,7 @@
 
         updateBreadcrumb([
             { label: 'Home', level: 'home' },
-            { label: 'Medications', level: 'medications' },
+            originCrumb(),
             { label: category.name, level: 'category' }
         ]);
 
@@ -243,7 +258,7 @@
 
         updateBreadcrumb([
             { label: 'Home', level: 'home' },
-            { label: 'Medications', level: 'medications' },
+            originCrumb(),
             { label: category.name, level: 'category' },
             { label: drugClass.name, level: 'class' }
         ]);
@@ -306,6 +321,9 @@
         switch(level) {
             case 'home':
                 renderHome();
+                break;
+            case 'bodymap':
+                if (window.features && features.openBodyMap) features.openBodyMap();
                 break;
             case 'medications':
                 renderMedications();
@@ -744,6 +762,7 @@
         answerQuiz,
         renderHome,
         renderMedications,
+        browseCategoryFromMap,
         printClass,
         saveMedNote,
         toggleClassVerified

@@ -1292,14 +1292,14 @@ function openBodyMap() {
     spots.forEach(s => {
         const cat = medicationDatabase[s[0]];
         if (!cat) return;
-        hotspots += `<button class="bodymap-hotspot" style="top:${s[1]}%;left:${s[2]}%;background:${cat.color}" title="${cat.name}" onclick="app.navigateToCategory('${s[0]}')">${cat.icon}</button>`;
+        hotspots += `<button class="bodymap-hotspot" style="top:${s[1]}%;left:${s[2]}%;background:${cat.color}" title="${cat.name}" onclick="app.browseCategoryFromMap('${s[0]}')">${cat.icon}</button>`;
     });
     let html = '<div class="section-header"><div><h2>&#x1F5FA;&#xFE0F; Body-System Map</h2>';
     html += '<p class="section-description">Tap a body region or a system below to jump to those medications.</p></div></div>';
     html += `<div class="bodymap-layout"><div class="bodymap-wrap">${svg}${hotspots}</div>`;
     html += '<div class="bodymap-legend">';
     for (const [key, cat] of Object.entries(medicationDatabase)) {
-        html += `<div class="bodymap-legend-item" onclick="app.navigateToCategory('${key}')">
+        html += `<div class="bodymap-legend-item" onclick="app.browseCategoryFromMap('${key}')">
             <span class="bml-swatch" style="background:${cat.color}"></span>
             <span class="bml-icon">${cat.icon}</span>
             <span class="bml-name">${cat.name}</span>
